@@ -87,13 +87,18 @@ final class MinimaxCalculator
     //the number of moves we have tried
     private int moveCount = 0;
     private long startTime;
-    
+
     private Player minPlayer;
     private Player maxPlayer;
     private Board board;
     
     private final int MAX_POSSIBLE_STRENGTH;
     private final int MIN_POSSIBLE_STRENGTH;
+
+    private int maxValue = Integer.MAX_VALUE;
+    private int minValue = Integer.MIN_VALUE;
+
+    private int maxIndex = 0;
     
 //-------------------------------------------------------
     //constructors
@@ -120,13 +125,14 @@ final class MinimaxCalculator
 	// we have a problem, Houston...
 	if(depth == 0)
 	    {
-		System.out.println("Error, 0 depth in minumax player");
+		System.out.println("Error, 0 depth in minimax player");
 		Thread.dumpStack();
 		return null;
 	    }
 	
 	Move[] moves = board.getPossibleMoves(maxPlayer);
-	
+	int maxV = Integer.MIN_VALUE;
+	int currentV = 0;
 	// explore each move in turn
 	for(int i = 0; i < moves.length; i++)
 	    {
@@ -134,10 +140,11 @@ final class MinimaxCalculator
 		    {
 			moveCount++;  // global variable
 			
-			// *************************************
-			//              CODE NEEDED 
-			//             (mostly here)  
-			// *************************************
+			currentV = expandMaxNode(depth);
+			if(currentV > maxV) {
+				maxIndex = i;
+				maxV = currentV;
+			}
 
 			board.undoLastMove();   // undo exploratory move
 		    }  //end if move made
@@ -164,32 +171,35 @@ final class MinimaxCalculator
      */
     private int expandMaxNode(int depth)
     {
-	// if cutoff test is satisfied
-	    {
-		return board.getBoardStats().getStrength(maxPlayer);
-	    }
-	
-	// if not
-	Move[] moves = board.getPossibleMoves(maxPlayer);
-	
-	// explore each move in turn
-	for(int i = 0; i < moves.length; i++)
-	    {
-		if(board.move(moves[i]))    // move was legal (column was not full)
+    	System.out.println("Max Node Depth "+depth);
+	    if (cutoffTest(depth))
 		    {
-			moveCount++;  // global variable
-
-			// *************************************
-			//              CODE NEEDED 
-			//             (mostly here)  
-			// *************************************
-
-			board.undoLastMove();   // undo exploratory move
-		    }  //end if move made
+			return board.getBoardStats().getStrength(maxPlayer);
+		}
 		
-	    }//end for all moves
-	
-	return maxValue;
+		// if not
+		Move[] moves = board.getPossibleMoves(maxPlayer);
+		// explore each move in turn
+		int v = Integer.MIN_VALUE;
+
+		for(int i = 0; i < moves.length; i++)
+		    {
+			if(board.move(moves[i]))    // move was legal (column was not full)
+			    {
+				moveCount++;  // global variable
+				v = Math.max(v, expandMinNode(depth-1));
+				if(v >= maxValue) {
+					return maxValue;
+				} 
+				minValue = Math.max(minValue, v);
+				// CODE NEEDED
+
+				board.undoLastMove();   // undo exploratory move
+			    }  //end if move made
+			
+		    }//end for all moves
+		
+		return maxValue;
 	
     }//end expandMaxNode
     
@@ -201,21 +211,27 @@ final class MinimaxCalculator
      */
     private int expandMinNode(int depth)
     {
-	// if cutoff test is satisfied
+    System.out.println("Min. Node Depth "+depth);
+	if(cutoffTest(depth)) {
 	    {
 		return board.getBoardStats().getStrength(maxPlayer);
 	    }
+	}
 	
 	// if not
 	Move[] moves = board.getPossibleMoves(minPlayer);
-
+	int v = Integer.MAX_VALUE;
 	// explore each move in turn
 	for(int i = 0; i < moves.length; i++)
 	    {
 		if(board.move(moves[i]))    // move was legal (column was not full)
 		    {
 			moveCount++;  // global variable
-
+			v = Math.min(v, expandMaxNode(depth-1));
+			if(v <= minValue) {
+					return minValue;
+			}
+			maxValue = Math.min(minValue, v);
 			// *************************************
 			//              CODE NEEDED 
 			//             (mostly here)  
@@ -229,5 +245,12 @@ final class MinimaxCalculator
 	return minValue;
 	
     }//end expandMaxNode
+
+    private boolean cutoffTest(int depth) {
+		if(board.isGameOver() || depth == 0) {
+			return true;
+		}
+		return false;
+	}
     
 }
