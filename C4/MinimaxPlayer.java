@@ -87,7 +87,7 @@ final class MinimaxCalculator
     //the number of moves we have tried
     private int moveCount = 0;
     private long startTime;
-
+    
     private Player minPlayer;
     private Player maxPlayer;
     private Board board;
@@ -95,10 +95,11 @@ final class MinimaxCalculator
     private final int MAX_POSSIBLE_STRENGTH;
     private final int MIN_POSSIBLE_STRENGTH;
 
+    private int maxIndex = -1;
     private int maxValue = Integer.MAX_VALUE;
     private int minValue = Integer.MIN_VALUE;
 
-    private int maxIndex = 0;
+    private final boolean ALPHA_BETA_PRUNING = true;
     
 //-------------------------------------------------------
     //constructors
@@ -125,12 +126,13 @@ final class MinimaxCalculator
 	// we have a problem, Houston...
 	if(depth == 0)
 	    {
-		System.out.println("Error, 0 depth in minimax player");
+		System.out.println("Error, 0 depth in minumax player");
 		Thread.dumpStack();
 		return null;
 	    }
 	
 	Move[] moves = board.getPossibleMoves(maxPlayer);
+	
 	int maxV = Integer.MIN_VALUE;
 	int currentV = 0;
 	// explore each move in turn
@@ -140,10 +142,15 @@ final class MinimaxCalculator
 		    {
 			moveCount++;  // global variable
 			
-			currentV = expandMaxNode(depth);
+			if(ALPHA_BETA_PRUNING) {
+				currentV = expandMaxNode(depth);
+			} else {
+				currentV = expandMinNode(depth);
+			}
+			
 			if(currentV > maxV) {
-				maxIndex = i;
 				maxV = currentV;
+				maxIndex = i;
 			}
 
 			board.undoLastMove();   // undo exploratory move
@@ -171,35 +178,37 @@ final class MinimaxCalculator
      */
     private int expandMaxNode(int depth)
     {
-    	System.out.println("Max Node Depth "+depth);
-	    if (cutoffTest(depth))
+	// if cutoff test is satisfied
+   	if(terminalTest(depth)) {
+		return board.getBoardStats().getStrength(maxPlayer);
+	}
+	
+	// if not
+	Move[] moves = board.getPossibleMoves(maxPlayer);
+	
+	int v = Integer.MIN_VALUE;
+	// explore each move in turn
+	for(int i = 0; i < moves.length; i++)
+	    {
+		if(board.move(moves[i]))    // move was legal (column was not full)
 		    {
-			return board.getBoardStats().getStrength(maxPlayer);
-		}
-		
-		// if not
-		Move[] moves = board.getPossibleMoves(maxPlayer);
-		// explore each move in turn
-		int v = Integer.MIN_VALUE;
+			moveCount++;  // global variable
 
-		for(int i = 0; i < moves.length; i++)
-		    {
-			if(board.move(moves[i]))    // move was legal (column was not full)
-			    {
-				moveCount++;  // global variable
-				v = Math.max(v, expandMinNode(depth-1));
+			v = Math.max(v,expandMinNode(depth-1));
+
+			if(ALPHA_BETA_PRUNING) {
 				if(v >= maxValue) {
-					return maxValue;
-				} 
-				minValue = Math.max(minValue, v);
-				// CODE NEEDED
+					return v;
+				}
+				minValue = Math.max(minValue,v);
+			}
 
-				board.undoLastMove();   // undo exploratory move
-			    }  //end if move made
-			
-		    }//end for all moves
+			board.undoLastMove();   // undo exploratory move
+		    }  //end if move made
 		
-		return maxValue;
+	    }//end for all moves
+
+	return v;
 	
     }//end expandMaxNode
     
@@ -211,46 +220,45 @@ final class MinimaxCalculator
      */
     private int expandMinNode(int depth)
     {
-    System.out.println("Min. Node Depth "+depth);
-	if(cutoffTest(depth)) {
-	    {
+	// if cutoff test is satisfied
+    if(terminalTest(depth)) {
 		return board.getBoardStats().getStrength(maxPlayer);
-	    }
 	}
 	
 	// if not
 	Move[] moves = board.getPossibleMoves(minPlayer);
+
 	int v = Integer.MAX_VALUE;
+
 	// explore each move in turn
 	for(int i = 0; i < moves.length; i++)
 	    {
 		if(board.move(moves[i]))    // move was legal (column was not full)
 		    {
 			moveCount++;  // global variable
-			v = Math.min(v, expandMaxNode(depth-1));
-			if(v <= minValue) {
-					return minValue;
+
+			v = Math.min(v,expandMaxNode(depth-1));
+
+			if(ALPHA_BETA_PRUNING) {
+				if(v <= minValue) {
+					return v;
+				}
+				maxValue = Math.min(maxValue,v);
 			}
-			maxValue = Math.min(minValue, v);
-			// *************************************
-			//              CODE NEEDED 
-			//             (mostly here)  
-			// *************************************
 
 			board.undoLastMove();   // undo exploratory move
 		    }  //end if move made
 		
 	    }//end for all moves
-	
-	return minValue;
+	return v;
 	
     }//end expandMaxNode
 
-    private boolean cutoffTest(int depth) {
-		if(board.isGameOver() || depth == 0) {
-			return true;
-		}
-		return false;
-	}
+    private boolean terminalTest(int depth) {
+    	if(board.isGameOver() || depth == 0) {
+    		return true;
+    	}
+    	return false;
+    }
     
 }
