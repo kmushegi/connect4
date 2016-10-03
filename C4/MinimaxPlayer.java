@@ -142,11 +142,12 @@ final class MinimaxCalculator
 		    {
 			moveCount++;  // global variable
 			
-			if(ALPHA_BETA_PRUNING) {
-				currentV = expandMaxNode(depth);
-			} else {
-				currentV = expandMinNode(depth);
-			}
+			// if(ALPHA_BETA_PRUNING) {
+			// 	currentV = expandMaxNode(depth);
+			// } else {
+			// 	currentV = expandMinNode(depth);
+			// }
+			currentV = expandMinNode(depth);
 			
 			if(currentV > maxV) {
 				maxV = currentV;
@@ -165,8 +166,11 @@ final class MinimaxCalculator
 	    }//end for all moves
 	
 	long stopTime = System.currentTimeMillis();
-	System.out.println("Number of moves tried = " + moveCount + 
-			   "  Time = " + (stopTime -  startTime) + " milliseconds");
+	// System.out.println("Number of moves tried = " + moveCount + 
+	// 		   "  Time = " + (stopTime -  startTime) + " milliseconds");
+
+	System.out.println(moveCount + 
+			   "  "+(stopTime -  startTime));
 	
 	// maxIndex is the index of the move to be made
 	return moves[maxIndex];
