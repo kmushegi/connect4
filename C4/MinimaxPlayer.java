@@ -1,7 +1,6 @@
 // MinimaxPlayer.java
 
- 
-/** 
+/*
  *
  * @author  Sean Bridges
  * @version 1.0
@@ -13,6 +12,17 @@
  * polls the thread that calls getMove(..) to see if it was interrupted.  If the thread
  * is interrupted, the player returns null after it checks.  
  */
+
+/*
+ * Adapted by Grace Handler and Kote Mushegian for Professor Majercik's 
+ * Artificial Intellgience class at Bowdoin College. Minimax player can
+ * run minimax or optimized minimax with alpha-beta pruning by setting 
+ * the boolean variable ALPHA_BETA_PRUNING. Where the code was edited
+ * is noted by comments that begin with EDITED. To clarify the variables
+ * called maxValue/minValue, maxValue is beta and minValue is alpha.
+ */
+
+
 public class MinimaxPlayer extends DefaultPlayer
 {
 	
@@ -95,11 +105,11 @@ final class MinimaxCalculator
     private final int MAX_POSSIBLE_STRENGTH;
     private final int MIN_POSSIBLE_STRENGTH;
 
-    private int maxIndex = -1;
-    private int maxValue = Integer.MAX_VALUE;
-    private int minValue = Integer.MIN_VALUE;
+    private int maxIndex = -1; //EDITED
+    private int maxValue = Integer.MAX_VALUE; //EDITED
+    private int minValue = Integer.MIN_VALUE; //EDITED
 
-    private final boolean ALPHA_BETA_PRUNING = true;
+    private final boolean ALPHA_BETA_PRUNING = true; //EDITED
     
 //-------------------------------------------------------
     //constructors
@@ -121,98 +131,97 @@ final class MinimaxCalculator
      */
     public Move calculateMove(int depth)
     {
-	startTime = System.currentTimeMillis();
-	
-	// we have a problem, Houston...
-	if(depth == 0)
-	    {
-		System.out.println("Error, 0 depth in minumax player");
-		Thread.dumpStack();
-		return null;
-	    }
-	
-	Move[] moves = board.getPossibleMoves(maxPlayer);
-	
-	int maxV = Integer.MIN_VALUE;
-	int currentV = 0;
-	// explore each move in turn
-	for(int i = 0; i < moves.length; i++)
-	    {
-		if(board.move(moves[i]))    // move was legal (column was not full)
-		    {
-			moveCount++;  // global variable
-			
-			// if(ALPHA_BETA_PRUNING) {
-			// 	currentV = expandMaxNode(depth);
-			// } else {
-			// 	currentV = expandMinNode(depth);
-			// }
-			currentV = expandMinNode(depth);
-			
-			if(currentV > maxV) {
-				maxV = currentV;
-				maxIndex = i;
-			}
-
-			board.undoLastMove();   // undo exploratory move
-		    }  //end if move made
+		startTime = System.currentTimeMillis();
 		
-		// if the thread has been interrupted, return immediately.
-		if(Thread.currentThread().isInterrupted())
-		    {
+		// we have a problem, Houston...
+		if(depth == 0)
+		{
+			System.out.println("Error, 0 depth in minumax player");
+			Thread.dumpStack();
 			return null;
-		    }
+		}
 		
-	    }//end for all moves
-	
-	long stopTime = System.currentTimeMillis();
-	// System.out.println("Number of moves tried = " + moveCount + 
-	// 		   "  Time = " + (stopTime -  startTime) + " milliseconds");
+		Move[] moves = board.getPossibleMoves(maxPlayer);
 
-	System.out.println(moveCount + 
-			   "  "+(stopTime -  startTime));
-	
-	// maxIndex is the index of the move to be made
-	return moves[maxIndex];
-	
-    }
+		int maxV = Integer.MIN_VALUE; //EDITED
+		int currentV = 0; //EDITED
+
+		// explore each move in turn
+		for(int i = 0; i < moves.length; i++) {
+
+			if(board.move(moves[i])) {  // move was legal (column was not full
+			    //EDITED THE FOLLOWING CODE through the end of the if-statement
+
+				moveCount++;  // global variable
+				
+				currentV = expandMinNode(depth); //begin recursive call
+				
+				if(currentV > maxV) { //update maxIndex accordingly (best move)
+					maxV = currentV;
+					maxIndex = i;
+				}
+
+				board.undoLastMove();   // undo exploratory move
+
+	 		}  //end if move made
+			
+			// if the thread has been interrupted, return immediately.
+			if(Thread.currentThread().isInterrupted()) {
+				return null;
+			}
+			
+		}//end for all moves
+		
+		long stopTime = System.currentTimeMillis();
+		// System.out.println("Number of moves tried = " + moveCount + 
+		// 		   "  Time = " + (stopTime -  startTime) + " milliseconds");
+
+		System.out.println(moveCount + 
+				   "  "+(stopTime -  startTime)); //EDITED for purposes of data collection
+		
+		// maxIndex is the index of the move to be made
+		return moves[maxIndex];
+    } //end calculateMove
     
     /**
      * A max node returns the maximum score of its descendents.
      */
-    private int expandMaxNode(int depth)
-    {
-	// if cutoff test is satisfied
-   	if(terminalTest(depth)) {
-		return board.getBoardStats().getStrength(maxPlayer);
-	}
-	
-	// if not
-	Move[] moves = board.getPossibleMoves(maxPlayer);
-	
-	int v = Integer.MIN_VALUE;
-	// explore each move in turn
-	for(int i = 0; i < moves.length; i++)
-	    {
-		if(board.move(moves[i]))    // move was legal (column was not full)
-		    {
-			moveCount++;  // global variable
-
-			v = Math.max(v,expandMinNode(depth-1));
-
-			if(ALPHA_BETA_PRUNING) {
-				if(v >= maxValue) {
-					return v;
-				}
-				minValue = Math.max(minValue,v);
-			}
-
-			board.undoLastMove();   // undo exploratory move
-		    }  //end if move made
+    private int expandMaxNode(int depth) {
 		
-	    }//end for all moves
+		//EDITED to call terminal test method/cutoff test method
+	   	if(terminalTest(depth)) {
+			return board.getBoardStats().getStrength(maxPlayer);
+		}
+		
+		// if not
+		Move[] moves = board.getPossibleMoves(maxPlayer);
+		
+		int v = Integer.MIN_VALUE;
+		// explore each move in turn
 
-	return v;
+		//EDITED the following code 
+		for(int i = 0; i < moves.length; i++)
+		    {
+			if(board.move(moves[i])) {  // move was legal (column was not full)
+			   
+				moveCount++;  // global variable
+
+				v = Math.max(v,expandMinNode(depth-1)); // compares v to recursive call on min
+
+				if(ALPHA_BETA_PRUNING) {
+					if(v >= maxValue) { //when v is larger than beta
+						return v; //nothing is better, so return
+					}
+					minValue = Math.max(minValue,v); //otherwise, update alpha
+				}
+
+				board.undoLastMove();   // undo exploratory move
+			    
+			    }  //end if move made
+			
+		    }//end for all moves
+
+		return v;
 	
     }//end expandMaxNode
     
@@ -222,44 +231,46 @@ final class MinimaxCalculator
     /**
      * A max node returns the minimum score of its descendents.
      */
-    private int expandMinNode(int depth)
-    {
-	// if cutoff test is satisfied
-    if(terminalTest(depth)) {
-		return board.getBoardStats().getStrength(maxPlayer);
-	}
-	
-	// if not
-	Move[] moves = board.getPossibleMoves(minPlayer);
-
-	int v = Integer.MAX_VALUE;
-
-	// explore each move in turn
-	for(int i = 0; i < moves.length; i++)
-	    {
-		if(board.move(moves[i]))    // move was legal (column was not full)
-		    {
-			moveCount++;  // global variable
-
-			v = Math.min(v,expandMaxNode(depth-1));
-
-			if(ALPHA_BETA_PRUNING) {
-				if(v <= minValue) {
-					return v;
-				}
-				maxValue = Math.min(maxValue,v);
-			}
-
-			board.undoLastMove();   // undo exploratory move
-		    }  //end if move made
+    private int expandMinNode(int depth) {
+    
+		//EDITED to call terminal test method/cutoff test method
+	    if(terminalTest(depth)) {
+			return board.getBoardStats().getStrength(maxPlayer);
+		}
 		
-	    }//end for all moves
-	return v;
+		// if not
+		Move[] moves = board.getPossibleMoves(minPlayer);
+
+		//EDITED below code snippet, very similar to expandMaxNode
+
+		int v = Integer.MAX_VALUE;
+
+		// explore each move in turn
+		for(int i = 0; i < moves.length; i++)
+		    {
+			if(board.move(moves[i])) {    // move was legal (column was not full)
+				moveCount++;  // global variable
+
+				v = Math.min(v,expandMaxNode(depth-1)); //recursive call
+
+				if(ALPHA_BETA_PRUNING) {
+					if(v <= minValue) { //compare v to alpha
+						return v; //if nothing better, return
+					}
+					maxValue = Math.min(maxValue,v); //compare v to beta
+				}
+
+				board.undoLastMove();   // undo exploratory move
+			}  //end if move made
+			
+		}//end for all moves
+		return v;
 	
     }//end expandMaxNode
 
+    //EDITED: added this method to detect when terminal test/cutoff test is true
     private boolean terminalTest(int depth) {
-    	if(board.isGameOver() || depth == 0) {
+    	if(board.isGameOver() || depth == 0) { //game is over or depth is exhausted
     		return true;
     	}
     	return false;
