@@ -4,7 +4,8 @@
 
 typedef std::vector<std::vector<int>> board2D;
 
-#define N 8
+#define N 4
+#define STEPS 500
 
 board2D initializeBoard(int n) {
 	board2D chessBoard;
@@ -68,6 +69,7 @@ board2D minConflicts(board2D b, std::vector<int> queenLocations, int maxSteps = 
 
 		std::vector<int> conflictingVars = isSolution(current, queenLocations);
 		if(conflictingVars.size() == 0) {
+			std::cout<<"FOUND SOLUTION\n";
 			return current;
 		} else {
 			int randomConflictingVar = rand() % conflictingVars.size();
@@ -83,7 +85,7 @@ board2D minConflicts(board2D b, std::vector<int> queenLocations, int maxSteps = 
 			current[randomConflictingVar][queenLocations[randomConflictingVar]] = 0;
 			queenLocations[randomConflictingVar] = currentMin;
 			current[randomConflictingVar][currentMin] = 1;
-			printBoard(current);
+			//printBoard(current);
 		}
 	}
 	return current;
@@ -106,7 +108,7 @@ int main() {
 	board2D b = initializeBoard(N);
 	std::vector<int> initialSeed = placeQueensRandom(b,N);
 	printBoard(b);
-	board2D c = minConflicts(b,initialSeed,10);
+	board2D c = minConflicts(b,initialSeed,STEPS);
 	printBoard(c);
 	return 0;
 }
