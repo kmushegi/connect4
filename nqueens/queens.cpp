@@ -4,7 +4,7 @@
 
 typedef std::vector<std::vector<int>> board2D;
 
-#define N 8
+#define N 4
 #define STEPS 500
 
 board2D initializeBoard(int n) {
@@ -78,6 +78,7 @@ std::vector<int> isSolution(board2D &b, std::vector<int> queenLocations) {
 }
 
 board2D minConflicts(board2D b, std::vector<int> queenLocations, int maxSteps) {
+	std::cout << "hello" << std::endl;
 	std::cout << maxSteps <<std::endl;
 	board2D current = b;
 
@@ -105,7 +106,7 @@ board2D minConflicts(board2D b, std::vector<int> queenLocations, int maxSteps) {
 			current[randomConflictingVar][queenLocations[randomConflictingVar]] = 0;
 			queenLocations[randomConflictingVar] = currentMinIndex;
 			current[randomConflictingVar][currentMinIndex] = 1;
-			//printBoard(current);
+			printBoard(current);
 		}
 	}
 	return current;
