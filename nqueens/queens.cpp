@@ -4,7 +4,7 @@
 
 typedef std::vector<std::vector<int>> board2D;
 
-#define N 4
+#define N 8
 #define STEPS 500
 
 board2D initializeBoard(int n) {
@@ -39,7 +39,7 @@ int numberOfConflicts(board2D &b, int r, int c) {
 	// 	}
 	// }
 	// return numConflicts;
-	//std::cout << "doing queen " << r << "," << c << std::endl;
+	std::cout << "doing queen " << r << "," << c << std::endl;
 	for(int i=0; i<N; i++) {
 		for(int j=0; j<N; j++) {
 
@@ -49,11 +49,11 @@ int numberOfConflicts(board2D &b, int r, int c) {
 				}
 				numConflicts++;
 
-				//std::cout<< "conflict found at: (" <<i<<","<<j<<"(" << std::endl;
+				std::cout<< "conflict found at: (" <<i<<","<<j<<"(" << std::endl;
 			}
 		}
 	}
-	//std::cout << "returning " << numConflicts << std::endl;
+	std::cout << "returning " << numConflicts << std::endl;
 	return numConflicts;
 }
 
@@ -65,14 +65,14 @@ std::vector<int> isSolution(board2D &b, std::vector<int> queenLocations) {
 	for(int r = 0; r < N; r++) {
 		int c = queenLocations[r];
 		int conflicts = numberOfConflicts(b,r,c);
-		//std::cout<< "number of conflicts: " << conflicts << std::endl;
+		std::cout<< "number of conflicts: " << conflicts << std::endl;
 		if(conflicts != 0) {
 			conflictingVariables.push_back(r);
 		}
 	}
-	//std::cout << "vector conflicts " << std::endl;
-	//for (std::vector<int>::const_iterator i = conflictingVariables.begin(); i != conflictingVariables.end(); ++i)
-    //std::cout << *i << ' ';
+	std::cout << "vector conflicts " << std::endl;
+	for (std::vector<int>::const_iterator i = conflictingVariables.begin(); i != conflictingVariables.end(); ++i)
+    std::cout << *i << ' ';
 
 	return conflictingVariables;
 }
@@ -89,8 +89,10 @@ board2D minConflicts(board2D b, std::vector<int> queenLocations, int maxSteps) {
 			std::cout<<"FOUND SOLUTION\n";
 			return current;
 		} else {
-			int randomConflictingVar = rand() % conflictingVars.size();
-			//std::cout << "lets try to change " << randomConflictingVar <<std::endl;
+			std::vector<int> currentMinIndices;
+			int randomConflictingVarIndex = rand() % conflictingVars.size();
+			int randomConflictingVar = conflictingVars[randomConflictingVarIndex];
+			std::cout << "lets try to change " << randomConflictingVar <<std::endl;
 			int currentMin = INT_MAX;
 			int currentMinIndex = INT_MAX;
 			current[randomConflictingVar][queenLocations[randomConflictingVar]] = 0; // set equal to 0
@@ -98,14 +100,24 @@ board2D minConflicts(board2D b, std::vector<int> queenLocations, int maxSteps) {
 			for(int j=0; j<N; j++) {
 				int t = numberOfConflicts(current,randomConflictingVar,j);
 				if(t < currentMin) {
-					//std::cout << "updating current min " <<std::endl;
+					std::cout << "updating current min " <<std::endl;
 					currentMin = t;
-					currentMinIndex = j;
+					if (currentMinIndices.empty() == false){
+						std::cout<<"clearing"<<std::endl;
+						currentMinIndices.clear();
+					}
+					currentMinIndices.push_back(j);
+					//currentMinIndex = j;
+				}
+				else if (t==currentMin) {
+					currentMinIndices.push_back(j);
 				}
 			}
-			current[randomConflictingVar][queenLocations[randomConflictingVar]] = 0;
-			queenLocations[randomConflictingVar] = currentMinIndex;
-			current[randomConflictingVar][currentMinIndex] = 1;
+			int tieBreaker = rand() % currentMinIndices.size();
+			std::cout << "move to make " << currentMinIndices[tieBreaker] <<std::endl;
+			//current[randomConflictingVar][queenLocations[randomConflictingVar]] = 0;
+			queenLocations[randomConflictingVar] = currentMinIndices[tieBreaker] ;
+			current[randomConflictingVar][currentMinIndices[tieBreaker]] = 1;
 			printBoard(current);
 		}
 	}
