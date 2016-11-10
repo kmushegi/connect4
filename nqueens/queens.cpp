@@ -180,6 +180,35 @@ board2D minConflictsRandom(board2D b, std::vector<int> queenLocations, int maxSt
 	return current;
 }
 
+board2D randomOrMinConflicts(board2D b, std::vector<int> queenLocations, int maxSteps) {
+	std::cout<<"Random Or MinConficts. STEPS = "<<maxSteps<<std::endl;
+
+	board2D current = b;
+
+	for(int i=0; i<maxSteps; i++) {
+		std::vector<int> conflictingVars = isSolution(current,queenLocations);
+		if(conflictingVars.empty()) {
+			return current;
+		} else {
+			std::vector<int> currentMinIndices;
+			int randomConflictingVarIndex = rand() % conflictingVars.size();
+			int randomConflictingVar = conflictingVars[randomConflictingVarIndex];
+
+			int magicNumber = rand() % 10;
+			if(magicNumber <= 3) {
+				int randomColumnForQueen = rand() % current.size();
+
+				current[randomConflictingVar][queenLocations[randomConflictingVar]] = 0;
+				current[randomConflictingVar][randomColumnForQueen] = 1;
+				queenLocations[randomConflictingVar] = randomColumnForQueen;
+			} else {
+				
+			}	
+		}
+	}
+
+}
+
 std::vector<int> placeQueensRandom(board2D &b, int n) {
 	std::vector<int> randomNumbers;
 
