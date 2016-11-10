@@ -36,16 +36,21 @@ void printBoard(board2D b) {
 	std::cout<<std::endl;
 }
 
+//
+// numberOfConflicts counts the number of conflicts that a queen in row r and 
+// column c has on board b.
+// return int - the number of conflicts
+//
 int numberOfConflicts(board2D b, int r, int c) {
-	//b[r][c] = 0; //	NOT SURE ABOUT THIS
+	
 	int numConflicts = 0;
 
-	for(int i=0; i<N; i++) {
+	for(int i=0; i<N; i++) { // iterate through board
 		for(int j=0; j<N; j++) {
 
 			if(((i == r) || (j == c) || (abs(i-r) == abs(j-c))) && b[i][j] == 1) {
-				if (i==r && j==c) {
-					continue;
+				if (i==r && j==c) { 
+					continue; // don't count itself as a conflict
 				}
 				numConflicts++;
 
@@ -212,10 +217,11 @@ board2D randomOrMinConflicts(board2D b, std::vector<int> queenLocations, int max
 
 	board2D current = b;
 
-	for(int i=0; i<maxSteps; i++) {
+	for(int i=0; i<maxSteps; i++) { 
+		// search for queens with conflicts
 		std::vector<int> conflictingVars = isSolution(current,queenLocations);
-		if(conflictingVars.empty()) {
-			return current;
+		if(conflictingVars.empty()) { // if there are none
+			return current; // solution has been found
 		} else {
 			std::vector<int> currentMinIndices;
 			int randomConflictingVarIndex = rand() % conflictingVars.size();
@@ -236,50 +242,21 @@ board2D randomOrMinConflicts(board2D b, std::vector<int> queenLocations, int max
 
 }
 
+//
+// Takes an initialized board of zeroes and places queens on it randomly 
+// board2D is the board on which the queens are to be placed
+// int n - the number of queens to be placed
+// return vector<int> - the vector of queen locations once they are placed
+// 
 std::vector<int> placeQueensRandom(board2D &b, int n) {
-	std::vector<int> randomNumbers;
-	
-	for(int i=0; i<n; i++) {
-		int r = rand()%n;
-		b[i][r] = 1;
-		randomNumbers.push_back(r);
-	}
-		/*
-	b[0][0] = 1;
-	b[1][3] = 1;
-	b[2][3] = 1;
-	b[3][2] = 1;
-	randomNumbers.push_back(0);
-	randomNumbers.push_back(3);
-	randomNumbers.push_back(3);
-	randomNumbers.push_back(2);*/
-	return randomNumbers;
-}
-
-std::vector<int> placeQueensSmartStart(board2D &b, int n) {
 	std::vector<int> queenLocations;
 	
-	int currentBest = INT_MAX;
-	int currentBestIndex = -1;
-	int conflicts;
+	// iterate through the queens
 	for(int r=0; r<n; r++) {
-		for (int c = 0; c<n; c++) {
-
-			conflicts = numberOfConflicts(b,r,c);
-
-			if (conflicts<currentBest) {
-				currentBest = conflicts;
-				currentBestIndex = c;
-			}
-		}
-		// Place the queen in the place with the least conflicts
-		b[r][currentBestIndex] = 1;
-		queenLocations.push_back(currentBestIndex);
-		currentBest = INT_MAX;
-		currentBestIndex = -1;
+		int c = rand()%n; // choose a random column to put it in
+		b[r][c] = 1;
+		queenLocations.push_back(c);
 	}
-	std::cout << "this is our board placed smartly" <<std::endl;
-	printBoard(b);
 		/*
 	b[0][0] = 1;
 	b[1][3] = 1;
@@ -292,11 +269,52 @@ std::vector<int> placeQueensSmartStart(board2D &b, int n) {
 	return queenLocations;
 }
 
+// needs to be updated to reflect randomness??
+
+//
+// Takes an initialized board of zeroes and places queens so as to minimize
+// the conflicts between the queen to be placed and all of the queens already
+// placed on the board.  
+// board2D is the board on which the queens are to be placed
+// int n - the number of queens to be placed
+// return vector<int> - the vector of queen locations once they are placed
+// 
+
+std::vector<int> placeQueensSmartStart(board2D &b, int n) {
+
+	std::vector<int> queenLocations; // the queen locations 
+	int currentBest = INT_MAX; 
+	int currentBestIndex = -1;
+	int conflicts;
+
+	// iterate through the board
+	for(int r=0; r<n; r++) {
+		for (int c = 0; c<n; c++) {
+
+			// if you have found a location with less conflicts, update
+			// your current best
+			conflicts = numberOfConflicts(b,r,c);
+			if (conflicts<currentBest) {
+				currentBest = conflicts;
+				currentBestIndex = c;
+			}
+		}
+		// Place the queen in the place with the least conflicts
+		b[r][currentBestIndex] = 1;
+		queenLocations.push_back(currentBestIndex); // save the location
+		currentBest = INT_MAX; // reset to move on to next queen
+		currentBestIndex = -1;
+	}
+	std::cout << "this is our board placed smartly" <<std::endl;
+	printBoard(b);
+	return queenLocations;
+}
+
 
 int main() {
 	srand(time(NULL));
 	board2D b = initializeBoard(N);
-	std::vector<int> initialSeed = placeQueensSmartStart(b,N);
+	std::vector<int> initialSeed = placeQueensRandom(b,N);
 	printBoard(b);
 	board2D c = minConflictsGreedy(b,initialSeed,STEPS);
 	printBoard(c);
