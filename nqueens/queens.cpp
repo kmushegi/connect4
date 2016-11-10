@@ -256,11 +256,47 @@ std::vector<int> placeQueensRandom(board2D &b, int n) {
 	return randomNumbers;
 }
 
+std::vector<int> placeQueensSmartStart(board2D &b, int n) {
+	std::vector<int> queenLocations;
+	
+	int currentBest = INT_MAX;
+	int currentBestIndex = -1;
+	int conflicts;
+	for(int r=0; r<n; r++) {
+		for (int c = 0; c<n; c++) {
+
+			conflicts = numberOfConflicts(b,r,c);
+
+			if (conflicts<currentBest) {
+				currentBest = conflicts;
+				currentBestIndex = c;
+			}
+		}
+		// Place the queen in the place with the least conflicts
+		b[r][currentBestIndex] = 1;
+		queenLocations.push_back(currentBestIndex);
+		currentBest = INT_MAX;
+		currentBestIndex = -1;
+	}
+	std::cout << "this is our board placed smartly" <<std::endl;
+	printBoard(b);
+		/*
+	b[0][0] = 1;
+	b[1][3] = 1;
+	b[2][3] = 1;
+	b[3][2] = 1;
+	randomNumbers.push_back(0);
+	randomNumbers.push_back(3);
+	randomNumbers.push_back(3);
+	randomNumbers.push_back(2);*/
+	return queenLocations;
+}
+
 
 int main() {
 	srand(time(NULL));
 	board2D b = initializeBoard(N);
-	std::vector<int> initialSeed = placeQueensRandom(b,N);
+	std::vector<int> initialSeed = placeQueensSmartStart(b,N);
 	printBoard(b);
 	board2D c = minConflictsGreedy(b,initialSeed,STEPS);
 	printBoard(c);
