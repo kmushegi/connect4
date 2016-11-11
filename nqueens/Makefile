@@ -1,8 +1,8 @@
 CXX = g++ -std=c++11
 CXXFLAGS = -Wall -o
 
-queens: queens.cpp
-	$(CXX) $(CXXFLAGS) $@ queens.cpp
+aqueens: aqueens.cpp
+	$(CXX) $(CXXFLAGS) $@ aqueens.cpp
 
 clean:
-	rm -rf queens
+	rm -rf aqueens
