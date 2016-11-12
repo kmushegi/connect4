@@ -1,6 +1,7 @@
 #include <vector>
 #include <cstdlib>
 #include <iostream>
+#include <time.h>
 
 //using namespace std;
 typedef std::vector<std::vector<int>> board2D;
@@ -75,7 +76,7 @@ std::vector<int> isSolution(std::vector<int> queenLocations) {
 			conflictingVariables.push_back(r);
 		}
 	}
-	std::cout << "vector conflicts " << std::endl;
+	//std::cout << "vector conflicts " << std::endl;
 	for (std::vector<int>::const_iterator i = conflictingVariables.begin(); i != conflictingVariables.end(); ++i)
     std::cout << *i << ' ';
 
@@ -240,6 +241,7 @@ std::vector<int> randomOrMinConflicts(std::vector<int> queenLocations, int maxSt
 		// search for queens with conflicts
 		std::vector<int> conflictingVars = isSolution(queenLocations);
 		if(conflictingVars.empty()) { // if there are none
+				std::cout<<"FOUND SOLUTION in steps = \n" << i <<std::endl;
 			return queenLocations; // solution has been found
 		} else {
 			std::vector<int> currentMinIndices;
@@ -365,29 +367,53 @@ int main(int argc, char* argv[]) {
 		STEPS = atoi(argv[1]);
 		N = atoi(argv[2]);
 
-		std::vector<int> initialSeed = placeQueensSmartStart(N);
-		printBoard(initialSeed);
-		isSolution(initialSeed);
+		std::vector<int> initialSeed = placeQueensRandom(N);
+		//= placeQueensSmartStart(N);
+	//printBoard(initialSeed);
+
+	clock_t t1, t2;
+	t1 = clock();
 
 		if(strcmp(argv[3],"BASIC") == 0) {
 			std::cout<<"RUNNING BASIC\n";
 			//run basic
+			//std::vector<int> initialSeed = placeQueensRandom(N);
+
+			initialSeed = minConflictsRandom(initialSeed, STEPS);
+			
+
+
 		} else if(strcmp(argv[3],"GREEDY") == 0) {
 			std::cout<<"RUNNING GREEDY\n";
+			//std::vector<int> initialSeed = placeQueensRandom(N);
+			t1=clock();
+			minConflictsGreedy(initialSeed, STEPS);
+			t2=clock();
+
+			std::cout<<"RUN TIME: " << (t2-t1) << "\n";
 			//run greedy
 		} else if(strcmp(argv[3],"RANDOM") == 0) {
 			std::cout<<"RUNNING RANDOM\n";
+			//std::vector<int> initialSeed = placeQueensRandom(N);
+			t1=clock();
+			randomOrMinConflicts(initialSeed, STEPS);
+			t2=clock();
+
+			std::cout<<"RUN TIME: " << (t2-t1) << "\n";
 			//run random
 		} else if(strcmp(argv[3],"SMART-START") == 0) {
-			std::cout<<"RUNNING SMART-START\n";
-			//run smart start with relevant method
+			//std::cout<<"RUNNING SMART-START\n";
+			//std::vector<int> initialSeed = placeQuee(N);
+
 		} else if(strcmp(argv[3],"FIRST-BETTER") == 0) {
 			std::cout<<"RUNNING FIRST-BETTER\n";
 			//run first better with relevant method
 		}
+		
+		isSolution(initialSeed);
+		//printBoard(initialSeed);
+
 	}
 
-	// std::vector<int> c = randomOrMinConflicts(initialSeed,STEPS);
-	// printBoard(c);
 	return 0;
 }
