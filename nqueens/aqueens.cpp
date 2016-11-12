@@ -4,18 +4,23 @@
 #include <time.h>
 
 //using namespace std;
-typedef std::vector<std::vector<int>> board2D;
+//typedef std::vector<std::vector<int>> board2D;
 
+//
+// struct Info is used for the greedy function.
+// It holds a potential move of queen row to column col, 
+// and the number of conflicts that this move will cause.
+//
 struct Info {
 	int conflicts;
 	int row;
 	int col;
 };
 
-int N;
-int STEPS;
+int N; 		// the number of queens for the board
+int STEPS;  // the number of steps to take before giving up
 
-board2D initializeBoard(int n) {
+/*board2D initializeBoard(int n) {
 	board2D chessBoard;
 	for(int i=0; i<n; i++) {
 		std::vector<int> row = {0};
@@ -23,12 +28,18 @@ board2D initializeBoard(int n) {
 		chessBoard.push_back(row);
 	}
 	return chessBoard;
-}
+}*/
+
+//
+// printBoard: takes a vector of queen locations and prints a board with 
+// queens in those locations
+//
 
 void printBoard(std::vector<int> queenLocations) {
 	for(int r=0; r<queenLocations.size(); r++) {
 		for(int c=0; c<queenLocations.size(); c++) {
-			if (queenLocations[r] == c) {
+			// if you are in a column where a queen is
+			if (queenLocations[r] == c) { 
 				std::cout<<"1 ";
 			}
 			else
@@ -42,16 +53,28 @@ void printBoard(std::vector<int> queenLocations) {
 
 //
 // numberOfConflicts counts the number of conflicts that a queen in row r and 
-// column c has on board b.
+// column c has on board.
+// Parameters: int r (the queen that you are considering), int c (the column that
+// that queen is in), vector<int> queenLocations (vector that holds the current 
+// locations/columns of the queens on the board)
 // return int - the number of conflicts
 //
 int numberOfConflicts(std::vector<int> queenLocations, int r, int c) {
 	
+	if (r < 0 || c < 0) { // check parameters
+		std::cout << "Error. Invalid location on board." << std::endl;
+		abort();
+	}
 	int numConflicts = 0;
 
-	for(int i=0; i<queenLocations.size(); i++) { // iterate through board
-		if (i != r) {
+	// interate throough the queens that have been already placed
+	for(int i=0; i<queenLocations.size(); i++) { 
 
+		/* Do not count as conflict if the queen you are considering is in the 
+		same row as r because you will only ever have one queen in each row 
+		and that queen will be moved if you find a better location for it. */
+
+		if (i != r) { 
 			if (queenLocations[i] == c || (abs(i-r) == abs(queenLocations[i]-c))) {
 				numConflicts++;
 				//std::cout<< "conflict found at: (" <<i<<","<<queenLocations[i]<<"(" << std::endl;
@@ -65,11 +88,16 @@ int numberOfConflicts(std::vector<int> queenLocations, int r, int c) {
 // do error parameter checking
 //if there is a conflict return queen row, else return -1
 std::vector<int> isSolution(std::vector<int> queenLocations) {
-	std::vector<int> conflictingVariables;
-	//std::cout<< "printing current board" << std::endl;
-	//printBoard(b);
-	for(int r = 0; r < N; r++) {
-		int c = queenLocations[r];
+
+	if (queenLocations.empty()) { // check parameters
+		std::cout << "Error. No queens on board." << std::endl;
+		abort();
+	}
+	// vector to hold all queens with conflicts
+	std::vector<int> conflictingVariables; 
+
+	for(int r = 0; r < N; r++) { 		// iterate through all queens
+		int c = queenLocations[r]; 		// get column of queen r
 		int conflicts = numberOfConflicts(queenLocations,r,c);
 		// std::cout<< "number of conflicts: " << conflicts << std::endl;
 		if(conflicts != 0) {
@@ -412,7 +440,6 @@ int main(int argc, char* argv[]) {
 		
 		isSolution(initialSeed);
 		//printBoard(initialSeed);
-
 	}
 
 	return 0;
