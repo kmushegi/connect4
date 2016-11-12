@@ -5,16 +5,14 @@
 //using namespace std;
 typedef std::vector<std::vector<int>> board2D;
 
-#define N 8
-#define STEPS 500
-#define GREEDY 1
-
-
 struct Info {
 	int conflicts;
 	int row;
 	int col;
 };
+
+int N;
+int STEPS;
 
 board2D initializeBoard(int n) {
 	board2D chessBoard;
@@ -352,13 +350,42 @@ std::vector<int> placeQueensSmartStart(int n) {
 }
 
 
-int main() {
-	srand(time(NULL));
-	//board2D b = initializeBoard(N);
-	std::vector<int> initialSeed = placeQueensSmartStart(N);
-	printBoard(initialSeed);
-	isSolution(initialSeed);
-	std::vector<int> c = randomOrMinConflicts(initialSeed,STEPS);
-	printBoard(c);
+int main(int argc, char* argv[]) {
+	if(argc < 2 || argc > 4) {
+		std::cout<<"Incorrect Usage. Use -help for usage info\n";
+		exit(1);
+	} else if(argc == 2) {
+		if(strcmp(argv[1],"-help") == 0) {
+			std::cout<<"Usage: ./aqueens NUM_STEPS NUM_QUEENS ALGORITHM-NAME / START STRATEGY\n";
+			std::cout<<"ALGORITHM-NAME / START STRATEGY: BASIC/GREEDY/RANDOM/SMART-START/FIRST-BETTER\n";
+		}
+	} else if(argc == 4) {
+		srand(time(NULL));
+
+		N = atoi(argv[1]);
+		STEPS = atoi(argv[2]);
+
+		if(strcmp(argv[3],"BASIC") == 0) {
+			std::cout<<"RUNNING BASIC\n";
+			//run basic
+		} else if(strcmp(argv[3],"GREEDY") == 0) {
+			std::cout<<"RUNNING GREEDY\n";
+			//run greedy
+		} else if(strcmp(argv[3],"RANDOM") == 0) {
+			std::cout<<"RUNNING RANDOM\n";
+			//run random
+		} else if(strcmp(argv[3],"SMART-START") == 0) {
+			std::cout<<"RUNNING SMART-START\n";
+			//run smart start with relevant method
+		} else if(strcmp(argv[3],"FIRST-BETTER") == 0) {
+			std::cout<<"RUNNING FIRST-BETTER\n";
+			//run first better with relevant method
+		}
+	}
+	// std::vector<int> initialSeed = placeQueensSmartStart(N);
+	// printBoard(initialSeed);
+	// isSolution(initialSeed);
+	// std::vector<int> c = randomOrMinConflicts(initialSeed,STEPS);
+	// printBoard(c);
 	return 0;
 }
