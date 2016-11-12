@@ -362,8 +362,12 @@ int main(int argc, char* argv[]) {
 	} else if(argc == 4) {
 		srand(time(NULL));
 
-		N = atoi(argv[1]);
-		STEPS = atoi(argv[2]);
+		STEPS = atoi(argv[1]);
+		N = atoi(argv[2]);
+
+		std::vector<int> initialSeed = placeQueensSmartStart(N);
+		printBoard(initialSeed);
+		isSolution(initialSeed);
 
 		if(strcmp(argv[3],"BASIC") == 0) {
 			std::cout<<"RUNNING BASIC\n";
@@ -382,9 +386,7 @@ int main(int argc, char* argv[]) {
 			//run first better with relevant method
 		}
 	}
-	// std::vector<int> initialSeed = placeQueensSmartStart(N);
-	// printBoard(initialSeed);
-	// isSolution(initialSeed);
+
 	// std::vector<int> c = randomOrMinConflicts(initialSeed,STEPS);
 	// printBoard(c);
 	return 0;
