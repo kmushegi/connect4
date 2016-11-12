@@ -3,6 +3,9 @@
 #include <iostream>
 #include <time.h>
 
+//using namespace std;
+//typedef std::vector<std::vector<int>> board2D;
+
 //
 // struct Info is used for the greedy function.
 // It holds a potential move of queen row to column col, 
@@ -18,6 +21,16 @@ int N; 		// the number of queens for the board
 int STEPS;  // the number of steps to take before giving up
 
 bool firstBetter = false;
+
+/*board2D initializeBoard(int n) {
+	board2D chessBoard;
+	for(int i=0; i<n; i++) {
+		std::vector<int> row = {0};
+		row.resize(n);
+		chessBoard.push_back(row);
+	}
+	return chessBoard;
+}*/
 
 //
 // printBoard: takes a vector of queen locations and prints a board with 
@@ -39,7 +52,7 @@ void printBoard(std::vector<int> queenLocations) {
 		std::cout<<std::endl;
 	}
 	std::cout<<std::endl;
-} // end printBoard
+}
 
 
 //
@@ -66,13 +79,15 @@ int numberOfConflicts(std::vector<int> queenLocations, int r, int c) {
 		and that queen will be moved if you find a better location for it. */
 
 		if (i != r) { 
-			if (queenLocations[i] == c || (abs(i-r) == abs(queenLocations[i]-c))) 
+			if (queenLocations[i] == c || (abs(i-r) == abs(queenLocations[i]-c))) {
 				numConflicts++;
+				//std::cout<< "conflict found at: (" <<i<<","<<queenLocations[i]<<"(" << std::endl;
+			}
 		}
 	}
-
+	//std::cout << "returning " << numConflicts << std::endl;
 	return numConflicts;
-} // end numberOfConflicts
+}
 
 // 
 // isSolution takes queenLocations and then will check to see if putting 
@@ -92,177 +107,181 @@ std::vector<int> isSolution(std::vector<int> queenLocations) {
 	for(int r = 0; r < N; r++) { 		// iterate through all queens
 		int c = queenLocations[r]; 		// get column of queen r
 	
-		// if you have conflicts, add the queen to your vector
-		if(numberOfConflicts(queenLocations,r,c) != 0) 
+		// std::cout<< "number of conflicts: " << conflicts << std::endl;
+		if(numberOfConflicts(queenLocations,r,c) != 0) {
 			conflictingVariables.push_back(r);
+		}
 	}
+	//std::cout << "vector conflicts " << std::endl;
+	/*
+	for (std::vector<int>::const_iterator i = conflictingVariables.begin(); i != conflictingVariables.end(); ++i)
+    std::cout << *i << ' ';*/
 
 	return conflictingVariables;
-} // end isSolution
+}
 
-// 
-// minConflictsGreedy uses a greedy approach to the n queens problem.  It calculates the 
-// minconflicts heuristic for every queen and then picks the queen and the move that
-// leads to the fewest conflicts.
-// Parameters: vector<int> queenLocations (the locations of the queens on the board), 
-// int maxSteps (the number of tries that the computer gets to find a solution)
-// returns: the queenLocations that solve the n queens problem or, in the case that no 
-// solution is found, the queenLocations after the last step
-//  
 std::vector<int> minConflictsGreedy(std::vector<int> queenLocations, int maxSteps) {
-
-	if (maxSteps<0 || queenLocations.empty()) {
-		std::cout << "Error. No board given or max steps incorrectly defined." << std::endl;
-		abort();
-	}
-
 	std::cout << "MinConflicts. Greedy. STEPS = "<< maxSteps << std::endl;
+	//board2D current = b;
 
 	for(int i=0; i<maxSteps; i++) {
 
-		// vector of conflicting queens
 		std::vector<int> conflictingVars = isSolution(queenLocations);
-		if(conflictingVars.size() == 0) {		// if empty
+		if(conflictingVars.size() == 0) {
+			//std::cout<<"FOUND SOLUTION\n";
 			std::cout<<"FOUND SOLUTION in steps = \n" << i <<std::endl;
 			return queenLocations;
-		} 
-		else {
-
-			/* vector of current bests which helps in the process of randomly
-			choosing between two possible columns to put the queen in if 
-			there is a tie */
+		} else {
 			std::vector<Info> currentMins;
-
-			// struct to hold information about current best
 			Info info;
 			info.conflicts = INT_MAX;
 			info.row = -1;
 			info.col = -1;
+			//currentMins.push_back(info);
+			//std::cout << "LOOK HERE" << currentMins[0].row << std::endl;
+			/*std::cout << "hello these are the conflicting vars" << std::endl;
+			for (int q = 0; q<conflictingVars.size(); q++) {
+				std::cout<< conflictingVars[q] << " " ;
+			}
+			std::cout << std::endl << "hello these are the queen locations" << std::endl;
+			for (int q = 0; q<queenLocations.size(); q++) {
+				std::cout<< queenLocations[q] << " " << std::endl;
+			}*/
 
-			// for each conflicting queen
 			for(int m=0; m < conflictingVars.size(); m++) {
-				int r = conflictingVars[m]; // get row of conflicting queen
+				int r = conflictingVars[m];
+				//current[r][queenLocations[r]]=0; // set current spot to 0
+				//std::cout<<"currently working on " <<std::endl;
+				//printBoard(current);
+				//std::cout<< std::endl;
 
-				// for each possible column you can put it in
 				for(int c = 0; c < queenLocations.size(); c++) {
+					// set current spot to 0
+					//current[r][c]=0;
+					//std::cout << "testing " << r << " " << c <<std::endl;
+					int tmp = numberOfConflicts(queenLocations,r,c);
 
-					// calculate the number of conflicts
-					int tmp = numberOfConflicts(queenLocations,r,c); 	
-
-					// if number of conflicts less than current best, update information
-					// in info and empty your vector of current bests. Add the new current
-					// best to your vector.
 					if(tmp < info.conflicts) {
+						//std::cout << "updating current min to " << tmp <<std::endl;
+						//std::cout << "updating current queen to " << r  << " and column " << c<<std::endl;
 						info.conflicts = tmp;
 						info.row = r;
 						info.col = c;
-						if (currentMins.empty() == false){
-							currentMins.clear();
-						}
-						currentMins.push_back(info);
+					if (currentMins.empty() == false){
+						 //std::cout<<"clearing"<<std::endl;
+						currentMins.clear();
 					}
-					// if you have a tie, add the move to your vector of current bests.
+					currentMins.push_back(info);
+
+					}
 					else if (tmp == info.conflicts){
+						//std::cout << "new min found" << std::endl;
 						info.row = r;
 						info.col = c;
 						currentMins.push_back(info);
 					}
+
 				}
 			}
-
-			// choose randomly among the current best moves and perform the move.
-			int tieBreaker = rand() % currentMins.size(); 
+			/*std::cout << std::endl << "hello these are the possibilities" << std::endl;
+			for (int q = 0; q<currentMins.size(); q++) {
+				std::cout<< currentMins[q].row << " and " << currentMins[q].col << " " << std::endl;
+			}*/
+				
+			int tieBreaker = rand() % currentMins.size();
 			int queenToMove = currentMins[tieBreaker].row;
+			//std::cout << "move to make " << currentMins[tieBreaker].row << " " << currentMins[tieBreaker].col <<std::endl;
+			//printBoard(current);
+			//std::cout << std::endl;
 			queenLocations[queenToMove] = currentMins[tieBreaker].col;
-	
+			//std::cout<< "move made" << std::endl;
+			//printBoard(current);
 		}
-	} // end step for loop
-	return queenLocations;
-} // end minConflictsGreedy
-
-
-// 
-// minConflictsRandom uses the heuristic of min conflicts to solve the n queens problem.  
-// It randomly chooses a queen and then, for that queen, it calculates the 
-// minconflicts heuristic for each potential column that that queen could be placed in.  
-// It then moves the queen to the column that leads to the fewest conflicts.
-// Parameters: vector<int> queenLocations (the locations of the queens on the board), 
-// int maxSteps (the number of tries that the computer gets to find a solution)
-// returns: the queenLocations that solve the n queens problem or, in the case that no 
-// solution is found, the queenLocations after the last step
-// 
-std::vector<int> minConflictsRandom(std::vector<int> queenLocations, int maxSteps) {
-
-	if (maxSteps<0 || queenLocations.empty()) {
-		std::cout << "Error. No board given or max steps incorrectly defined." << std::endl;
-		abort();
 	}
-	
+	return queenLocations;
+}
+
+/*
+void firstBetter (board2D b, std::vector<int> queenLocations, std::std::vector<int> conflictingVars) {
+	if (queenLocations.empty()) {
+		std::cout << "Error."  << std::endl;
+		return; 
+	}
+	std::vector<int> currentMinIndices;
+	int randomConflictingVarIndex = rand() % conflictingVars.size();
+	int randomConflictingVar = conflictingVars[randomConflictingVarIndex];
+	int conflicts = numberOfConflicts(b, randomConflictingVar, queenLocations[randomConflictingVar]);
+
+	// set equal to zero so doesn't count itself
+	board2D[randomConflictingVar][queenLocations[randomConflictingVar]] = 0;
+	for (int c=0; c<queenLocations.size(); c++) {
+		// if you have found one that's better
+		if (numberOfConflicts(b, randomConflictingVar, c) < conflicts) {
+			board2D[randomConflictingVar][c] = 1;
+
+		}
+	}
+}*/
+
+
+
+std::vector<int> minConflictsRandom(std::vector<int> queenLocations, int maxSteps) {
 	std::cout << "MinConflicts. STEPS = "<< maxSteps << std::endl;
+	//board2D current = b;
 
 	for(int i=0; i<maxSteps; i++) {
 
-		// vector of conflicting queens
 		std::vector<int> conflictingVars = isSolution(queenLocations);
-		if(conflictingVars.size() == 0) { // if empty
+		if(conflictingVars.size() == 0) {
 			std::cout<<"FOUND SOLUTION in steps = \n" << i <<std::endl;
 			return queenLocations;
 		} else {
-
-			/* vector of current bests which helps in the process of randomly
-			choosing between two possible columns to put the queen in if 
-			there is a tie */
 			std::vector<int> currentMinIndices;
-
-			// choose a random queen to move
 			int randomConflictingVarIndex = rand() % conflictingVars.size();
 			int randomConflictingVar = conflictingVars[randomConflictingVarIndex];
 
-			int initialConflicts=-1; // number of conflicts your randomly chosen queen has
+			int initialConflicts; 
 			if (firstBetter) {
 				initialConflicts = numberOfConflicts(queenLocations, randomConflictingVar, queenLocations[randomConflictingVar]);
 			}
-
+			// std::cout << "lets try to change " << randomConflictingVar <<std::endl;
 			int currentMin = INT_MAX;
-			bool moveOn = false; 
-
-			for(int j=0; j<N; j++) { // for each potential queen location
-				// calculate number of conflicts
+			// int currentMinIndex = INT_MAX;
+			//current[randomConflictingVar][queenLocations[randomConflictingVar]] = 0; // set equal to 0
+			//TODO: randomly choose between tied queen positions
+			bool moveOn = false;
+			for(int j=0; j<N; j++) {
 				int t = numberOfConflicts(queenLocations, randomConflictingVar,j);
-
-				// if you are using the first-better technique, and you have found 
-				// a move that is "better" (results in less conflicts), make the move.
 				if (firstBetter && t<initialConflicts) {
 					queenLocations[randomConflictingVar] = j;
 					moveOn = true;
 				}
-
-				// if number of conflicts less than current best, your current best
-				// and empty your vector of current bests. Add the new current
-				// best to your vector.				
 				if(t < currentMin) {
-					currentMin = t; // update current best
+					// std::cout << "updating current min " <<std::endl;
+					currentMin = t;
 					if (currentMinIndices.empty() == false){
+						// std::cout<<"clearing"<<std::endl;
 						currentMinIndices.clear();
 					}
 					currentMinIndices.push_back(j);
+					//currentMinIndex = j;
 				}
-				// if you have a tie, add the column to your vector of current bests.
 				else if (t==currentMin) {
 					currentMinIndices.push_back(j);
 				}
-			} // end for
-
-			if (!moveOn){ // if you have already updated using the first-better technique
-
-				// choose randomly among the current best moves and perform the move.
-				int tieBreaker = rand() % currentMinIndices.size();
-				queenLocations[randomConflictingVar] = currentMinIndices[tieBreaker] ;
 			}
-		} 
-	} // end step for loop
+			if (!moveOn){
+				int tieBreaker = rand() % currentMinIndices.size();
+				// std::cout << "move to make " << currentMinIndices[tieBreaker] <<std::endl;
+				//current[randomConflictingVar][queenLocations[randomConflictingVar]] = 0;
+				queenLocations[randomConflictingVar] = currentMinIndices[tieBreaker] ;
+				//current[randomConflictingVar][currentMinIndices[tieBreaker]] = 1;
+				//printBoard(current);
+			}
+		}
+	}
 	return queenLocations;
-} // end minConflictsRandom
+}
 
 std::vector<int> randomOrMinConflicts(std::vector<int> queenLocations, int maxSteps) {
 	std::cout<<"Random Or MinConficts. STEPS = "<<maxSteps<<std::endl;
@@ -312,34 +331,45 @@ std::vector<int> randomOrMinConflicts(std::vector<int> queenLocations, int maxSt
 }
 
 //
-// Takes an interger n representing the number of queens to be placed on
-// a nxn board and then randomly chooses column locations for these queens.
-// return vector<int> - the vector of queen locations once they are placed
-// 
-std::vector<int> placeQueensRandom(int n) {
-
-	if (n<0) { // check parameters
-		std::cout<< "Error. Invalid number of queens." << std::endl;
-		abort();
-	}
-
-	std::vector<int> queenLocations;
-	
-	for(int r=0; r<n; r++) {			// iterate through all queens
-		int c = rand()%n; 				// choose a random column to put it in
-		queenLocations.push_back(c);	// add it to your vector of queen locations
-	}
-	return queenLocations;
-
-} // end placeQueensRandom
-
-//
-// placeQueensSmartStart takes an initialized board of zeroes and places queens
-// so as to minimize the conflicts between the queen to be placed and all of the 
-// queens already placed on the board.  
+// Takes an initialized board of zeroes and places queens on it randomly 
+// board2D is the board on which the queens are to be placed
 // int n - the number of queens to be placed
 // return vector<int> - the vector of queen locations once they are placed
 // 
+std::vector<int> placeQueensRandom(int n) {
+	std::vector<int> queenLocations;
+	
+	// iterate through the queens
+	for(int r=0; r<n; r++) {
+		int c = rand()%n; // choose a random column to put it in
+		//b[r][c] = 1;
+		queenLocations.push_back(c);
+	}
+		/*
+	b[0][0] = 1;
+	b[1][3] = 1;
+	b[2][3] = 1;
+	b[3][2] = 1;
+	randomNumbers.push_back(0);
+	randomNumbers.push_back(3);
+	randomNumbers.push_back(3);
+	randomNumbers.push_back(2);*/
+	
+	return queenLocations;
+}
+
+
+// needs to be updated to reflect randomness??
+
+//
+// Takes an initialized board of zeroes and places queens so as to minimize
+// the conflicts between the queen to be placed and all of the queens already
+// placed on the board.  
+// board2D is the board on which the queens are to be placed
+// int n - the number of queens to be placed
+// return vector<int> - the vector of queen locations once they are placed
+// 
+
 std::vector<int> placeQueensSmartStart(int n) {
 
 	std::vector<int> queenLocations; // the queen locations 
@@ -352,25 +382,23 @@ std::vector<int> placeQueensSmartStart(int n) {
 		for (int c = 0; c<n; c++) {
 
 			// if you have found a location with less conflicts, update
-			// your current best to that location
+			// your current best
 			conflicts = numberOfConflicts(queenLocations,r,c);
 			if (conflicts<currentBest) {
 				currentBest = conflicts;
 				currentBestIndex = c;
 			}
 		}
-
 		// Place the queen in the place with the least conflicts
-		queenLocations.push_back(currentBestIndex); 
-
-		// reset to move on to next queen
-		currentBest = INT_MAX; 
+		//b[r][currentBestIndex] = 1;
+		queenLocations.push_back(currentBestIndex); // save the location
+		currentBest = INT_MAX; // reset to move on to next queen
 		currentBestIndex = -1;
 	}
-	std::cout << "This is our board placed smartly" <<std::endl;
+	std::cout << "this is our board placed smartly" <<std::endl;
+	//printBoard(queenLocations);
 	return queenLocations;
-	
-} // end placeQueensSmartStart
+}
 
 
 int main(int argc, char* argv[]) {
