@@ -234,17 +234,15 @@ std::vector<int> minConflictsRandom(std::vector<int> queenLocations, int maxStep
 	}
 	return queenLocations;
 }
-/*
-board2D randomOrMinConflicts(board2D b, std::vector<int> queenLocations, int maxSteps) {
-	std::cout<<"Random Or MinConficts. STEPS = "<<maxSteps<<std::endl;
 
-	board2D current = b;
+std::vector<int> randomOrMinConflicts(std::vector<int> queenLocations, int maxSteps) {
+	std::cout<<"Random Or MinConficts. STEPS = "<<maxSteps<<std::endl;
 
 	for(int i=0; i<maxSteps; i++) { 
 		// search for queens with conflicts
-		std::vector<int> conflictingVars = isSolution(current,queenLocations);
+		std::vector<int> conflictingVars = isSolution(queenLocations);
 		if(conflictingVars.empty()) { // if there are none
-			return current; // solution has been found
+			return queenLocations; // solution has been found
 		} else {
 			std::vector<int> currentMinIndices;
 			int randomConflictingVarIndex = rand() % conflictingVars.size();
@@ -252,18 +250,36 @@ board2D randomOrMinConflicts(board2D b, std::vector<int> queenLocations, int max
 
 			int magicNumber = rand() % 10;
 			if(magicNumber <= 3) {
-				int randomColumnForQueen = rand() % current.size();
+				int randomColumnForQueen = rand() % queenLocations.size();
 
-				current[randomConflictingVar][queenLocations[randomConflictingVar]] = 0;
-				current[randomConflictingVar][randomColumnForQueen] = 1;
+				// current[randomConflictingVar][queenLocations[randomConflictingVar]] = 0;
+				// current[randomConflictingVar][randomColumnForQueen] = 1;
 				queenLocations[randomConflictingVar] = randomColumnForQueen;
 			} else {
-				
+				std::vector<int> currentMinIndices;
+				int currentMin = INT_MAX;
+				// currentMinIndices[randomConflictingVar][queenLocations[randomConflictingVar]] = 0;
+
+				for(int j=0; j<N; j++) {
+					int t = numberOfConflicts(queenLocations,randomConflictingVar,j);
+					if(t < currentMin) {
+						currentMin = t;
+						if(currentMinIndices.empty() == false) {
+							currentMinIndices.clear();
+						} 
+						currentMinIndices.push_back(j);
+					} else if(t == currentMin) {
+						currentMinIndices.push_back(j);
+					}
+				}
+				int tieBreaker = rand() % currentMinIndices.size();
+				queenLocations[randomConflictingVar] = currentMinIndices[tieBreaker];
+				// current[randomConflictingVar][currentMinIndices[tieBreaker]] = 1;
 			}	
 		}
 	}
-
-}*/
+	return queenLocations;
+}
 
 //
 // Takes an initialized board of zeroes and places queens on it randomly 
@@ -342,7 +358,7 @@ int main() {
 	std::vector<int> initialSeed = placeQueensSmartStart(N);
 	printBoard(initialSeed);
 	isSolution(initialSeed);
-	std::vector<int> c = minConflictsRandom(initialSeed,STEPS);
+	std::vector<int> c = randomOrMinConflicts(initialSeed,STEPS);
 	printBoard(c);
 	return 0;
 }

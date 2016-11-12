@@ -340,7 +340,7 @@ int main() {
 	board2D b = initializeBoard(N);
 	std::vector<int> initialSeed = placeQueensRandom(b,N);
 	printBoard(b);
-	board2D c = minConflictsGreedy(b,initialSeed,STEPS);
+	board2D c = randomOrMinConflicts(b,initialSeed,STEPS);
 	printBoard(c);
 	return 0;
 }
