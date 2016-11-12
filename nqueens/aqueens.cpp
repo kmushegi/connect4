@@ -20,6 +20,8 @@ struct Info {
 int N; 		// the number of queens for the board
 int STEPS;  // the number of steps to take before giving up
 
+bool firstBetter = false;
+
 /*board2D initializeBoard(int n) {
 	board2D chessBoard;
 	for(int i=0; i<n; i++) {
@@ -105,8 +107,9 @@ std::vector<int> isSolution(std::vector<int> queenLocations) {
 		}
 	}
 	//std::cout << "vector conflicts " << std::endl;
+	/*
 	for (std::vector<int>::const_iterator i = conflictingVariables.begin(); i != conflictingVariables.end(); ++i)
-    std::cout << *i << ' ';
+    std::cout << *i << ' ';*/
 
 	return conflictingVariables;
 }
@@ -230,13 +233,23 @@ std::vector<int> minConflictsRandom(std::vector<int> queenLocations, int maxStep
 			std::vector<int> currentMinIndices;
 			int randomConflictingVarIndex = rand() % conflictingVars.size();
 			int randomConflictingVar = conflictingVars[randomConflictingVarIndex];
+
+			int initialConflicts; 
+			if (firstBetter) {
+				initialConflicts = numberOfConflicts(queenLocations, randomConflictingVar, queenLocations[randomConflictingVar]);
+			}
 			// std::cout << "lets try to change " << randomConflictingVar <<std::endl;
 			int currentMin = INT_MAX;
 			// int currentMinIndex = INT_MAX;
 			//current[randomConflictingVar][queenLocations[randomConflictingVar]] = 0; // set equal to 0
 			//TODO: randomly choose between tied queen positions
+			bool moveOn = false;
 			for(int j=0; j<N; j++) {
 				int t = numberOfConflicts(queenLocations, randomConflictingVar,j);
+				if (firstBetter && t<initialConflicts) {
+					queenLocations[randomConflictingVar] = j;
+					moveOn = true;
+				}
 				if(t < currentMin) {
 					// std::cout << "updating current min " <<std::endl;
 					currentMin = t;
@@ -251,12 +264,14 @@ std::vector<int> minConflictsRandom(std::vector<int> queenLocations, int maxStep
 					currentMinIndices.push_back(j);
 				}
 			}
-			int tieBreaker = rand() % currentMinIndices.size();
-			// std::cout << "move to make " << currentMinIndices[tieBreaker] <<std::endl;
-			//current[randomConflictingVar][queenLocations[randomConflictingVar]] = 0;
-			queenLocations[randomConflictingVar] = currentMinIndices[tieBreaker] ;
-			//current[randomConflictingVar][currentMinIndices[tieBreaker]] = 1;
-			//printBoard(current);
+			if (!moveOn){
+				int tieBreaker = rand() % currentMinIndices.size();
+				// std::cout << "move to make " << currentMinIndices[tieBreaker] <<std::endl;
+				//current[randomConflictingVar][queenLocations[randomConflictingVar]] = 0;
+				queenLocations[randomConflictingVar] = currentMinIndices[tieBreaker] ;
+				//current[randomConflictingVar][currentMinIndices[tieBreaker]] = 1;
+				//printBoard(current);
+			}
 		}
 	}
 	return queenLocations;
@@ -434,12 +449,16 @@ int main(int argc, char* argv[]) {
 			//std::vector<int> initialSeed = placeQuee(N);
 
 		} else if(strcmp(argv[3],"FIRST-BETTER") == 0) {
+			firstBetter = true;
 			std::cout<<"RUNNING FIRST-BETTER\n";
+			initialSeed = minConflictsRandom(initialSeed, STEPS);
+
 			//run first better with relevant method
 		}
 		
+
 		isSolution(initialSeed);
-		//printBoard(initialSeed);
+		printBoard(initialSeed);
 	}
 
 	return 0;
