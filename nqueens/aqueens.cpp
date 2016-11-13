@@ -286,6 +286,11 @@ std::vector<int> minConflictsRandom(std::vector<int> queenLocations, int maxStep
 	return queenLocations;
 } // end minConflictsRandom
 
+//
+// Picks a random queen and then either moves it to a random square in the queens column
+// or uses the min conflicts heuristic to place the queen. The probabilities are 0.4 for 
+// random placenemt and 0.6 for choosing based on the min conflicts heuristic
+//
 std::vector<int> randomOrMinConflicts(std::vector<int> queenLocations, int maxSteps) {
 
 	for(int i=0; i<maxSteps; i++) { 
@@ -297,20 +302,17 @@ std::vector<int> randomOrMinConflicts(std::vector<int> queenLocations, int maxSt
 			return queenLocations; // solution has been found
 		} else {
 			std::vector<int> currentMinIndices;
-			int randomConflictingVarIndex = rand() % conflictingVars.size();
+			int randomConflictingVarIndex = rand() % conflictingVars.size(); //pick a random queen
 			int randomConflictingVar = conflictingVars[randomConflictingVarIndex];
 
-			int magicNumber = rand() % 10;
-			if(magicNumber <= 3) {
+			int magicNumber = rand() % 10; //generate magic number
+			if(magicNumber <= 3) { //with prob. 0.4 place queen randomly
 				int randomColumnForQueen = rand() % queenLocations.size();
 
-				// current[randomConflictingVar][queenLocations[randomConflictingVar]] = 0;
-				// current[randomConflictingVar][randomColumnForQueen] = 1;
 				queenLocations[randomConflictingVar] = randomColumnForQueen;
-			} else {
+			} else { //otherwise run the min conflicts heuristic as usual
 				std::vector<int> currentMinIndices;
 				int currentMin = INT_MAX;
-				// currentMinIndices[randomConflictingVar][queenLocations[randomConflictingVar]] = 0;
 
 				for(int j=0; j<N; j++) {
 					int t = numberOfConflicts(queenLocations,randomConflictingVar,j);
@@ -324,14 +326,14 @@ std::vector<int> randomOrMinConflicts(std::vector<int> queenLocations, int maxSt
 						currentMinIndices.push_back(j);
 					}
 				}
+
 				int tieBreaker = rand() % currentMinIndices.size();
 				queenLocations[randomConflictingVar] = currentMinIndices[tieBreaker];
-				// current[randomConflictingVar][currentMinIndices[tieBreaker]] = 1;
 			}	
 		}
 	}
 	return queenLocations;
-}
+} // end randomOrMinConflicts
 
 //
 // Takes an interger n representing the number of queens to be placed on
