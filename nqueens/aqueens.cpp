@@ -1,3 +1,23 @@
+/*
+
+Grace Handler, Clara Hunnewell, Kote Mushegiani
+Professor Majercik
+Artificial Intelligence
+November 13, 2016
+
+This program was adapted from pseudocode in our textbook and instructions from
+Professor Majercik. There are 5 iterations of the min-conflicts local search
+algorithm. You can call the appropriate one from the command line as explained in
+the README and also set the maximum number of steps and the size of the problem
+(number of queens).
+
+The 5 algorithms are: BASIC, GREEDY, RANDOM, SMART-START, and FIRST-BETTER.
+Both SMART-START and FIRST-BETTER are run on the fastest of the former 3 algorithms,
+which is BASIC. There are global booleans for SMART-START and FIRST-BETTER which
+can be set from the command line and used respectively.
+
+*/
+
 #include <vector>
 #include <cstdlib>
 #include <iostream>
@@ -17,7 +37,8 @@ struct Info {
 int N; 		// the number of queens for the board
 int STEPS;  // the number of steps to take before giving up
 
-bool firstBetter = false;
+bool firstBetter = false; // set by user from commandline; if true: run FIRST-BETTER algorithm
+bool smartStart = false; // set by user from commandline; if true: run SMART-START algorithm
 
 //
 // printBoard: takes a vector of queen locations and prints a board with 
