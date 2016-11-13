@@ -36,9 +36,11 @@ struct Info {
 
 int N; 		// the number of queens for the board
 int STEPS;  // the number of steps to take before giving up
+int actualSteps;
 
 bool firstBetter = false; // set by user from commandline; if true: run FIRST-BETTER algorithm
 bool smartStart = false; // set by user from commandline; if true: run SMART-START algorithm
+bool foundSolution = false;
 
 //
 // printBoard: takes a vector of queen locations and prints a board with 
@@ -137,14 +139,13 @@ std::vector<int> minConflictsGreedy(std::vector<int> queenLocations, int maxStep
 		abort();
 	}
 
-	std::cout << "MinConflicts. Greedy. STEPS = "<< maxSteps << std::endl;
-
 	for(int i=0; i<maxSteps; i++) {
 
 		// vector of conflicting queens
 		std::vector<int> conflictingVars = isSolution(queenLocations);
 		if(conflictingVars.size() == 0) {		// if empty
-			std::cout<<"FOUND SOLUTION in steps = \n" << i <<std::endl;
+			foundSolution = true;
+			actualSteps = i;
 			return queenLocations;
 		} 
 		else {
@@ -219,14 +220,14 @@ std::vector<int> minConflictsRandom(std::vector<int> queenLocations, int maxStep
 		abort();
 	}
 	
-	std::cout << "MinConflicts. STEPS = "<< maxSteps << std::endl;
 
 	for(int i=0; i<maxSteps; i++) {
 
 		// vector of conflicting queens
 		std::vector<int> conflictingVars = isSolution(queenLocations);
 		if(conflictingVars.size() == 0) { // if empty
-			std::cout<<"FOUND SOLUTION in steps = \n" << i <<std::endl;
+			foundSolution = true;
+			actualSteps = i;
 			return queenLocations;
 		} else {
 
@@ -286,13 +287,13 @@ std::vector<int> minConflictsRandom(std::vector<int> queenLocations, int maxStep
 } // end minConflictsRandom
 
 std::vector<int> randomOrMinConflicts(std::vector<int> queenLocations, int maxSteps) {
-	std::cout<<"Random Or MinConficts. STEPS = "<<maxSteps<<std::endl;
 
 	for(int i=0; i<maxSteps; i++) { 
 		// search for queens with conflicts
 		std::vector<int> conflictingVars = isSolution(queenLocations);
 		if(conflictingVars.empty()) { // if there are none
-				std::cout<<"FOUND SOLUTION in steps = \n" << i <<std::endl;
+				foundSolution = true;
+				actualSteps = i;
 			return queenLocations; // solution has been found
 		} else {
 			std::vector<int> currentMinIndices;
@@ -393,8 +394,12 @@ std::vector<int> placeQueensSmartStart(int n) {
 	
 } // end placeQueensSmartStart
 
-
+//
+// main() function calls the appropriate algorithm above based upon 
+// what the user inputs
+//
 int main(int argc, char* argv[]) {
+
 	if(argc < 2 || argc > 4) {
 		std::cout<<"Incorrect Usage. Use -help for usage info\n";
 		exit(1);
@@ -409,55 +414,52 @@ int main(int argc, char* argv[]) {
 		STEPS = atoi(argv[1]);
 		N = atoi(argv[2]);
 
-		std::vector<int> initialSeed = placeQueensRandom(N);
-		//= placeQueensSmartStart(N);
-	//printBoard(initialSeed);
+		std::vector<int> initialSeed; 
 
-	clock_t t1, t2;
-	t1 = clock();
+		clock_t t1, t2;
 
-		if(strcmp(argv[3],"BASIC") == 0) {
-			std::cout<<"RUNNING BASIC\n";
-			//run basic
-			//std::vector<int> initialSeed = placeQueensRandom(N);
+		if(strcmp(argv[3],"SMART-START") == 0) {
+			smartStart = true;
+			initialSeed = placeQueensSmartStart(N);
+		} else {
+			initialSeed = placeQueensRandom(N);
+		}
 
+		std::cout << "\nINITIAL BOARD: \n\n";
+		printBoard(initialSeed);
+
+		t1 = clock();
+
+		if((strcmp(argv[3],"BASIC") == 0) || (strcmp(argv[3],"FIRST-BETTER") == 0) || (strcmp(argv[3],"SMART-START") == 0)) {
 			initialSeed = minConflictsRandom(initialSeed, STEPS);
-			
-
-
+			if (firstBetter) {
+				std::cout<<"\nBOARD AFTER RUNNING FIRST-BETTER ALGO: \n\n";
+			} else if (smartStart) {
+				std::cout<<"\nBOARD AFTER RUNNING SMART-START ALGO: \n\n";
+			} else {
+				std::cout<<"\nBOARD AFTER RUNNING BASIC ALGO: \n\n";
+			}
 		} else if(strcmp(argv[3],"GREEDY") == 0) {
-			std::cout<<"RUNNING GREEDY\n";
-			//std::vector<int> initialSeed = placeQueensRandom(N);
-			t1=clock();
-			minConflictsGreedy(initialSeed, STEPS);
-			t2=clock();
-
-			std::cout<<"RUN TIME: " << (t2-t1) << "\n";
-			//run greedy
+			std::cout<<"\nBOARD AFTER RUNNING GREEDY ALGO: \n\n";
+			initialSeed = minConflictsGreedy(initialSeed, STEPS);
 		} else if(strcmp(argv[3],"RANDOM") == 0) {
-			std::cout<<"RUNNING RANDOM\n";
-			//std::vector<int> initialSeed = placeQueensRandom(N);
-			t1=clock();
-			randomOrMinConflicts(initialSeed, STEPS);
-			t2=clock();
+			std::cout<<"\nBOARD AFTER RUNNING RANDOM ALGO: \n\n";
+			initialSeed = randomOrMinConflicts(initialSeed, STEPS);
+		} 
 
-			std::cout<<"RUN TIME: " << (t2-t1) << "\n";
-			//run random
-		} else if(strcmp(argv[3],"SMART-START") == 0) {
-			//std::cout<<"RUNNING SMART-START\n";
-			//std::vector<int> initialSeed = placeQuee(N);
+		t2 = clock();
+		printBoard(initialSeed);
 
-		} else if(strcmp(argv[3],"FIRST-BETTER") == 0) {
-			firstBetter = true;
-			std::cout<<"RUNNING FIRST-BETTER\n";
-			initialSeed = minConflictsRandom(initialSeed, STEPS);
+		std::cout << "\nMAXIMUM ALLOWED STEPS IS: " << STEPS; 
+		if (foundSolution) {
+			std::cout << "\nSolution found! :)\n";
+			std::cout << "\n--> Run time is " << (t2-t1) << " milliseconds.";
+			std::cout << "\n--> Number of steps to find solution is " << actualSteps << ".\n\n";
 
-			//run first better with relevant method
+		} else {
+			std::cout<<"\nNo solution was found. :(\n\n";
 		}
 		
-
-		isSolution(initialSeed);
-		printBoard(initialSeed);
 	}
 
 	return 0;
