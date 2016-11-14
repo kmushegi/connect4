@@ -6,7 +6,7 @@ Artificial Intelligence
 November 13, 2016
 
 This program was adapted from pseudocode in our textbook and instructions from
-Professor Majercik. There are 5 iterations of the min-conflicts local search
+Professor Majercik. There are 5 variations of the min-conflicts local search
 algorithm. You can call the appropriate one from the command line as explained in
 the README and also set the maximum number of steps and the size of the problem
 (number of queens).
@@ -22,6 +22,9 @@ can be set from the command line and used respectively.
 #include <cstdlib>
 #include <iostream>
 #include <time.h>
+#include <stdlib.h> 
+#include <thread>         // std::this_thread::sleep_for
+#include <chrono>         // std::chrono::seconds
 
 //
 // struct Info is used for the greedy function.
@@ -34,19 +37,18 @@ struct Info {
 	int col;
 };
 
-int N; 		// the number of queens for the board
-int STEPS;  // the number of steps to take before giving up
+int N; 						// the number of queens for the board
+int STEPS;  				// the number of steps to take before giving up
 int actualSteps;
 
-bool firstBetter = false; // set by user from commandline; if true: run FIRST-BETTER algorithm
-bool smartStart = false; // set by user from commandline; if true: run SMART-START algorithm
+bool firstBetter = false;   // set by user from commandline; if true: run FIRST-BETTER algorithm
+bool smartStart = false;    // set by user from commandline; if true: run SMART-START algorithm
 bool foundSolution = false;
 
 //
 // printBoard: takes a vector of queen locations and prints a board with 
 // queens in those locations
 //
-
 void printBoard(std::vector<int> queenLocations) {
 
 	for(int r=0; r<queenLocations.size(); r++) {
@@ -87,13 +89,11 @@ int numberOfConflicts(std::vector<int> queenLocations, int r, int c) {
 		/* Do not count as conflict if the queen you are considering is in the 
 		same row as r because you will only ever have one queen in each row 
 		and that queen will be moved if you find a better location for it. */
-
 		if (i != r) { 
 			if (queenLocations[i] == c || (abs(i-r) == abs(queenLocations[i]-c))) 
 				numConflicts++;
 		}
 	}
-
 	return numConflicts;
 } // end numberOfConflicts
 
@@ -354,7 +354,6 @@ std::vector<int> placeQueensRandom(int n) {
 		queenLocations.push_back(c);	// add it to your vector of queen locations
 	}
 	return queenLocations;
-
 } // end placeQueensRandom
 
 //
@@ -398,10 +397,12 @@ std::vector<int> placeQueensSmartStart(int n) {
 
 //
 // main() function calls the appropriate algorithm above based upon 
-// what the user inputs
+// what the user inputs.
 //
 int main(int argc, char* argv[]) {
 
+	std::vector<clock_t> timeForRun;
+	std::vector<int> stepsForRun;
 	if(argc < 2 || argc > 4) {
 		std::cout<<"Incorrect Usage. Use -help for usage info\n";
 		exit(1);
@@ -411,6 +412,8 @@ int main(int argc, char* argv[]) {
 			std::cout<<"ALGO_TYPE is one of the following five: BASIC, GREEDY, RANDOM, SMART-START, FIRST-BETTER\n";
 		}
 	} else if(argc == 4) {
+
+		for (int k = 0; k<10; k++){
 		srand(time(NULL));
 
 		STEPS = atoi(argv[1]);
@@ -456,13 +459,33 @@ int main(int argc, char* argv[]) {
 		if (foundSolution) {
 			std::cout << "\nSolution found! :)\n";
 			std::cout << "\n--> Run time is " << (t2-t1) << " milliseconds.";
+			timeForRun.push_back(t2-t1);
+			stepsForRun.push_back(actualSteps);
 			std::cout << "\n--> Number of steps to find solution is " << actualSteps << ".\n\n";
 
 		} else {
 			std::cout<<"\nNo solution was found. :(\n\n";
 		}
+		//sleep(10);
+		std::this_thread::sleep_for (std::chrono::seconds(5));
+	}
 		
 	}
+	int sumSteps = 0;
+	int sumTime = 0;
+	for (int k=0; k<stepsForRun.size(); k++) {
+		sumSteps = sumSteps + stepsForRun[k];
+		std::cout << stepsForRun[k] << " ";
+	}
+	std::cout << std::endl;
+		for (int k=0; k<stepsForRun.size(); k++) {
+		std::cout << timeForRun[k] << " ";
+		sumTime = sumTime + timeForRun[k];
+	}
+	int averageTime = sumTime/timeForRun.size();
+	int averageSteps = sumSteps/stepsForRun.size();
+	std::cout << "At the end of ten runs the averages are for time " 
+	<< averageTime << " and for steps " << averageSteps <<std::endl;
 
 	return 0;
 }
