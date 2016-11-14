@@ -3,7 +3,7 @@ Professor Majercik
 Artificial Intelligence 
 November 14, 2016
 
-In the nqueens folder, our code is in aqueens.cpp and the executable isa queens.
+In the nqueens folder, our code is in aqueens.cpp and the executable is aqueens.
 
 To run, navigate to the nqueens folder, then in the command line type:
 
@@ -18,7 +18,7 @@ where:
 
 The output will print the initial board, the final board, whether or not a solution was found, and if so, the run time and number of steps it took to find the solution.
 
-In the aqueens.cpp file, here are the line numbers wherethe respective variations can be found:
+In the aqueens.cpp file, here are the line numbers where the respective variations can be found:
 1) BASIC: line 216 @ minConflictsRandom()**
 2) GREEDY: line 135 @ minConflictsGreedy()**
 3) RANDOM: line 216 @ randomOrMinConflicts()**

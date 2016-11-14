@@ -6,7 +6,7 @@ Artificial Intelligence
 November 13, 2016
 
 This program was adapted from pseudocode in our textbook and instructions from
-Professor Majercik. There are 5 iterations of the min-conflicts local search
+Professor Majercik. There are 5 variations of the min-conflicts local search
 algorithm. You can call the appropriate one from the command line as explained in
 the README and also set the maximum number of steps and the size of the problem
 (number of queens).
@@ -34,19 +34,18 @@ struct Info {
 	int col;
 };
 
-int N; 		// the number of queens for the board
-int STEPS;  // the number of steps to take before giving up
+int N; 						// the number of queens for the board
+int STEPS;  				// the number of steps to take before giving up
 int actualSteps;
 
-bool firstBetter = false; // set by user from commandline; if true: run FIRST-BETTER algorithm
-bool smartStart = false; // set by user from commandline; if true: run SMART-START algorithm
+bool firstBetter = false;   // set by user from commandline; if true: run FIRST-BETTER algorithm
+bool smartStart = false;    // set by user from commandline; if true: run SMART-START algorithm
 bool foundSolution = false;
 
 //
 // printBoard: takes a vector of queen locations and prints a board with 
 // queens in those locations
 //
-
 void printBoard(std::vector<int> queenLocations) {
 
 	for(int r=0; r<queenLocations.size(); r++) {
@@ -87,13 +86,11 @@ int numberOfConflicts(std::vector<int> queenLocations, int r, int c) {
 		/* Do not count as conflict if the queen you are considering is in the 
 		same row as r because you will only ever have one queen in each row 
 		and that queen will be moved if you find a better location for it. */
-
 		if (i != r) { 
 			if (queenLocations[i] == c || (abs(i-r) == abs(queenLocations[i]-c))) 
 				numConflicts++;
 		}
 	}
-
 	return numConflicts;
 } // end numberOfConflicts
 
@@ -354,7 +351,6 @@ std::vector<int> placeQueensRandom(int n) {
 		queenLocations.push_back(c);	// add it to your vector of queen locations
 	}
 	return queenLocations;
-
 } // end placeQueensRandom
 
 //
@@ -398,7 +394,7 @@ std::vector<int> placeQueensSmartStart(int n) {
 
 //
 // main() function calls the appropriate algorithm above based upon 
-// what the user inputs
+// what the user inputs.
 //
 int main(int argc, char* argv[]) {
 
