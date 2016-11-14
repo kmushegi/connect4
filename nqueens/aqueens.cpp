@@ -475,6 +475,11 @@ int main(int argc, char* argv[]) {
 	int sumTime = 0;
 	for (int k=0; k<stepsForRun.size(); k++) {
 		sumSteps = sumSteps + stepsForRun[k];
+		std::cout << stepsForRun[k] << " ";
+	}
+	std::cout << std::endl;
+		for (int k=0; k<stepsForRun.size(); k++) {
+		std::cout << timeForRun[k] << " ";
 		sumTime = sumTime + timeForRun[k];
 	}
 	int averageTime = sumTime/timeForRun.size();
