@@ -411,6 +411,7 @@ int main(int argc, char* argv[]) {
 			std::cout<<"Usage: ./aqueens NUM_STEPS NUM_QUEENS ALGO_TYPE\n";
 			std::cout<<"ALGO_TYPE is one of the following five: BASIC, GREEDY, RANDOM, SMART-START, FIRST-BETTER\n";
 		}
+		exit(0);
 	} else if(argc == 4) {
 
 		for (int k = 0; k<10; k++){
