@@ -18,3 +18,13 @@ where:
 
 The output will print the initial board, the final board, whether or not a solution was found, and if so, the run time and number of steps it took to find the solution.
 
+In the aqueens.cpp file, here are the line numbers wherethe respective variations can be found:
+1) BASIC: line 216 @ minConflictsRandom()**
+2) GREEDY: line 135 @ minConflictsGreedy()**
+3) RANDOM: line 216 @ randomOrMinConflicts()**
+4) SMART-START: [running basic algorithm but board initialized at line 367 placeQueensSmartStart()]
+5) FIRST-BETTER: Boolean variable firstBetter set based on command line input and used at line 244 & line 257 in minConflictsRandom() function**
+
+**All algorithms besides smart-start use line 343 placeQueensRandom() to initialize board.
+
+NOTE: In the main() function beginning at line 403, user input is taken and the aforementioned functions are called accordingly.
