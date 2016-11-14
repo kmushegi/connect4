@@ -407,8 +407,8 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	} else if(argc == 2) {
 		if(strcmp(argv[1],"-help") == 0) {
-			std::cout<<"Usage: ./aqueens NUM_STEPS NUM_QUEENS ALGORITHM-NAME / START STRATEGY\n";
-			std::cout<<"ALGORITHM-NAME / START STRATEGY: BASIC/GREEDY/RANDOM/SMART-START/FIRST-BETTER\n";
+			std::cout<<"Usage: ./aqueens NUM_STEPS NUM_QUEENS ALGO_TYPE\n";
+			std::cout<<"ALGO_TYPE is one of the following five: BASIC, GREEDY, RANDOM, SMART-START, FIRST-BETTER\n";
 		}
 	} else if(argc == 4) {
 		srand(time(NULL));
