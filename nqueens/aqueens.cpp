@@ -22,6 +22,9 @@ can be set from the command line and used respectively.
 #include <cstdlib>
 #include <iostream>
 #include <time.h>
+#include <stdlib.h> 
+#include <thread>         // std::this_thread::sleep_for
+#include <chrono>         // std::chrono::seconds
 
 //
 // struct Info is used for the greedy function.
@@ -398,6 +401,8 @@ std::vector<int> placeQueensSmartStart(int n) {
 //
 int main(int argc, char* argv[]) {
 
+	std::vector<clock_t> timeForRun;
+	std::vector<int> stepsForRun;
 	if(argc < 2 || argc > 4) {
 		std::cout<<"Incorrect Usage. Use -help for usage info\n";
 		exit(1);
@@ -407,6 +412,8 @@ int main(int argc, char* argv[]) {
 			std::cout<<"ALGORITHM-NAME / START STRATEGY: BASIC/GREEDY/RANDOM/SMART-START/FIRST-BETTER\n";
 		}
 	} else if(argc == 4) {
+
+		for (int k = 0; k<10; k++){
 		srand(time(NULL));
 
 		STEPS = atoi(argv[1]);
@@ -452,13 +459,28 @@ int main(int argc, char* argv[]) {
 		if (foundSolution) {
 			std::cout << "\nSolution found! :)\n";
 			std::cout << "\n--> Run time is " << (t2-t1) << " milliseconds.";
+			timeForRun.push_back(t2-t1);
+			stepsForRun.push_back(actualSteps);
 			std::cout << "\n--> Number of steps to find solution is " << actualSteps << ".\n\n";
 
 		} else {
 			std::cout<<"\nNo solution was found. :(\n\n";
 		}
+		//sleep(10);
+		std::this_thread::sleep_for (std::chrono::seconds(5));
+	}
 		
 	}
+	int sumSteps = 0;
+	int sumTime = 0;
+	for (int k=0; k<stepsForRun.size(); k++) {
+		sumSteps = sumSteps + stepsForRun[k];
+		sumTime = sumTime + timeForRun[k];
+	}
+	int averageTime = sumTime/timeForRun.size();
+	int averageSteps = sumSteps/stepsForRun.size();
+	std::cout << "At the end of ten runs the averages are for time " 
+	<< averageTime << " and for steps " << averageSteps <<std::endl;
 
 	return 0;
 }
