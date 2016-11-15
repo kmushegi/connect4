@@ -425,7 +425,7 @@ int main(int argc, char* argv[]) {
 
 		int noSolution;
 		std::vector<int> initialSeed;
-		for (int j=10;j<100;j=j+10) {
+		for (int j=10;j<=100;j=j+10) {
 			N=j;
 			noSolution = 0;
 		
@@ -529,6 +529,7 @@ int main(int argc, char* argv[]) {
 			//<< averageTime << "\nAverage Steps: " << averageSteps <<std::endl;
 			std::cout << averageSteps << " " << averageTime;
 }
+std::cout << "\n";
 		
 	}
 	/*int sumSteps = 0;
