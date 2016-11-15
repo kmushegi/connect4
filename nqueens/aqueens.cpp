@@ -246,7 +246,7 @@ std::vector<int> minConflictsRandom(std::vector<int> queenLocations, int maxStep
 			}
 
 			int currentMin = INT_MAX;
-			bool moveOn = false; 
+			bool moveOn = false;     // used when the user wants the first better algorithm to skip over code
 
 			for(int j=0; j<N; j++) { // for each potential queen location
 				// calculate number of conflicts
@@ -256,7 +256,7 @@ std::vector<int> minConflictsRandom(std::vector<int> queenLocations, int maxStep
 				// a move that is "better" (results in less conflicts), make the move.
 				if (firstBetter && t<initialConflicts) {
 					queenLocations[randomConflictingVar] = j;
-					moveOn = true;
+					moveOn = true;   // skip over the rest and move on to new step
 					break;
 				}
 
@@ -283,7 +283,7 @@ std::vector<int> minConflictsRandom(std::vector<int> queenLocations, int maxStep
 				queenLocations[randomConflictingVar] = currentMinIndices[tieBreaker] ;
 			}
 		} 
-	} // end step for loop
+	} // end step for-loop
 	return queenLocations;
 } // end minConflictsRandom
 
@@ -303,8 +303,8 @@ std::vector<int> randomOrMinConflicts(std::vector<int> queenLocations, int maxSt
 		// search for queens with conflicts
 		std::vector<int> conflictingVars = isSolution(queenLocations);
 		if(conflictingVars.empty()) { // if there are none
-				foundSolution = true;
-				actualSteps = i;
+			foundSolution = true;
+			actualSteps = i;
 			return queenLocations; // solution has been found
 		} else {
 			std::vector<int> currentMinIndices;
@@ -439,14 +439,20 @@ int main(int argc, char* argv[]) {
 
 			initialSeed.clear();
 
-			clock_t t1, t2;
+			clock_t t1, t2; // used to calculate program run-time
 
+			// 
+			// initialize the board smartly or randomly according to whether
+			// the user has inputed "SMART-START"
+			//
 			if(strcmp(argv[3],"SMART-START") == 0) {
 				smartStart = true;
 				initialSeed = placeQueensSmartStart(N);
 			} else {
 				initialSeed = placeQueensRandom(N);
 			}
+
+			// check if user inputed FIRST-BETTER
 			if (strcmp(argv[3],"FIRST-BETTER") == 0) {
 				firstBetter = true;
 			}
@@ -454,7 +460,7 @@ int main(int argc, char* argv[]) {
 			//std::cout << "\nINITIAL BOARD: \n\n";
 			//printBoard(initialSeed);
 
-			t1 = clock();
+			t1 = clock(); // start the clock
 
 			if((strcmp(argv[3],"BASIC") == 0) || (strcmp(argv[3],"FIRST-BETTER") == 0) || (strcmp(argv[3],"SMART-START") == 0)) {
 				
@@ -475,7 +481,7 @@ int main(int argc, char* argv[]) {
 				initialSeed = randomOrMinConflicts(initialSeed, STEPS);
 			} 
 
-			t2 = clock();
+			t2 = clock(); // end the clock
 			//std::cout<<"\nFINAL BOARD: \n\n";
 			//printBoard(initialSeed);
 
@@ -497,7 +503,7 @@ int main(int argc, char* argv[]) {
 				abort();
 			}
 			//sleep(10);
-			initialSeed = std::vector<int>(); 
+			//initialSeed = std::vector<int>(); 
 			std::this_thread::sleep_for (std::chrono::seconds(1));
 		
 
@@ -512,7 +518,7 @@ int main(int argc, char* argv[]) {
 				//std::cout << stepsForRun[k] << " ";
 			}
 			std::cout << std::endl;
-				for (int k=0; k<stepsForRun.size(); k++) {
+			for (int k=0; k<stepsForRun.size(); k++) {
 				//std::cout << timeForRun[k] << " ";
 				sumTime = sumTime + timeForRun[k];
 			}
