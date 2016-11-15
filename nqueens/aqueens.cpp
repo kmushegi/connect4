@@ -257,6 +257,7 @@ std::vector<int> minConflictsRandom(std::vector<int> queenLocations, int maxStep
 				if (firstBetter && t<initialConflicts) {
 					queenLocations[randomConflictingVar] = j;
 					moveOn = true;
+					break;
 				}
 
 				// if number of conflicts less than current best, your current best
@@ -417,8 +418,11 @@ int main(int argc, char* argv[]) {
 	} else if(argc == 4) {
 		srand(time(NULL));
 
+		int noSolution;
+
 		for (int j=4;j<1000;j++) {
 			N=j;
+			noSolution = 0;
 		
 		for (int k = 0; k<10; k++) {
 			foundSolution = false;
@@ -437,8 +441,8 @@ int main(int argc, char* argv[]) {
 				initialSeed = placeQueensRandom(N);
 			}
 
-			//std::cout << "\nINITIAL BOARD: \n\n";
-			//printBoard(initialSeed);
+			std::cout << "\nINITIAL BOARD: \n\n";
+			printBoard(initialSeed);
 
 			t1 = clock();
 
@@ -446,6 +450,7 @@ int main(int argc, char* argv[]) {
 				initialSeed = minConflictsRandom(initialSeed, STEPS);
 				if (firstBetter) {
 					//std::cout<<"\nBOARD AFTER RUNNING FIRST-BETTER ALGO: \n\n";
+					firstBetter = true;
 				} else if (smartStart) {
 					//std::cout<<"\nBOARD AFTER RUNNING SMART-START ALGO: \n\n";
 				} else {
@@ -460,7 +465,8 @@ int main(int argc, char* argv[]) {
 			} 
 
 			t2 = clock();
-			//printBoard(initialSeed);
+			std::cout<<"\nFINAL BOARD: \n\n";
+			printBoard(initialSeed);
 
 			//std::cout << "\nMAXIMUM ALLOWED STEPS IS: " << STEPS; 
 			if (foundSolution) {
@@ -471,9 +477,16 @@ int main(int argc, char* argv[]) {
 				//std::cout << "\n--> Number of steps to find solution is " << actualSteps << ".\n\n";
 
 			} else {
-				std::cout<<"\nNo solution was found. :(\n\n";
+				noSolution++;
+				//std::cout<<"\nNo solution was found. :(\n\n";
+			}
+
+			if (noSolution > 1) {
+				std::cout<<"UNRELIABLE. ABORTING.\n";
+				abort();
 			}
 			//sleep(10);
+			initialSeed = std::vector<int>(); 
 			std::this_thread::sleep_for (std::chrono::seconds(1));
 		
 
