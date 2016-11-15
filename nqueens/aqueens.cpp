@@ -294,6 +294,11 @@ std::vector<int> minConflictsRandom(std::vector<int> queenLocations, int maxStep
 //
 std::vector<int> randomOrMinConflicts(std::vector<int> queenLocations, int maxSteps) {
 
+	if (maxSteps<0 || queenLocations.empty()) {
+		std::cout << "Error. No board given or max steps incorrectly defined." << std::endl;
+		abort();
+	}
+	
 	for(int i=0; i<maxSteps; i++) { 
 		// search for queens with conflicts
 		std::vector<int> conflictingVars = isSolution(queenLocations);
