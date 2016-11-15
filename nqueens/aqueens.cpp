@@ -425,7 +425,7 @@ int main(int argc, char* argv[]) {
 
 		int noSolution;
 		std::vector<int> initialSeed;
-		for (int j=4;j<1000;j++) {
+		for (int j=10;j<100;j=j+10) {
 			N=j;
 			noSolution = 0;
 		
@@ -498,10 +498,7 @@ int main(int argc, char* argv[]) {
 				//std::cout<<"\nNo solution was found. :(\n\n";
 			}
 
-			if (noSolution > 1) {
-				std::cout<<"UNRELIABLE. ABORTING.\n";
-				abort();
-			}
+			
 			//sleep(10);
 			//initialSeed = std::vector<int>(); 
 			std::this_thread::sleep_for (std::chrono::seconds(1));
@@ -510,6 +507,8 @@ int main(int argc, char* argv[]) {
 
 
 		}
+
+
 
 			int sumSteps = 0;
 			int sumTime = 0;
@@ -524,9 +523,11 @@ int main(int argc, char* argv[]) {
 			}
 			int averageTime = sumTime/timeForRun.size();
 			int averageSteps = sumSteps/stepsForRun.size();
-			std::cout<< "\nFor algorithm " << argv[3] << " and number of queens " << N;
-			std::cout << "\nAverage Time: " 
-			<< averageTime << "\nAverage Steps: " << averageSteps <<std::endl;
+			//std::cout<< "\nFor algorithm " << argv[3] << " and number of queens " << N;
+			//std::cout<<"\nRan reliably " << (10-noSolution)*10 << "% (for 10 runs where " << noSolution << " didn't find a solution.)";
+			//std::cout << "\nAverage Time: " 
+			//<< averageTime << "\nAverage Steps: " << averageSteps <<std::endl;
+			std::cout << averageSteps << " " << averageTime <<"\n";
 }
 		
 	}
