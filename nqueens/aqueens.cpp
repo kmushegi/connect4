@@ -527,7 +527,7 @@ int main(int argc, char* argv[]) {
 			//std::cout<<"\nRan reliably " << (10-noSolution)*10 << "% (for 10 runs where " << noSolution << " didn't find a solution.)";
 			//std::cout << "\nAverage Time: " 
 			//<< averageTime << "\nAverage Steps: " << averageSteps <<std::endl;
-			std::cout << averageSteps << " " << averageTime <<"\n";
+			std::cout << averageSteps << " " << averageTime;
 }
 		
 	}
