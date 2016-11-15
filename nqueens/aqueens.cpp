@@ -417,9 +417,8 @@ int main(int argc, char* argv[]) {
 	} else if(argc == 4) {
 		srand(time(NULL));
 
-		for (int j=5;j<1000;j=j+10) {
+		for (int j=4;j<1000;j++) {
 			N=j;
-			std::cout<< j << N << "\n";
 		
 		for (int k = 0; k<10; k++) {
 			foundSolution = false;
@@ -475,7 +474,7 @@ int main(int argc, char* argv[]) {
 				std::cout<<"\nNo solution was found. :(\n\n";
 			}
 			//sleep(10);
-			std::this_thread::sleep_for (std::chrono::seconds(2));
+			std::this_thread::sleep_for (std::chrono::seconds(1));
 		
 
 
@@ -486,11 +485,11 @@ int main(int argc, char* argv[]) {
 			int sumTime = 0;
 			for (int k=0; k<stepsForRun.size(); k++) {
 				sumSteps = sumSteps + stepsForRun[k];
-				std::cout << stepsForRun[k] << " ";
+				//std::cout << stepsForRun[k] << " ";
 			}
 			std::cout << std::endl;
 				for (int k=0; k<stepsForRun.size(); k++) {
-				std::cout << timeForRun[k] << " ";
+				//std::cout << timeForRun[k] << " ";
 				sumTime = sumTime + timeForRun[k];
 			}
 			int averageTime = sumTime/timeForRun.size();
