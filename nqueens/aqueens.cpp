@@ -423,7 +423,7 @@ int main(int argc, char* argv[]) {
 		for (int k = 0; k<10; k++) {
 
 			STEPS = atoi(argv[1]);
-			N = atoi(argv[2]);
+			//N = atoi(argv[2]);
 
 			std::vector<int> initialSeed; 
 
@@ -493,7 +493,7 @@ int main(int argc, char* argv[]) {
 	}
 	int averageTime = sumTime/timeForRun.size();
 	int averageSteps = sumSteps/stepsForRun.size();
-	std::cout<< "\nFor algorithm " << argv[3] << " and number of queens " << j;
+	std::cout<< "\nFor algorithm " << argv[3] << " and number of queens " << N;
 	std::cout << "\nAverage Time: " 
 	<< averageTime << "\nAverage Steps: " << averageSteps <<std::endl;
 }
