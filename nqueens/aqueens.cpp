@@ -431,6 +431,8 @@ int main(int argc, char* argv[]) {
 		
 		for (int k = 0; k<10; k++) {
 			foundSolution = false;
+			firstBetter = false;
+			smartStart = false;
 
 			STEPS = atoi(argv[1]);
 			//N = atoi(argv[2]);
@@ -445,6 +447,9 @@ int main(int argc, char* argv[]) {
 			} else {
 				initialSeed = placeQueensRandom(N);
 			}
+			if (strcmp(argv[3],"FIRST-BETTER") == 0) {
+				firstBetter = true;
+			}
 
 			//std::cout << "\nINITIAL BOARD: \n\n";
 			//printBoard(initialSeed);
@@ -452,10 +457,11 @@ int main(int argc, char* argv[]) {
 			t1 = clock();
 
 			if((strcmp(argv[3],"BASIC") == 0) || (strcmp(argv[3],"FIRST-BETTER") == 0) || (strcmp(argv[3],"SMART-START") == 0)) {
+				
 				initialSeed = minConflictsRandom(initialSeed, STEPS);
 				if (firstBetter) {
 					//std::cout<<"\nBOARD AFTER RUNNING FIRST-BETTER ALGO: \n\n";
-					firstBetter = true;
+					//firstBetter = true;
 				} else if (smartStart) {
 					//std::cout<<"\nBOARD AFTER RUNNING SMART-START ALGO: \n\n";
 				} else {
