@@ -392,7 +392,7 @@ std::vector<int> placeQueensSmartStart(int n) {
 		currentBest = INT_MAX; 
 		currentBestIndex = -1;
 	}
-	std::cout << "This is our board placed smartly" <<std::endl;
+	//std::cout << "This is our board placed smartly" <<std::endl;
 	return queenLocations;
 	
 } // end placeQueensSmartStart
@@ -417,10 +417,12 @@ int main(int argc, char* argv[]) {
 	} else if(argc == 4) {
 		srand(time(NULL));
 
-		for (int j=5;j<50;j=j+5) {
+		for (int j=5;j<1000;j=j+10) {
 			N=j;
+			std::cout<< j << N << "\n";
 		
 		for (int k = 0; k<10; k++) {
+			foundSolution = false;
 
 			STEPS = atoi(argv[1]);
 			//N = atoi(argv[2]);
@@ -480,22 +482,22 @@ int main(int argc, char* argv[]) {
 
 		}
 
-		int sumSteps = 0;
-	int sumTime = 0;
-	for (int k=0; k<stepsForRun.size(); k++) {
-		sumSteps = sumSteps + stepsForRun[k];
-		//std::cout << stepsForRun[k] << " ";
-	}
-	std::cout << std::endl;
-		for (int k=0; k<stepsForRun.size(); k++) {
-		//std::cout << timeForRun[k] << " ";
-		sumTime = sumTime + timeForRun[k];
-	}
-	int averageTime = sumTime/timeForRun.size();
-	int averageSteps = sumSteps/stepsForRun.size();
-	std::cout<< "\nFor algorithm " << argv[3] << " and number of queens " << N;
-	std::cout << "\nAverage Time: " 
-	<< averageTime << "\nAverage Steps: " << averageSteps <<std::endl;
+			int sumSteps = 0;
+			int sumTime = 0;
+			for (int k=0; k<stepsForRun.size(); k++) {
+				sumSteps = sumSteps + stepsForRun[k];
+				std::cout << stepsForRun[k] << " ";
+			}
+			std::cout << std::endl;
+				for (int k=0; k<stepsForRun.size(); k++) {
+				std::cout << timeForRun[k] << " ";
+				sumTime = sumTime + timeForRun[k];
+			}
+			int averageTime = sumTime/timeForRun.size();
+			int averageSteps = sumSteps/stepsForRun.size();
+			std::cout<< "\nFor algorithm " << argv[3] << " and number of queens " << N;
+			std::cout << "\nAverage Time: " 
+			<< averageTime << "\nAverage Steps: " << averageSteps <<std::endl;
 }
 		
 	}
