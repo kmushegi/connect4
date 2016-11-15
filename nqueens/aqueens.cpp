@@ -413,9 +413,8 @@ int main(int argc, char* argv[]) {
 		}
 		exit(0);
 	} else if(argc == 4) {
-
-		for (int k = 0; k<10; k++){
 		srand(time(NULL));
+		for (int k = 0; k<10; k++){
 
 		STEPS = atoi(argv[1]);
 		N = atoi(argv[2]);
@@ -468,7 +467,7 @@ int main(int argc, char* argv[]) {
 			std::cout<<"\nNo solution was found. :(\n\n";
 		}
 		//sleep(10);
-		std::this_thread::sleep_for (std::chrono::seconds(5));
+		std::this_thread::sleep_for (std::chrono::seconds(2));
 	}
 		
 	}
