@@ -425,7 +425,7 @@ int main(int argc, char* argv[]) {
 
 		int noSolution;
 		std::vector<int> initialSeed;
-		for (int j=10;j<=100;j=j+10) {
+		for (int j=100;j<=750;j=j+25) {
 			N=j;
 			noSolution = 0;
 		
@@ -496,6 +496,11 @@ int main(int argc, char* argv[]) {
 			} else {
 				noSolution++;
 				//std::cout<<"\nNo solution was found. :(\n\n";
+			}
+
+			if (noSolution > 1) {
+				std::cout<<"\n Unreliable at: " << N << " queens. \n";
+				exit(0);
 			}
 
 			
