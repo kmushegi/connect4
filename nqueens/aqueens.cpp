@@ -424,7 +424,7 @@ int main(int argc, char* argv[]) {
 		srand(time(NULL));
 
 		int noSolution;
-
+		std::vector<int> initialSeed;
 		for (int j=4;j<1000;j++) {
 			N=j;
 			noSolution = 0;
@@ -435,7 +435,7 @@ int main(int argc, char* argv[]) {
 			STEPS = atoi(argv[1]);
 			//N = atoi(argv[2]);
 
-			std::vector<int> initialSeed; 
+			initialSeed.clear();
 
 			clock_t t1, t2;
 
@@ -446,8 +446,8 @@ int main(int argc, char* argv[]) {
 				initialSeed = placeQueensRandom(N);
 			}
 
-			std::cout << "\nINITIAL BOARD: \n\n";
-			printBoard(initialSeed);
+			//std::cout << "\nINITIAL BOARD: \n\n";
+			//printBoard(initialSeed);
 
 			t1 = clock();
 
@@ -470,8 +470,8 @@ int main(int argc, char* argv[]) {
 			} 
 
 			t2 = clock();
-			std::cout<<"\nFINAL BOARD: \n\n";
-			printBoard(initialSeed);
+			//std::cout<<"\nFINAL BOARD: \n\n";
+			//printBoard(initialSeed);
 
 			//std::cout << "\nMAXIMUM ALLOWED STEPS IS: " << STEPS; 
 			if (foundSolution) {
