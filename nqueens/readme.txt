@@ -5,7 +5,7 @@ November 14, 2016
 
 In the nqueens folder, our code is in aqueens.cpp and the executable is aqueens.
 
-To run, navigate to the nqueens folder, then in the command line type:
+To run via Terminal, navigate to the nqueens folder, then in the command line type:
 
 ./aqueens NUM_STEPS NUM_QUEENS ALGO_TYPE
 
