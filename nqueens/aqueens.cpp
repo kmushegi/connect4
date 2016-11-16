@@ -56,10 +56,10 @@ void printBoard(std::vector<int> queenLocations) {
 
 			// if you are in a column where a queen is
 			if (queenLocations[r] == c) { 
-				std::cout<<"1 ";
+				std::cout<<"Q ";
 			}
 			else
-				std::cout<<"0 ";
+				std::cout<<"_ ";
 		}
 		std::cout<<std::endl;
 	}
@@ -423,23 +423,12 @@ int main(int argc, char* argv[]) {
 	} else if(argc == 4) {
 		srand(time(NULL));
 
-		int noSolution;
-		std::vector<int> initialSeed;
-		for (int j=100;j<=750;j=j+25) {
-			N=j;
-			noSolution = 0;
-		
-		for (int k = 0; k<10; k++) {
-			foundSolution = false;
-			firstBetter = false;
-			smartStart = false;
-
 			STEPS = atoi(argv[1]);
-			//N = atoi(argv[2]);
-
-			initialSeed.clear();
+			N = atoi(argv[2]);
 
 			clock_t t1, t2; // used to calculate program run-time
+
+			std::vector<int> initialSeed;
 
 			// 
 			// initialize the board smartly or randomly according to whether
@@ -457,101 +446,37 @@ int main(int argc, char* argv[]) {
 				firstBetter = true;
 			}
 
-			//std::cout << "\nINITIAL BOARD: \n\n";
-			//printBoard(initialSeed);
+			std::cout << "\nINITIAL BOARD FOR " << N << "-QUEEN PROBLEM: \n\n";
+			printBoard(initialSeed);
 
 			t1 = clock(); // start the clock
 
 			if((strcmp(argv[3],"BASIC") == 0) || (strcmp(argv[3],"FIRST-BETTER") == 0) || (strcmp(argv[3],"SMART-START") == 0)) {
-				
 				initialSeed = minConflictsRandom(initialSeed, STEPS);
-				if (firstBetter) {
-					//std::cout<<"\nBOARD AFTER RUNNING FIRST-BETTER ALGO: \n\n";
-					//firstBetter = true;
-				} else if (smartStart) {
-					//std::cout<<"\nBOARD AFTER RUNNING SMART-START ALGO: \n\n";
-				} else {
-					//std::cout<<"\nBOARD AFTER RUNNING BASIC ALGO: \n\n";
-				}
 			} else if(strcmp(argv[3],"GREEDY") == 0) {
-				//std::cout<<"\nBOARD AFTER RUNNING GREEDY ALGO: \n\n";
 				initialSeed = minConflictsGreedy(initialSeed, STEPS);
 			} else if(strcmp(argv[3],"RANDOM") == 0) {
-				//std::cout<<"\nBOARD AFTER RUNNING RANDOM ALGO: \n\n";
 				initialSeed = randomOrMinConflicts(initialSeed, STEPS);
 			} 
 
 			t2 = clock(); // end the clock
-			//std::cout<<"\nFINAL BOARD: \n\n";
-			//printBoard(initialSeed);
 
-			//std::cout << "\nMAXIMUM ALLOWED STEPS IS: " << STEPS; 
+			std::cout<<"\nBOARD AFTER RUNNING " << argv[3] << " ALGORITHM ON " << N << " QUEENS: \n\n";
+			printBoard(initialSeed);
+
 			if (foundSolution) {
-				//std::cout << "\nSolution found! :)\n";
-				//std::cout << "\n--> Run time is " << (t2-t1) << " milliseconds.";
+				std::cout << "\nSolution found! :)\n";
+				std::cout << "\n--> Run time is " << (t2-t1) << " milliseconds.";
 				timeForRun.push_back(t2-t1);
 				stepsForRun.push_back(actualSteps);
-				//std::cout << "\n--> Number of steps to find solution is " << actualSteps << ".\n\n";
+				std::cout << "\n--> Number of steps to find solution is " << actualSteps << " (and max allowed steps is " << N << ").\n\n";
 
 			} else {
-				noSolution++;
-				//std::cout<<"\nNo solution was found. :(\n\n";
+				std::cout<<"\nNo solution was found. :(\n\n";
 			}
 
-			if (noSolution > 1) {
-				std::cout<<"\n Unreliable at: " << N << " queens. \n";
-				exit(0);
-			}
-
-			
-			//sleep(10);
-			//initialSeed = std::vector<int>(); 
-			std::this_thread::sleep_for (std::chrono::seconds(1));
-		
-
-
-
-		}
-
-
-
-			int sumSteps = 0;
-			int sumTime = 0;
-			for (int k=0; k<stepsForRun.size(); k++) {
-				sumSteps = sumSteps + stepsForRun[k];
-				//std::cout << stepsForRun[k] << " ";
-			}
-			std::cout << std::endl;
-			for (int k=0; k<stepsForRun.size(); k++) {
-				//std::cout << timeForRun[k] << " ";
-				sumTime = sumTime + timeForRun[k];
-			}
-			int averageTime = sumTime/timeForRun.size();
-			int averageSteps = sumSteps/stepsForRun.size();
-			//std::cout<< "\nFor algorithm " << argv[3] << " and number of queens " << N;
-			//std::cout<<"\nRan reliably " << (10-noSolution)*10 << "% (for 10 runs where " << noSolution << " didn't find a solution.)";
-			//std::cout << "\nAverage Time: " 
-			//<< averageTime << "\nAverage Steps: " << averageSteps <<std::endl;
-			std::cout << averageSteps << " " << averageTime;
-}
-std::cout << "\n";
 		
 	}
-	/*int sumSteps = 0;
-	int sumTime = 0;
-	for (int k=0; k<stepsForRun.size(); k++) {
-		sumSteps = sumSteps + stepsForRun[k];
-		std::cout << stepsForRun[k] << " ";
-	}
-	std::cout << std::endl;
-		for (int k=0; k<stepsForRun.size(); k++) {
-		std::cout << timeForRun[k] << " ";
-		sumTime = sumTime + timeForRun[k];
-	}
-	int averageTime = sumTime/timeForRun.size();
-	int averageSteps = sumSteps/stepsForRun.size();
-	std::cout << "\n\nAt the end of ten runs the averages are for time " 
-	<< averageTime << " and for steps " << averageSteps <<std::endl;*/
 
 	return 0;
 }
