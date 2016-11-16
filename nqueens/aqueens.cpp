@@ -469,7 +469,7 @@ int main(int argc, char* argv[]) {
 				std::cout << "\n--> Run time is " << (t2-t1) << " milliseconds.";
 				timeForRun.push_back(t2-t1);
 				stepsForRun.push_back(actualSteps);
-				std::cout << "\n--> Number of steps to find solution is " << actualSteps << " (and max allowed steps is " << N << ").\n\n";
+				std::cout << "\n--> Number of steps to find solution is " << actualSteps << " (and max allowed steps is " << STEPS << ").\n\n";
 
 			} else {
 				std::cout<<"\nNo solution was found. :(\n\n";

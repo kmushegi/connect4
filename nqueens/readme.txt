@@ -18,6 +18,8 @@ where:
 
 The output will print the initial board on N-Queens, the final board of N-Queens after ALGO_TYPE is run, whether or not a solution was found, and if so, the run time and number of steps it took to find the solution.
 
+In the printed board, “Q” represents a space where there is a queen and “_” represents an empty space. NOTE: If you would like to turn off printing the board (and just see run time and steps) (for larger N’s), comment out printBoard(initialSeed) @ line 450 AND line 465.
+
 In the aqueens.cpp file, here are the line numbers where the respective variations can be found:
 1) BASIC: line 216 @ minConflictsRandom()**
 2) GREEDY: line 135 @ minConflictsGreedy()**
