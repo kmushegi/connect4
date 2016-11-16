@@ -474,7 +474,6 @@ int main(int argc, char* argv[]) {
 			} else {
 				std::cout<<"\nNo solution was found. :(\n\n";
 			}
-
 		
 	}
 
