@@ -79,7 +79,13 @@ public class ValueIterationMDP {
 		// show method that prints utilities and policy
 		printUtilitiesAndPolicy(utility, policy);
     }
+/*
+    public static double[] valueIteration(double error) {
+    	double[] utility2;
+    	double[] utilityPrime;
 
+
+    }*/
 
 
     // print out the current utilities and action choices for all states
