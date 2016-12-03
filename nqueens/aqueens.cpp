@@ -425,7 +425,7 @@ int main(int argc, char* argv[]) {
 
 		int noSolution;
 		std::vector<int> initialSeed;
-		for (int j=100;j<=750;j=j+25) {
+		for (int j=750;j<=7500;j=j+50) {
 			N=j;
 			noSolution = 0;
 		
