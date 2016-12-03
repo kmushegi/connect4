@@ -58,11 +58,26 @@ public class ValueIterationMDP {
 
 
     public static void main (String[] args) {
-	
-    
-	// show method that prints utilities and policy
-	printUtilitiesAndPolicy(utility, policy);
+		if(args.length != 6) {
+			System.out.println("Parameters were not supplied correctly");
+			System.exit(1);
+		}
+		discountFactor = Double.parseDouble(args[0]);
+		maxStateUtilityError = Double.parseDouble(args[1]);
+		keyLossProbability = Double.parseDouble(args[2]);
+		positiveTerminalReward = Double.parseDouble(args[3]);
+		negativeTerminalReward = Double.parseDouble(args[4]);
+		stepCost = Double.parseDouble(args[5]);
 
+		System.out.println("Discount Factor: " + discountFactor +
+			"\nMax. State Error: " + maxStateUtilityError +
+			"\nKey Loss Prob: " + keyLossProbability +
+			"\nPositive Terminal Reward: " + positiveTerminalReward +
+			"\nNegative Terminal Reward: " + negativeTerminalReward +
+			"\nStep Cost: " + stepCost + "\n");
+    
+		// show method that prints utilities and policy
+		printUtilitiesAndPolicy(utility, policy);
     }
 
 
