@@ -77,49 +77,50 @@ public class ValueIterationMDP {
 			"\nStep Cost: " + stepCost + "\n");
     
     	initializeMDP(T,R);
-    	utility = valueIteration();
+    	valueIteration();
 		// show method that prints utilities and policy
 		printUtilitiesAndPolicy(utility, policy);
     }
 
-    public static double[] valueIteration() {
-    	double[] utility2 = new double[NUM_STATES];
+    public static void valueIteration() {
     	double[] utilityPrime = new double[NUM_STATES];
 
-    	double delta = 0;
+    	double delta = Double.MAX_VALUE;
 
-    	while(delta < (maxStateUtilityError * ( 1 - discountFactor))/discountFactor) {
+    	while(delta > (maxStateUtilityError * (1.0 - discountFactor))/discountFactor) {
     		System.out.println("Delta: "+delta);
     		for(int i = 0; i < NUM_STATES; i++) {
-    			utility2[i] = utilityPrime[i];
+    			utilityPrime[i] = utility[i];
     		}
+
     		delta = 0;
 
     		for(int i = 0; i < NUM_STATES; i++) {
-    			int maxSum = Integer.MIN_VALUE;
-
+    			double maxSum = -Double.MAX_VALUE;
+    			int maxAction = -1;
     			for(int a = 0; a < 4; a++) {
-    				String action = action(a);
-    				int currentSum = 0;
+    				double currentSum = 0;
     				for(int j = 0; j < NUM_STATES; j++) {
     					//T[state][action][state']
-    					currentSum += T[i][a][j] * utility2[j];
+    					currentSum += T[i][a][j] * utility[j];
     				}
     				if(currentSum > maxSum) {
     					maxSum = currentSum;
+    					maxAction = a;
     				}
     			}
+    			policy[i] = maxAction;
+    			utility[i] = R[i] + discountFactor * maxSum;
 
-    			utilityPrime[i] = R[i] + discountFactor * maxSum;
-
-    			if(Math.abs(utilityPrime[i] - utility2[i]) > delta) {
-    				delta = Math.abs(utilityPrime[i] - utility2[i]);
+    			if(Math.abs(utilityPrime[i] - utility[i]) > delta) {
+    				System.out.println("Updating Delta\n");
+    				delta = Math.abs(utilityPrime[i] - utility[i]);
     			}
     		}
     	}
     	System.out.println("Delta: "+delta);
-    	System.out.println("Exiting Value Iterationn");
-    	return utility2;
+    	System.out.println("Exiting Value Iteration");
+    	// return utility2;
     }
 
 
