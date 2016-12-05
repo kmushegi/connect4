@@ -45,6 +45,8 @@ public class ValueIterationMDP {
     // reward for all other transitions (step cost)
     private static double stepCost;
 
+    private static int iterations;
+
     // solution technique
     private static String solutionTechnique = "";
 
@@ -68,16 +70,19 @@ public class ValueIterationMDP {
 		positiveTerminalReward = Double.parseDouble(args[3]);
 		negativeTerminalReward = Double.parseDouble(args[4]);
 		stepCost = Double.parseDouble(args[5]);
+		iterations = 0;
 
 		System.out.println("Discount Factor: " + discountFactor +
 			"\nMax. State Error: " + maxStateUtilityError +
 			"\nKey Loss Prob: " + keyLossProbability +
 			"\nPositive Terminal Reward: " + positiveTerminalReward +
 			"\nNegative Terminal Reward: " + negativeTerminalReward +
-			"\nStep Cost: " + stepCost + "\n");
+			"\nStep Cost: " + stepCost);
     
     	initializeMDP(T,R);
     	valueIteration();
+
+    	System.out.println("Iterations: " + iterations + "\n");
 		// show method that prints utilities and policy
 		printUtilitiesAndPolicy(utility, policy);
     }
@@ -88,7 +93,8 @@ public class ValueIterationMDP {
     	double delta = Double.MAX_VALUE;
 
     	while(delta > (maxStateUtilityError * (1.0 - discountFactor))/discountFactor) {
-    		System.out.println("Delta: "+delta);
+    		// System.out.println("Delta: "+delta);
+    		iterations++;
     		for(int i = 0; i < NUM_STATES; i++) {
     			utilityPrime[i] = utility[i];
     		}
@@ -113,14 +119,11 @@ public class ValueIterationMDP {
     			utility[i] = R[i] + discountFactor * maxSum;
 
     			if(Math.abs(utilityPrime[i] - utility[i]) > delta) {
-    				System.out.println("Updating Delta\n");
     				delta = Math.abs(utilityPrime[i] - utility[i]);
     			}
     		}
     	}
-    	System.out.println("Delta: "+delta);
     	System.out.println("Exiting Value Iteration");
-    	// return utility2;
     }
 
 
