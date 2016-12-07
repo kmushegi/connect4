@@ -72,6 +72,10 @@ public class ValueIterationMDP {
 		stepCost = Double.parseDouble(args[5]);
 		iterations = 0;
 
+		// 
+		// Output information about the command line arguments entered by user
+		//
+
 		System.out.println("Discount Factor: " + discountFactor +
 			"\nMax. State Error: " + maxStateUtilityError +
 			"\nKey Loss Prob: " + keyLossProbability +
@@ -79,45 +83,77 @@ public class ValueIterationMDP {
 			"\nNegative Terminal Reward: " + negativeTerminalReward +
 			"\nStep Cost: " + stepCost);
     
-    	initializeMDP(T,R);
-    	valueIteration();
+    	initializeMDP(T,R);  
+    	valueIteration(); 		// use value iteration to solve the MDP
 
     	System.out.println("Iterations: " + iterations + "\n");
+
 		// show method that prints utilities and policy
 		printUtilitiesAndPolicy(utility, policy);
     }
 
+    //
+    // valueIteration: this function uses sychronous, in place value iteration to solve
+    // a slightly more complicated version of the maze MDP problem which was presented in class.
+    // The MDP maze problem consists of a set of states for where the user is in the maze
+    // and whether or not the user has a key, a set of potential actions, a transition model,
+    // a rewards function, and a discount factor. This function iterates through, calculating 
+    // utilities for the different states in order to come up with the policy for the agent to
+    // follow or, in other words, the best action at each state in the maze.
+    // 
     public static void valueIteration() {
-    	double[] utilityPrime = new double[NUM_STATES];
 
-    	double delta = Double.MAX_VALUE;
+    	// array of current utilities for each state
+    	double[] utilityPrime = new double[NUM_STATES]; 
 
+    	double delta = Double.MAX_VALUE; // used to determine terminal condition
+
+    	// while the terminal condition has not been reached
     	while(delta > (maxStateUtilityError * (1.0 - discountFactor))/discountFactor) {
     		// System.out.println("Delta: "+delta);
-    		iterations++;
+
+    		iterations++; // increase the number of iterations
     		for(int i = 0; i < NUM_STATES; i++) {
-    			utilityPrime[i] = utility[i];
+    			utilityPrime[i] = utility[i]; // update your array of current utilities
     		}
 
-    		delta = 0;
+    		delta = 0; // reset delta to zero for new iteration
 
+    		// for each state, find the action that maximizes expected utility
     		for(int i = 0; i < NUM_STATES; i++) {
-    			double maxSum = -Double.MAX_VALUE;
-    			int maxAction = -1;
-    			for(int a = 0; a < 4; a++) {
-    				double currentSum = 0;
-    				for(int j = 0; j < NUM_STATES; j++) {
-    					//T[state][action][state']
+
+    			double maxSum = -Double.MAX_VALUE;			// best expected utility found so far
+    			int maxAction = -1;  						// action that maximizes utility
+
+    			for(int a = 0; a < 4; a++) {				// for each action
+    				double currentSum = 0;					// used to calculate expected utility
+    				for(int j = 0; j < NUM_STATES; j++) {	// for each state
+    					
+    					//
+    					// increase expected utility by probability of arriving in the new state j
+    					// multiplied by the utility at the new state
+    					//
     					currentSum += T[i][a][j] * utility[j];
+
     				}
-    				if(currentSum > maxSum) {
-    					maxSum = currentSum;
-    					maxAction = a;
+
+    				// if you have found a better expected utility
+    				if(currentSum > maxSum) {  
+    					maxSum = currentSum; 		// update current best
+    					maxAction = a;				// save action that resulted in current best
     				}
     			}
-    			policy[i] = maxAction;
+
+    			//
+    			// update your policy array to be the action that resulted in the maximized 
+    			// expected utility. Update your utility array to the the reward that you get
+    			// in your current state plus the discounted expected utility from taking that
+    			// action
+    			//
+    			policy[i] = maxAction;				
     			utility[i] = R[i] + discountFactor * maxSum;
 
+    			// update delta if you have found a better improvement
     			if(Math.abs(utilityPrime[i] - utility[i]) > delta) {
     				delta = Math.abs(utilityPrime[i] - utility[i]);
     			}
