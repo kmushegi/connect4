@@ -99,7 +99,8 @@ public class ValueIterationMDP {
     // and whether or not the user has a key, a set of potential actions, a transition model,
     // a rewards function, and a discount factor. This function iterates through, calculating 
     // utilities for the different states in order to come up with the policy for the agent to
-    // follow or, in other words, the best action at each state in the maze.
+    // follow to maximize its expected utility or, in other words, the best action at each state
+    // in the maze.
     // 
     public static void valueIteration() {
 
@@ -110,10 +111,9 @@ public class ValueIterationMDP {
 
     	// while the terminal condition has not been reached
     	while(delta > (maxStateUtilityError * (1.0 - discountFactor))/discountFactor) {
-    		// System.out.println("Delta: "+delta);
 
     		iterations++; // increase the number of iterations
-    		for(int i = 0; i < NUM_STATES; i++) {
+    		for(int i = 0; i < NUM_STATES; i++) {  
     			utilityPrime[i] = utility[i]; // update your array of current utilities
     		}
 
