@@ -7,6 +7,8 @@
   Fall, 2013
   Stephen Majercik
 
+  Kote Mushegian and Clara Hunnewell
+  Code for Assignment 7
  */
 
 
@@ -158,6 +160,7 @@ public class ValueIterationMDP {
     				delta = Math.abs(utilityPrime[i] - utility[i]);
     			}
     		}
+    		return; 
     	}
     	System.out.println("Exiting Value Iteration");
     }
