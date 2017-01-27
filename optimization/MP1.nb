@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[      9250,        228]
-NotebookOptionsPosition[      8255,        189]
-NotebookOutlinePosition[      8731,        209]
-CellTagsIndexPosition[      8688,        206]
+NotebookDataLength[      8565,        220]
+NotebookOptionsPosition[      7558,        182]
+NotebookOutlinePosition[      8034,        202]
+CellTagsIndexPosition[      7991,        199]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -142,8 +142,6 @@ Cell[TextData[{
  "'s solution"
 }], "Subtitle"],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"Maximize", "[", 
   RowBox[{
@@ -162,28 +160,23 @@ Cell[BoxData[
    3.694537183376334*^9}, {3.694538420655016*^9, 3.694538447460864*^9}}],
 
 Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"4490", ",", 
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{"x1", "\[Rule]", "3"}], ",", 
-     RowBox[{"x2", "\[Rule]", "55"}]}], "}"}]}], "}"}]], "Output",
- CellChangeTimes->{
-  3.440169948895383*^9, 3.440170342286441*^9, 3.4401704485221853`*^9, 
-   3.4402371500745106`*^9, {3.440237273045621*^9, 3.4402372969679556`*^9}, 
-   3.440237544894591*^9, 3.440237753289217*^9, 3.44023816023453*^9, {
-   3.440238274080466*^9, 3.4402382826900063`*^9}, {3.4402383147843723`*^9, 
-   3.440238363613435*^9}, {3.440238601180496*^9, 3.4402386145245023`*^9}, {
-   3.4402386524002295`*^9, 3.440238693776024*^9}, 3.440243241894596*^9, 
-   3.4402433486778965`*^9, {3.4402434909306273`*^9, 3.4402436264644794`*^9}, {
-   3.4402436565588074`*^9, 3.440243702887822*^9}, 3.44024384678121*^9, {
-   3.4402438923289595`*^9, 3.44024390589172*^9}, {3.4402439428768044`*^9, 
-   3.4402439539707675`*^9}, 3.4402471431882496`*^9, 3.4407786826450005`*^9, 
-   3.440779684670652*^9, 3.440780835059476*^9, {3.440844427875083*^9, 
-   3.440844453906*^9}, 3.530442398549396*^9, 3.530462042778083*^9, {
-   3.6945371981139307`*^9, 3.69453720372622*^9}, 3.694538366341104*^9, {
-   3.69453842775448*^9, 3.6945384495845957`*^9}}]
-}, Open  ]]
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"4490", ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"x1", "\[Rule]", "3"}], ",", 
+      RowBox[{"x2", "\[Rule]", "55"}]}], "}"}]}], "}"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.6945395572739067`*^9, 3.6945395965929003`*^9}, 
+   3.6945396432134*^9}],
+
+Cell["\<\
+Interpretation: 3 acres of soy and 55 acres of oats should be produced in \
+order to maximize revenue.  The maximized revenue is $4,490.
+\
+\>", "Text",
+ CellChangeTimes->{{3.694539612031086*^9, 3.69453969489895*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -224,10 +217,9 @@ Cell[5851, 132, 94, 1, 24, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[5982, 138, 95, 4, 37, "Subtitle"],
-Cell[CellGroupData[{
-Cell[6102, 146, 889, 15, 24, "Input"],
-Cell[6994, 163, 1221, 21, 58, "Output"]
-}, Open  ]]
+Cell[6080, 144, 889, 15, 24, "Input"],
+Cell[6972, 161, 329, 10, 46, InheritFromParent],
+Cell[7304, 173, 226, 5, 58, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
