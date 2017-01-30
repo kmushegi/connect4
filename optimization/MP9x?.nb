@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     11541,        287]
-NotebookOptionsPosition[     10507,        247]
-NotebookOutlinePosition[     10981,        267]
-CellTagsIndexPosition[     10938,        264]
+NotebookDataLength[     11539,        285]
+NotebookOptionsPosition[     10506,        245]
+NotebookOutlinePosition[     10980,        265]
+CellTagsIndexPosition[     10937,        262]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -29,17 +29,15 @@ Cell["Modelling Problem V1", "Title",
    3.694538024890018*^9, 3.69453803493487*^9}, 3.694540148376422*^9, {
    3.694541464372637*^9, 3.694541467938018*^9}}],
 
-Cell["\<\
-Worked with Kote Mushegian
-Variables:  xij = amount of stock j in year i, \
-\>", "Subtitle",
+Cell["Variables:  xij = amount of stock j in year i, ", "Subtitle",
  CellChangeTimes->{{3.4407780390385303`*^9, 3.4407780929008856`*^9}, {
-  3.4407788808375745`*^9, 3.440778884884553*^9}, {3.440779321505105*^9, 
-  3.440779328614662*^9}, {3.4407803422031097`*^9, 3.44078039495446*^9}, {
-  3.6945371627265043`*^9, 3.694537163318488*^9}, {3.694537955007967*^9, 
-  3.694537988536539*^9}, {3.6945380390790377`*^9, 3.694538074757545*^9}, {
-  3.6945402056984453`*^9, 3.694540224858715*^9}, {3.694541471570299*^9, 
-  3.694541481393849*^9}, {3.694542021819515*^9, 3.69454203546704*^9}}],
+   3.4407788808375745`*^9, 3.440778884884553*^9}, {3.440779321505105*^9, 
+   3.440779328614662*^9}, {3.4407803422031097`*^9, 3.44078039495446*^9}, {
+   3.6945371627265043`*^9, 3.694537163318488*^9}, {3.694537955007967*^9, 
+   3.694537988536539*^9}, {3.6945380390790377`*^9, 3.694538074757545*^9}, {
+   3.6945402056984453`*^9, 3.694540224858715*^9}, {3.694541471570299*^9, 
+   3.694541481393849*^9}, {3.694542021819515*^9, 3.69454203546704*^9}, 
+   3.6947962629773273`*^9}],
 
 Cell[BoxData[
  RowBox[{
@@ -268,25 +266,25 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[567, 22, 530, 7, 53, "Title"],
-Cell[1100, 31, 612, 10, 64, "Subtitle"],
-Cell[1715, 43, 568, 11, 24, "Input"],
+Cell[1100, 31, 611, 8, 37, "Subtitle"],
+Cell[1714, 41, 568, 11, 24, "Input"],
 Cell[CellGroupData[{
-Cell[2308, 58, 418, 5, 37, "Subtitle"],
-Cell[2729, 65, 2014, 35, 24, "Input",
+Cell[2307, 56, 418, 5, 37, "Subtitle"],
+Cell[2728, 63, 2014, 35, 24, "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.}]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4780, 105, 153, 2, 37, "Subtitle"],
-Cell[4936, 109, 3241, 71, 340, "Input"],
-Cell[8180, 182, 94, 1, 24, "Input"]
+Cell[4779, 103, 153, 2, 37, "Subtitle"],
+Cell[4935, 107, 3241, 71, 340, "Input"],
+Cell[8179, 180, 94, 1, 24, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8311, 188, 95, 4, 37, "Subtitle"],
+Cell[8310, 186, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[8431, 196, 965, 17, 24, "Input"],
-Cell[9399, 215, 758, 19, 62, "Output"]
+Cell[8430, 194, 965, 17, 24, "Input"],
+Cell[9398, 213, 758, 19, 45, "Output"]
 }, Open  ]],
-Cell[10172, 237, 307, 6, 58, "Text"]
+Cell[10171, 235, 307, 6, 58, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
