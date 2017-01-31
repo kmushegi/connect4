@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[      9146,        236]
-NotebookOptionsPosition[      8077,        195]
-NotebookOutlinePosition[      8553,        215]
-CellTagsIndexPosition[      8510,        212]
+NotebookDataLength[      9387,        244]
+NotebookOptionsPosition[      8317,        203]
+NotebookOutlinePosition[      8793,        223]
+CellTagsIndexPosition[      8750,        220]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -26,16 +26,21 @@ Cell["Modelling Problem 1", "Title",
    3.4402456950041947`*^9, {3.440418174156435*^9, 3.440418175000207*^9}, {
    3.4407780029413157`*^9, 3.4407780100982523`*^9}, {3.440779304817178*^9, 
    3.4407793073328676`*^9}, {3.440780324765163*^9, 3.440780326905843*^9}, {
-   3.694538024890018*^9, 3.69453803493487*^9}}],
+   3.694538024890018*^9, 3.69453803493487*^9}, {3.6948000615858727`*^9, 
+   3.694800064151279*^9}}],
 
-Cell["Variables:  xi = acres of crop i", "Subtitle",
+Cell["\<\
+Clara Hunnewell
+Variables:  xi = acres of crop i\
+\>", "Subtitle",
  CellChangeTimes->{{3.4407780390385303`*^9, 3.4407780929008856`*^9}, {
   3.4407788808375745`*^9, 3.440778884884553*^9}, {3.440779321505105*^9, 
   3.440779328614662*^9}, {3.4407803422031097`*^9, 3.44078039495446*^9}, {
   3.6945371627265043`*^9, 3.694537163318488*^9}, {3.694537955007967*^9, 
   3.694537988536539*^9}, {3.6945380390790377`*^9, 3.694538074757545*^9}, {
   3.6947008356888742`*^9, 3.6947008382270403`*^9}, {3.694796224862774*^9, 
-  3.694796230071228*^9}, {3.694796373634677*^9, 3.694796373799884*^9}}],
+  3.694796230071228*^9}, {3.694796373634677*^9, 3.694796373799884*^9}, {
+  3.694800066559225*^9, 3.694800074254898*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -114,7 +119,8 @@ Cell[BoxData[
       RowBox[{"x1", "+", " ", "x2"}], "\[GreaterEqual]", "0"}], "&&", 
      "\[IndentingNewLine]", 
      RowBox[{"(*", " ", 
-      RowBox[{"limited", " ", "labor"}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"limited", " ", "amount", " ", "of", " ", "labor"}], " ", 
+      "*)"}], "\[IndentingNewLine]", 
      RowBox[{"400", "\[GreaterEqual]", 
       RowBox[{
        RowBox[{"5", "x1"}], "+", " ", 
@@ -129,7 +135,8 @@ Cell[BoxData[
   3.4408444160627346`*^9}, {3.440844448656067*^9, 3.440844449827927*^9}, {
   3.694537152122621*^9, 3.694537177833105*^9}, {3.694538133758768*^9, 
   3.694538138510364*^9}, {3.6945381979380608`*^9, 3.6945383497602158`*^9}, {
-  3.694796480850423*^9, 3.694796537366376*^9}}],
+  3.694796480850423*^9, 3.694796537366376*^9}, {3.6948000930169353`*^9, 
+  3.694800094463211*^9}}],
 
 Cell[BoxData[""], "Input",
  CellChangeTimes->{{3.694537173853479*^9, 3.6945371747206173`*^9}}]
@@ -185,11 +192,12 @@ Cell[BoxData[
    3.6945396432134*^9}],
 
 Cell["\<\
-Interpretation: 3 acres of soy and 55 acres of oats should be produced in \
-order to maximize revenue.  The maximized revenue is $4,490.
+Interpretation: The farmer should produce 3 acres of soy and 55 acres of oats \
+for a maximized revenue of $4,490.
 \
 \>", "Text",
- CellChangeTimes->{{3.694539612031086*^9, 3.69453969489895*^9}}]
+ CellChangeTimes->{{3.694539612031086*^9, 3.69453969489895*^9}, {
+  3.6948001354087152`*^9, 3.6948001741991873`*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -215,27 +223,27 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[567, 22, 457, 6, 53, "Title"],
-Cell[1027, 30, 565, 7, 37, "Subtitle"],
-Cell[1595, 39, 314, 7, 24, "Input"],
+Cell[567, 22, 509, 7, 53, "Title"],
+Cell[1079, 31, 638, 11, 64, "Subtitle"],
+Cell[1720, 44, 314, 7, 24, "Input"],
 Cell[CellGroupData[{
-Cell[1934, 50, 377, 5, 37, "Subtitle"],
-Cell[2314, 57, 1608, 25, 24, "Input",
+Cell[2059, 55, 377, 5, 37, "Subtitle"],
+Cell[2439, 62, 1608, 25, 24, "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.}]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3959, 87, 153, 2, 37, "Subtitle"],
-Cell[4115, 91, 1979, 40, 214, "Input"],
-Cell[6097, 133, 94, 1, 24, "Input"]
+Cell[4084, 92, 153, 2, 37, "Subtitle"],
+Cell[4240, 96, 2063, 42, 214, "Input"],
+Cell[6306, 140, 94, 1, 24, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6228, 139, 95, 4, 37, "Subtitle"],
+Cell[6437, 146, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[6348, 147, 889, 15, 24, "Input"],
-Cell[7240, 164, 236, 7, 75, "Output"]
+Cell[6557, 154, 889, 15, 24, "Input"],
+Cell[7449, 171, 236, 7, 41, "Output"]
 }, Open  ]],
-Cell[7491, 174, 329, 10, 46, "Input"],
-Cell[7823, 186, 226, 5, 58, "Text"]
+Cell[7700, 181, 329, 10, 46, "Input"],
+Cell[8032, 193, 257, 6, 58, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
