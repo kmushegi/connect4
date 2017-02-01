@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[      8155,        216]
-NotebookOptionsPosition[      7090,        175]
-NotebookOutlinePosition[      7564,        195]
-CellTagsIndexPosition[      7521,        192]
+NotebookDataLength[      8759,        229]
+NotebookOptionsPosition[      7658,        187]
+NotebookOutlinePosition[      8131,        207]
+CellTagsIndexPosition[      8088,        204]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -48,11 +48,12 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
-Cell["Objective:  Revenue from crops sold", "Subtitle",
+Cell["Objective:  Revenue from cars & trucks sold", "Subtitle",
  CellChangeTimes->{{3.4407780390385303`*^9, 3.4407781242306147`*^9}, {
   3.440778442183137*^9, 3.44077849735713*^9}, {3.4407795518078756`*^9, 
   3.4407796502322702`*^9}, {3.440780811152614*^9, 3.440780818215295*^9}, {
-  3.694538084725185*^9, 3.6945381010286083`*^9}}],
+  3.694538084725185*^9, 3.6945381010286083`*^9}, {3.6949722423502283`*^9, 
+  3.694972244971221*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -93,16 +94,19 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"constraints", "=", "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
-    RowBox[{
-     RowBox[{"non", "-", 
-      RowBox[{"negative", " ", "cars"}]}], ",", " ", 
-     RowBox[{"limited", " ", "by", " ", "availability"}]}], " ", "*)"}], 
-   "\[IndentingNewLine]", 
+    RowBox[{"non", "-", 
+     RowBox[{"negative", " ", "cars"}]}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"x1", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", " ", 
     "\[IndentingNewLine]", 
     RowBox[{"x2", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
     "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"limited", " ", "by", " ", "the", " ", 
+        RowBox[{"factory", "'"}], "s", " ", "assembly"}], " ", "&"}], " ", 
+      "painting", " ", "capacity"}], " ", "*)"}], "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{
       RowBox[{"65", "x1"}], " ", "+", " ", 
@@ -114,13 +118,13 @@ Cell[BoxData[
       RowBox[{"500", "x2"}]}], " ", "\[LessEqual]", " ", "200000"}]}]}], 
   ";"}]], "Input",
  CellChangeTimes->CompressedData["
-1:eJxTTMoPSmViYGAQA2IQ/f15d/HhRS8di+vsq0B0z8QP9SB6lbv4RBBtcPH+
+1:eJxTTMoPSmViYGAQB2IQ/f15d/HhRS8di+vsq0B0z8QP9SB6lbv4RBBtcPH+
 FBA9LzxvOoi2K2JaBObLn98CovdvCOA+AqQrzHbxgejN+xYKg+h314SUQLRB
 j2wfiD63SWkpiDax6l4Jojni6/eD6DPMR88+BtJvGJkugOiGfyJXQHRinRWY
 bn7DbHG07bXjmRVW1iD6ivuOTSD6eUjAZhA9g2XfLhC9IXjHWRAdZ7VX6xiQ
 nm873QBEV/y5aQ2ivSMX2oDoELP1f53aXzvWHLsGpm9pvnV2BtK5HqJeINp7
 3a9gEP2nYUIEiNYJvBoPojnfPgPTTzJ25INoB/vTRSD6Dq9hOYgWii+qBNEP
-vHbWgWi+vsZOEA0A/x3Bbg==
+vHbWgWi+vsZOEB1a9b5vJpDOO6w4CUQDAGPbyjc=
   "]],
 
 Cell[BoxData[""], "Input",
@@ -165,6 +169,14 @@ Cell[BoxData[
    3.694795544966837*^9, 3.694795678478602*^9, 3.694795865265025*^9}]
 }, Open  ]],
 
+Cell["\<\
+Interpretation: In order to maximize the profits the factory should produce \
+80 cars and 0 trucks to maximize profit. This results in a 104000 unit ($,\
+\[Sterling],\:20be) profit.\
+\>", "Text",
+ CellChangeTimes->{{3.694972058004887*^9, 3.694972112902234*^9}, {
+  3.6949721768760967`*^9, 3.694972195221753*^9}}],
+
 Cell[BoxData[""], "Input",
  CellChangeTimes->{3.694795352382139*^9, 3.694795871346999*^9}],
 
@@ -174,8 +186,8 @@ Cell[BoxData[""], "Input",
 }, Open  ]]
 },
 ScreenStyleEnvironment->"Condensed",
-WindowSize->{1144, 747},
-WindowMargins->{{Automatic, 43}, {Automatic, 0}},
+WindowSize->{882, 747},
+WindowMargins->{{Automatic, 52}, {Automatic, 1}},
 PrintingCopies->1,
 PrintingPageRange->{Automatic, Automatic},
 Magnification->1.5,
@@ -199,23 +211,24 @@ Cell[567, 22, 510, 7, 53, "Title"],
 Cell[1080, 31, 509, 6, 37, "Subtitle"],
 Cell[1592, 39, 314, 7, 24, "Input"],
 Cell[CellGroupData[{
-Cell[1931, 50, 323, 4, 37, "Subtitle"],
-Cell[2257, 56, 1664, 26, 24, "Input",
+Cell[1931, 50, 382, 5, 37, "Subtitle"],
+Cell[2316, 57, 1664, 26, 24, "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.}]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3958, 87, 153, 2, 37, "Subtitle"],
-Cell[4114, 91, 1270, 32, 130, "Input"],
-Cell[5387, 125, 94, 1, 24, "Input"]
+Cell[4017, 88, 153, 2, 37, "Subtitle"],
+Cell[4173, 92, 1454, 35, 151, "Input"],
+Cell[5630, 129, 94, 1, 24, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5518, 131, 95, 4, 37, "Subtitle"],
+Cell[5761, 135, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[5638, 139, 889, 15, 24, "Input"],
-Cell[6530, 156, 330, 8, 24, "Output"]
+Cell[5881, 143, 889, 15, 24, "Input"],
+Cell[6773, 160, 330, 8, 24, "Output"]
 }, Open  ]],
-Cell[6875, 167, 90, 1, 24, "Input"],
-Cell[6968, 170, 94, 1, 24, "Input"]
+Cell[7118, 171, 322, 6, 58, "Text"],
+Cell[7443, 179, 90, 1, 24, "Input"],
+Cell[7536, 182, 94, 1, 24, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
