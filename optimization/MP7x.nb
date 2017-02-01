@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     14453,        364]
-NotebookOptionsPosition[     13377,        323]
-NotebookOutlinePosition[     13853,        343]
-CellTagsIndexPosition[     13810,        340]
+NotebookDataLength[     15537,        383]
+NotebookOptionsPosition[     14461,        342]
+NotebookOutlinePosition[     14934,        362]
+CellTagsIndexPosition[     14891,        359]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -60,12 +60,15 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
-Cell["Objective:  total days spent mining", "Subtitle",
+Cell["\<\
+Objective:  total amount of money spent on workers during the week\
+\>", "Subtitle",
  CellChangeTimes->{{3.4407780390385303`*^9, 3.4407781242306147`*^9}, {
   3.440778442183137*^9, 3.44077849735713*^9}, {3.4407795518078756`*^9, 
   3.4407796502322702`*^9}, {3.440780811152614*^9, 3.440780818215295*^9}, {
   3.694538084725185*^9, 3.6945381010286083`*^9}, {3.694540236922372*^9, 
-  3.694540245041855*^9}, {3.694541490330662*^9, 3.694541499617043*^9}}],
+  3.694540245041855*^9}, {3.694541490330662*^9, 3.694541499617043*^9}, {
+  3.694972380915553*^9, 3.694972390711706*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -148,6 +151,13 @@ Cell[BoxData[
      "\[IndentingNewLine]", 
      RowBox[{"x27", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
      "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+      "need", " ", "to", " ", "meet", " ", "the", " ", "staffing", " ", 
+       "needs", " ", "of", " ", "the", " ", "supermarket", " ", "on", " ", 
+       "each", " ", 
+       RowBox[{"day", ".", " ", "week"}], " ", "starst", " ", "on", " ", 
+       "Monday"}], "*)"}], "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{
        RowBox[{"8", "*", 
@@ -245,12 +255,13 @@ Cell[BoxData[
        "x21", "+", "x22", "+", "x23", "+", "x24", "+", "x25", "+", "x26", "+",
          "x27"}], ")"}]}]}]}], ";"}], "\[IndentingNewLine]"}]], "Input",
  CellChangeTimes->CompressedData["
-1:eJxTTMoPSmViYGAQAWIQ/f15d/HhRS8di+vsq0B0z8QP9SB6lbv4RBBtcPH+
+1:eJxTTMoPSmViYGAQBWIQ/f15d/HhRS8di+vsq0B0z8QP9SB6lbv4RBBtcPH+
 FBA9LzxvOoi2K2JaBObLn98CovdvCOA+AqQrzHbxgejN+xYKg+h314SUQLRB
 j2wfiD63SWkpiDax6l4Jojni6/eD6DPMR88+BtJvGJkugOiGfyJXQHRinRWY
 bn7DbHG07bXjmRVW1iD6ivuOTSD6eUjAZhA9g2XfLhC9IXjHWRDdUL1k/zEg
 7ZSWdx5E/9344gaI5vOMvg+iBf/u+ACiWVwufATRJb0FkcdB6ifuTALRxuq3
-I13aXzuK7PUsBtFZv+/VgmiDjVr7QLQNk9wHMP+s9GcQDQDDZrTk
+I13aXzuK7PUsBtFZv+/VgmiDjVr7QLQNk9wHMP+s9GcQ7fHXde9MIC11weIA
+iAYAXnS9pg==
   "]],
 
 Cell[BoxData[""], "Input",
@@ -308,16 +319,24 @@ Cell[BoxData[
  CellChangeTimes->{{3.694540430361553*^9, 3.694540446275983*^9}, 
    3.694540549935848*^9, 3.694541603361986*^9, {3.694798328168899*^9, 
    3.694798331491295*^9}, 3.6947983854629717`*^9, 3.6947984501462507`*^9, 
-   3.694798663329475*^9, 3.694798783123611*^9}]
+   3.694798663329475*^9, 3.694798783123611*^9, 3.694972484331977*^9}]
 }, Open  ]],
 
 Cell["\<\
-Interpretation: 
+Interpretation: In order to minimize the cost of operation and meet the \
+staffing requirements the supermarket should hire: Full time workers starting \
+on Monday 0, starting on Tuesday 1, starting on Wednesday 22, starting on \
+Thursday 2, starting on Friday 17, starting on Saturday 3, starting on Sunday \
+0. Part time workers starting on Monday 0, starting on Tuesday 3, starting on \
+Wednesday 6, starting on Thursday 0, starting on Friday 0, starting on \
+Saturday 1, starting on Sunday 5. The cost of staffing the supermarket for a \
+week is 20,400 units($,\[Sterling],\:20be).
 \
 \>", "Text",
  CellChangeTimes->{{3.694539612031086*^9, 3.69453969489895*^9}, {
    3.694540623525984*^9, 3.694540669252345*^9}, {3.694541627864325*^9, 
-   3.694541661149891*^9}, 3.694798957207053*^9}]
+   3.694541661149891*^9}, 3.694798957207053*^9, {3.69497247149244*^9, 
+   3.694972635436966*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -327,8 +346,8 @@ WindowMargins->{{0, Automatic}, {Automatic, 0}},
 PrintingCopies->1,
 PrintingPageRange->{Automatic, Automatic},
 Magnification->1.5,
-FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September 9, \
-2014)",
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
+2016)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -348,22 +367,22 @@ Cell[715, 26, 530, 7, 53, "Title"],
 Cell[1248, 35, 620, 8, 37, "Subtitle"],
 Cell[1871, 45, 689, 13, 24, "Input"],
 Cell[CellGroupData[{
-Cell[2585, 62, 418, 5, 37, "Subtitle"],
-Cell[3006, 69, 2088, 36, 24, "Input",
+Cell[2585, 62, 506, 8, 37, "Subtitle"],
+Cell[3094, 72, 2088, 36, 24, "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.}]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5131, 110, 153, 2, 37, "Subtitle"],
-Cell[5287, 114, 5585, 139, 571, "Input"],
-Cell[10875, 255, 94, 1, 24, "Input"]
+Cell[5219, 113, 153, 2, 37, "Subtitle"],
+Cell[5375, 117, 5941, 147, 592, "Input"],
+Cell[11319, 266, 94, 1, 24, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11006, 261, 95, 4, 37, "Subtitle"],
+Cell[11450, 272, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[11126, 269, 991, 17, 24, "Input"],
-Cell[12120, 288, 986, 22, 63, "Output"]
+Cell[11570, 280, 991, 17, 24, "Input"],
+Cell[12564, 299, 1008, 22, 46, "Output"]
 }, Open  ]],
-Cell[13121, 313, 228, 6, 58, "Text"]
+Cell[13587, 324, 846, 14, 119, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
