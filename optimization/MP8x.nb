@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     15558,        393]
-NotebookOptionsPosition[     14481,        352]
-NotebookOutlinePosition[     14955,        372]
-CellTagsIndexPosition[     14912,        369]
+NotebookDataLength[     16010,        399]
+NotebookOptionsPosition[     14932,        358]
+NotebookOutlinePosition[     15405,        378]
+CellTagsIndexPosition[     15362,        375]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -340,19 +340,25 @@ Cell[BoxData[
 }, Open  ]],
 
 Cell["\<\
-Interpretation: 
+Interpretation: 0 regular time workers workers start on Monday and Tuesday, \
+18 regular time workers start on Wednesday, 7 on Thursday, 7 on Friday, 11 on \
+Saturday, and 0 on Sunday. There are 0 overtime workers on Monday, 2 on \
+Tuesday, 0 on Wednesday, 4 of Thursday, 0 on Friday, 1 on Saturday and 0 on \
+Sunday. The supermarket will be able to meet its labor requirements this way \
+while minimizing the cost.
 \
 \>", "Text",
  CellChangeTimes->{{3.694539612031086*^9, 3.69453969489895*^9}, {
    3.694540623525984*^9, 3.694540669252345*^9}, {3.694541627864325*^9, 
    3.694541661149891*^9}, 3.694798957207053*^9, {3.69497247149244*^9, 
-   3.694972635436966*^9}, 3.6951381080136147`*^9}]
+   3.694972635436966*^9}, 3.6951381080136147`*^9, {3.697134179604041*^9, 
+   3.6971343021529417`*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
 ScreenStyleEnvironment->"Condensed",
-WindowSize->{1222, 853},
-WindowMargins->{{Automatic, 73}, {0, Automatic}},
+WindowSize->{900, 853},
+WindowMargins->{{33, Automatic}, {0, Automatic}},
 PrintingCopies->1,
 PrintingPageRange->{Automatic, Automatic},
 Magnification->1.5,
@@ -378,12 +384,12 @@ Cell[1248, 35, 720, 11, 37, "Subtitle"],
 Cell[1971, 48, 737, 13, 24, "Input"],
 Cell[CellGroupData[{
 Cell[2733, 65, 506, 8, 37, "Subtitle"],
-Cell[3242, 75, 2244, 41, 24, "Input",
+Cell[3242, 75, 2244, 41, 46, "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.}]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[5523, 121, 153, 2, 37, "Subtitle"],
-Cell[5679, 125, 6111, 155, 571, "Input"],
+Cell[5679, 125, 6111, 155, 634, "Input"],
 Cell[11793, 282, 94, 1, 24, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
@@ -392,7 +398,7 @@ Cell[CellGroupData[{
 Cell[12044, 296, 1032, 17, 24, "Input"],
 Cell[13079, 315, 1058, 23, 46, "Output"]
 }, Open  ]],
-Cell[14152, 341, 301, 7, 58, "Text"]
+Cell[14152, 341, 752, 13, 119, "Text"]
 }, Open  ]]
 }, Open  ]]
 }

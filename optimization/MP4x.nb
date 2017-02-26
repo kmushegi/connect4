@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[      9668,        244]
-NotebookOptionsPosition[      8641,        204]
-NotebookOutlinePosition[      9114,        224]
-CellTagsIndexPosition[      9071,        221]
+NotebookDataLength[      9836,        246]
+NotebookOptionsPosition[      8809,        206]
+NotebookOutlinePosition[      9282,        226]
+CellTagsIndexPosition[      9239,        223]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -165,8 +165,8 @@ Cell[BoxData[
  RowBox[{"Minimize", "[", 
   RowBox[{
    RowBox[{"{", 
-    RowBox[{"objective", ",", "constraints"}], "}"}], ",", "vars", ",", " ", 
-   "Integers"}], "]"}]], "Input",
+    RowBox[{"objective", ",", "constraints"}], "}"}], ",", "vars"}], 
+  "]"}]], "Input",
  CellChangeTimes->{{3.440169944660331*^9, 3.440169947926478*^9}, {
    3.440238159406389*^9, 3.44023815970327*^9}, {3.440245743083243*^9, 
    3.440245749802122*^9}, {3.440246826275915*^9, 3.440246845620036*^9}, {
@@ -177,28 +177,30 @@ Cell[BoxData[
    3.4407786812387147`*^9}, {3.440779676279812*^9, 3.4407796766860723`*^9}, 
    3.530442397722596*^9, 3.530462042606083*^9, {3.694537182487916*^9, 
    3.694537183376334*^9}, {3.694538420655016*^9, 3.694538447460864*^9}, {
-   3.694540416546652*^9, 3.694540418440621*^9}}],
+   3.694540416546652*^9, 3.694540418440621*^9}, {3.695552121786421*^9, 
+   3.695552155334506*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"344.02`", ",", 
+  RowBox[{"344.00000000000006`", ",", 
    RowBox[{"{", 
     RowBox[{
-     RowBox[{"x1", "\[Rule]", "798"}], ",", 
-     RowBox[{"x2", "\[Rule]", "136"}], ",", 
-     RowBox[{"x3", "\[Rule]", "800"}]}], "}"}]}], "}"}]], "Output",
+     RowBox[{"x1", "\[Rule]", "800.`"}], ",", 
+     RowBox[{"x2", "\[Rule]", "133.3333333333336`"}], ",", 
+     RowBox[{"x3", "\[Rule]", "800.`"}]}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->{{3.694540430361553*^9, 3.694540446275983*^9}, 
-   3.694540549935848*^9}]
+   3.694540549935848*^9, {3.695552124555851*^9, 3.6955521558135643`*^9}}]
 }, Open  ]],
 
 Cell["\<\
-Interpretation: To minimize cost, the restaurant should by 798 clams from \
-supplier 1, 136 clams from supplier 2, and 800 clams from supplier 3. The \
-minimized cost is $344.02.
+Interpretation: To minimize cost, the restaurant should buy 800 lbs clams \
+from supplier 1, 133.33 lbs clams from supplier 2, and 800 clams from \
+supplier 3. The minimized cost is $344.
 \
 \>", "Text",
  CellChangeTimes->{{3.694539612031086*^9, 3.69453969489895*^9}, {
-  3.694540623525984*^9, 3.694540669252345*^9}}]
+  3.694540623525984*^9, 3.694540669252345*^9}, {3.6955521611025476`*^9, 
+  3.6955521931588173`*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -240,10 +242,10 @@ Cell[6753, 149, 94, 1, 24, "Input"]
 Cell[CellGroupData[{
 Cell[6884, 155, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[7004, 163, 939, 16, 24, "Input"],
-Cell[7946, 181, 335, 9, 24, "Output"]
+Cell[7004, 163, 966, 17, 24, "Input"],
+Cell[7973, 182, 414, 9, 24, "Output"]
 }, Open  ]],
-Cell[8296, 193, 317, 7, 78, "Text"]
+Cell[8402, 194, 379, 8, 78, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
