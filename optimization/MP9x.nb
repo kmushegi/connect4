@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     11539,        285]
-NotebookOptionsPosition[     10506,        245]
-NotebookOutlinePosition[     10980,        265]
-CellTagsIndexPosition[     10937,        262]
+NotebookDataLength[     10051,        258]
+NotebookOptionsPosition[      9021,        218]
+NotebookOutlinePosition[      9494,        238]
+CellTagsIndexPosition[      9451,        235]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -43,14 +43,14 @@ Cell[BoxData[
  RowBox[{
   RowBox[{"vars", "=", 
    RowBox[{"{", 
-    RowBox[{
-    "x11", ",", "x12", ",", "x13", ",", "x14", ",", "x15", ",", "x21", ",", 
-     "x22", ",", "x23", ",", "x24", ",", "x25"}], "}"}]}], ";"}]], "Input",
+    RowBox[{"x11", ",", "x12", ",", "x13", ",", "x14", ",", "x15"}], "}"}]}], 
+  ";"}]], "Input",
  CellChangeTimes->{{3.4407780559614944`*^9, 3.4407780572584357`*^9}, 
    3.4407786736916466`*^9, {3.4407793393961883`*^9, 3.440779348880806*^9}, 
    3.44078033656234*^9, 3.694538078632133*^9, {3.694540227723385*^9, 
    3.69454023319501*^9}, {3.694541483085162*^9, 3.6945414846742*^9}, {
-   3.6945420142866077`*^9, 3.694542050852584*^9}}],
+   3.6945420142866077`*^9, 3.694542050852584*^9}, {3.697403729706781*^9, 
+   3.69740372986094*^9}}],
 
 Cell[CellGroupData[{
 
@@ -66,15 +66,10 @@ Cell[BoxData[
   RowBox[{"objective", "=", 
    RowBox[{
     RowBox[{"11", "x11"}], "+", 
-    RowBox[{"11", "x21"}], "+", 
     RowBox[{"30", "x12"}], "+", 
-    RowBox[{"30", "x22"}], "+", 
     RowBox[{"10", "x13"}], "+", 
-    RowBox[{"10", "x23"}], "+", 
     RowBox[{"8", "x14"}], "+", 
-    RowBox[{"8", "x24"}], "+", 
-    RowBox[{"42", "x15"}], "+", 
-    RowBox[{"42", "x25"}]}]}], ";"}]], "Input",
+    RowBox[{"42", "x15"}]}]}], ";"}]], "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.},
  CellChangeTimes->{{3.4401702281900635`*^9, 3.440170229815323*^9}, {
    3.440236542810931*^9, 3.4402365504360776`*^9}, {3.440236701439211*^9, 
@@ -96,7 +91,8 @@ Cell[BoxData[
    3.4402471025155935`*^9, 3.440247135000592*^9}, 3.4407796611856756`*^9, 
    3.440780827856167*^9, {3.694538105551243*^9, 3.694538125566165*^9}, {
    3.694540247325161*^9, 3.694540280043755*^9}, {3.6945415036603327`*^9, 
-   3.694541505681622*^9}, {3.6945420627637043`*^9, 3.6945421094027433`*^9}}]
+   3.694541505681622*^9}, {3.6945420627637043`*^9, 3.6945421094027433`*^9}, {
+   3.697403750529582*^9, 3.6974037658277082`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -129,25 +125,10 @@ Cell[BoxData[
      RowBox[{
      "1", " ", "\[GreaterEqual]", "x15", " ", "\[GreaterEqual]", " ", "0"}], 
      " ", "&&", "\[IndentingNewLine]", 
-     RowBox[{
-     "1", " ", "\[GreaterEqual]", "x21", " ", "\[GreaterEqual]", " ", "0"}], 
-     " ", "&&", "\[IndentingNewLine]", 
-     RowBox[{
-     "1", " ", "\[GreaterEqual]", "x22", " ", "\[GreaterEqual]", " ", "0"}], 
-     " ", "&&", "\[IndentingNewLine]", 
-     RowBox[{
-     "1", " ", "\[GreaterEqual]", "x23", " ", "\[GreaterEqual]", " ", "0"}], 
-     " ", "&&", "\[IndentingNewLine]", 
-     RowBox[{
-     "1", " ", "\[GreaterEqual]", "x24", " ", "\[GreaterEqual]", " ", "0"}], 
-     " ", "&&", "\[IndentingNewLine]", 
-     RowBox[{
-     "1", " ", "\[GreaterEqual]", "x25", " ", "\[GreaterEqual]", " ", "0"}], 
-     " ", "&&", "\[IndentingNewLine]", 
      RowBox[{"(*", " ", 
       RowBox[{
-      "need", " ", "to", " ", "meet", " ", "required", " ", "quanitities", 
-       " ", "of", " ", "metals"}], " ", "*)"}], "\[IndentingNewLine]", 
+      "need", " ", "to", " ", "meet", " ", "the", " ", "budget", " ", 
+       "availability"}], " ", "*)"}], "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{
        RowBox[{"9", "x11"}], "+", 
@@ -158,25 +139,20 @@ Cell[BoxData[
      "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{
-       RowBox[{"4", "x21"}], "+", 
-       RowBox[{"3", "x22"}], "+", 
-       RowBox[{"7", "x23"}], "+", 
-       RowBox[{"2", "x24"}], "+", 
-       RowBox[{"23", "x25"}]}], " ", "\[LessEqual]", " ", "25"}]}]}], ";"}], 
+       RowBox[{"4", "x11"}], "+", 
+       RowBox[{"3", "x12"}], "+", 
+       RowBox[{"7", "x13"}], "+", 
+       RowBox[{"2", "x14"}], "+", 
+       RowBox[{"23", "x15"}]}], " ", "\[LessEqual]", " ", "25"}]}]}], ";"}], 
   "\[IndentingNewLine]"}]], "Input",
- CellChangeTimes->{{3.440778140372066*^9, 3.4407781939841857`*^9}, {
-  3.440778239517767*^9, 3.440778376727498*^9}, {3.4407784069942856`*^9, 
-  3.4407784274481955`*^9}, {3.4407785120764456`*^9, 3.4407786624726095`*^9}, {
-  3.4407793545215755`*^9, 3.440779381819149*^9}, {3.4407794210545287`*^9, 
-  3.4407795365887365`*^9}, {3.4407804009233627`*^9, 3.4407805850843267`*^9}, {
-  3.440780620350855*^9, 3.4407807959803505`*^9}, {3.4408443981567135`*^9, 
-  3.4408444160627346`*^9}, {3.440844448656067*^9, 3.440844449827927*^9}, {
-  3.694537152122621*^9, 3.694537177833105*^9}, {3.694538133758768*^9, 
-  3.694538138510364*^9}, {3.6945381979380608`*^9, 3.6945383497602158`*^9}, {
-  3.6945402851400757`*^9, 3.6945404114499826`*^9}, {3.694540487271727*^9, 
-  3.694540538852668*^9}, {3.694540677780892*^9, 3.6945406865083027`*^9}, {
-  3.694541515517267*^9, 3.6945415897989817`*^9}, {3.694542127992084*^9, 
-  3.6945422628155193`*^9}}],
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBmIQ/f15d/HhRS8di+vsq0B0z8QP9SB6lbv4RBBtcPH+
+FBA9LzxvOoi2K2JaBObLn98CovdvCOA+AqQrzHbxgejN+xYKg+h314SUQLRB
+j2wfiD63SWkpiDax6l4Jojni6/eD6DPMR88+BtJvGJkugOiGfyJXQHRinRWY
+bn7DbHG07bXjmRVW1iD6ivuOTSD6eUjAZhA9g2XfLhC9IXjHWRDdUL1k/zEg
+7ZSWdx5E/9344gaI5vOMvg+iBf/u+ACiWVwufATRJb0FkcdB6ifuTALR6vv/
+LwXReyRubQPR7WKt7216XjvuOvnrJ4gGAPlRsW0=
+  "]],
 
 Cell[BoxData[""], "Input",
  CellChangeTimes->{{3.694537173853479*^9, 3.6945371747206173`*^9}}]
@@ -214,37 +190,34 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{
-   FractionBox["30382", "207"], ",", 
+   FractionBox["5797", "97"], ",", 
    RowBox[{"{", 
     RowBox[{
-     RowBox[{"x11", "\[Rule]", 
-      FractionBox["7", "9"]}], ",", 
-     RowBox[{"x12", "\[Rule]", "0"}], ",", 
-     RowBox[{"x13", "\[Rule]", "1"}], ",", 
+     RowBox[{"x11", "\[Rule]", "1"}], ",", 
+     RowBox[{"x12", "\[Rule]", 
+      FractionBox["24", "97"]}], ",", 
+     RowBox[{"x13", "\[Rule]", "0"}], ",", 
      RowBox[{"x14", "\[Rule]", "1"}], ",", 
-     RowBox[{"x15", "\[Rule]", "1"}], ",", 
-     RowBox[{"x21", "\[Rule]", "1"}], ",", 
-     RowBox[{"x22", "\[Rule]", "1"}], ",", 
-     RowBox[{"x23", "\[Rule]", "0"}], ",", 
-     RowBox[{"x24", "\[Rule]", "1"}], ",", 
-     RowBox[{"x25", "\[Rule]", 
-      FractionBox["16", "23"]}]}], "}"}]}], "}"}]], "Output",
+     RowBox[{"x15", "\[Rule]", 
+      FractionBox["77", "97"]}]}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->{{3.694540430361553*^9, 3.694540446275983*^9}, 
-   3.694540549935848*^9, 3.694541603361986*^9, 3.694542283286653*^9}]
+   3.694540549935848*^9, 3.694541603361986*^9, 3.694542283286653*^9, 
+   3.697403863696826*^9}]
 }, Open  ]],
 
 Cell["\<\
-Interpretation: Invest the above amounts to get 146.763 million in NPV.
+Interpretation: Invest the above amounts to get 59.762 million in NPV.
 \
 \>", "Text",
  CellChangeTimes->{{3.694539612031086*^9, 3.69453969489895*^9}, {
   3.694540623525984*^9, 3.694540669252345*^9}, {3.694541627864325*^9, 
-  3.694541661149891*^9}, {3.694542330294791*^9, 3.6945423503002443`*^9}}]
+  3.694541661149891*^9}, {3.694542330294791*^9, 3.6945423503002443`*^9}, {
+  3.697404103832466*^9, 3.6974041079566307`*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
 ScreenStyleEnvironment->"Condensed",
-WindowSize->{1144, 747},
+WindowSize->{797, 747},
 WindowMargins->{{Automatic, 37}, {Automatic, 0}},
 PrintingCopies->1,
 PrintingPageRange->{Automatic, Automatic},
@@ -267,24 +240,24 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[567, 22, 530, 7, 53, "Title"],
 Cell[1100, 31, 611, 8, 37, "Subtitle"],
-Cell[1714, 41, 568, 11, 24, "Input"],
+Cell[1714, 41, 549, 11, 24, "Input"],
 Cell[CellGroupData[{
-Cell[2307, 56, 418, 5, 37, "Subtitle"],
-Cell[2728, 63, 2014, 35, 24, "Input",
+Cell[2288, 56, 418, 5, 37, "Subtitle"],
+Cell[2709, 63, 1902, 31, 24, "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.}]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4779, 103, 153, 2, 37, "Subtitle"],
-Cell[4935, 107, 3241, 71, 340, "Input"],
-Cell[8179, 180, 94, 1, 24, "Input"]
+Cell[4648, 99, 153, 2, 37, "Subtitle"],
+Cell[4804, 103, 2031, 51, 235, "Input"],
+Cell[6838, 156, 94, 1, 24, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8310, 186, 95, 4, 37, "Subtitle"],
+Cell[6969, 162, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[8430, 194, 965, 17, 24, "Input"],
-Cell[9398, 213, 758, 19, 45, "Output"]
+Cell[7089, 170, 965, 17, 24, "Input"],
+Cell[8057, 189, 564, 15, 45, "Output"]
 }, Open  ]],
-Cell[10171, 235, 307, 6, 58, "Text"]
+Cell[8636, 207, 357, 7, 58, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
