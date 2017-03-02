@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     15005,        370]
-NotebookOptionsPosition[     13927,        329]
-NotebookOutlinePosition[     14403,        349]
-CellTagsIndexPosition[     14360,        346]
+NotebookDataLength[     17651,        411]
+NotebookOptionsPosition[     16570,        370]
+NotebookOutlinePosition[     17046,        390]
+CellTagsIndexPosition[     17003,        387]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -33,7 +33,12 @@ Cell["Modelling Problem V1I", "Title",
    3.694538024890018*^9, 3.69453803493487*^9}, 3.694540148376422*^9, {
    3.694541464372637*^9, 3.694541467938018*^9}, 3.694799183787444*^9}],
 
-Cell["Variables:  xij = worker of type i that starts on day j", "Subtitle",
+Cell["\<\
+Clara Hunnewell 2/19/17
+Variables:  xij = worker of type i that starts on day j (i =1 is full time \
+worker and i=2 is part time worker, 
+j=1 is Monday and j=7 Sunday)\
+\>", "Subtitle",
  CellChangeTimes->{{3.4407780390385303`*^9, 3.4407780929008856`*^9}, {
    3.4407788808375745`*^9, 3.440778884884553*^9}, {3.440779321505105*^9, 
    3.440779328614662*^9}, {3.4407803422031097`*^9, 3.44078039495446*^9}, {
@@ -41,7 +46,8 @@ Cell["Variables:  xij = worker of type i that starts on day j", "Subtitle",
    3.694537988536539*^9}, {3.6945380390790377`*^9, 3.694538074757545*^9}, {
    3.6945402056984453`*^9, 3.694540224858715*^9}, {3.694541471570299*^9, 
    3.694541481393849*^9}, 3.694796258161395*^9, {3.694797262021513*^9, 
-   3.6947972840926123`*^9}}],
+   3.6947972840926123`*^9}, {3.6965311386010838`*^9, 3.696531200980995*^9}, 
+   3.6965453065738087`*^9, {3.696545431801607*^9, 3.696545441371702*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -56,27 +62,35 @@ Cell[BoxData[
    3.44078033656234*^9, 3.694538078632133*^9, {3.694540227723385*^9, 
    3.69454023319501*^9}, {3.694541483085162*^9, 3.6945414846742*^9}, 
    3.694797232963126*^9, {3.6947972883575573`*^9, 3.6947973039887323`*^9}, 
-   3.6947973369565697`*^9}],
+   3.6947973369565697`*^9, {3.6965455037167*^9, 3.696545504363306*^9}, {
+   3.6965455843085213`*^9, 3.6965455846198683`*^9}}],
 
 Cell[CellGroupData[{
 
-Cell["Objective:  total days spent mining", "Subtitle",
+Cell["\<\
+Objective: cost of labor per week total (full time workers)*(8 \
+hrs/day)*($10/hr)*(5 days a week) + (total part time workers)*
+(4 hrs/day)*($8/hr)*(5 days a week).\
+\>", "Subtitle",
  CellChangeTimes->{{3.4407780390385303`*^9, 3.4407781242306147`*^9}, {
   3.440778442183137*^9, 3.44077849735713*^9}, {3.4407795518078756`*^9, 
   3.4407796502322702`*^9}, {3.440780811152614*^9, 3.440780818215295*^9}, {
   3.694538084725185*^9, 3.6945381010286083`*^9}, {3.694540236922372*^9, 
-  3.694540245041855*^9}, {3.694541490330662*^9, 3.694541499617043*^9}}],
+  3.694540245041855*^9}, {3.694541490330662*^9, 3.694541499617043*^9}, {
+  3.696530746110867*^9, 3.6965307481917553`*^9}, {3.696531059911812*^9, 
+  3.696531068678679*^9}, {3.696545149645485*^9, 3.6965452223157177`*^9}, {
+  3.6965452821861677`*^9, 3.696545299220951*^9}}],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"objective", "=", 
    RowBox[{
-    RowBox[{"80", "*", "5", "*", 
+    RowBox[{"8", "*", "10", "*", "5", "*", 
      RowBox[{"(", 
       RowBox[{
       "x11", "+", "x12", "+", "x13", "+", "x14", "+", "x15", "+", "x16", "+", 
        "x17"}], ")"}]}], "+", 
-    RowBox[{"32", "*", "5", "*", 
+    RowBox[{"4", "*", "8", "*", "5", "*", 
      RowBox[{"(", 
       RowBox[{
       "x21", "+", "x22", "+", "x23", "+", "x24", "+", "x25", "+", "x26", "+", 
@@ -103,7 +117,8 @@ Cell[BoxData[
    3.440780827856167*^9, {3.694538105551243*^9, 3.694538125566165*^9}, {
    3.694540247325161*^9, 3.694540280043755*^9}, {3.6945415036603327`*^9, 
    3.694541505681622*^9}, {3.694797421840982*^9, 3.694797491439443*^9}, {
-   3.694798642119121*^9, 3.694798647595868*^9}}]
+   3.694798642119121*^9, 3.694798647595868*^9}, {3.696545337158265*^9, 
+   3.696545345711186*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -117,8 +132,8 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"constraints", "=", "\[IndentingNewLine]", 
     RowBox[{"(*", " ", 
-     RowBox[{"non", "-", 
-      RowBox[{"negative", " ", "days"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"non", " ", "negative", " ", "days"}], " ", "*)"}], 
+    "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"x11", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
      "\[IndentingNewLine]", 
@@ -147,7 +162,32 @@ Cell[BoxData[
      RowBox[{"x26", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
      "\[IndentingNewLine]", 
      RowBox[{"x27", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
-     "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"labor", " ", "department", " ", "limits", " ", "part"}], "-", 
+       RowBox[{
+       "time", " ", "employee", " ", "percentage", " ", "to", " ", "be", " ", 
+        "less", " ", "than", " ", "25", "%", " ", "of", " ", "the", " ", 
+        "total", " ", "employees"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+       "x21", "+", "x22", "+", "x23", "+", "x24", "+", "x25", "+", "x26", "+",
+         "x27"}], ")"}], "\[LessEqual]", " ", 
+      RowBox[{"0.25", "*", 
+       RowBox[{"(", 
+        RowBox[{
+        "x11", "+", "x12", "+", "x13", "+", "x14", "+", "x15", "+", "x16", 
+         "+", "x17", "+", "x21", "+", "x22", "+", "x23", "+", "x24", "+", 
+         "x25", "+", "x26", "+", "x27"}], ")"}]}]}], "&&", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+       RowBox[{
+       "need", " ", "to", " ", "meet", " ", "hours", " ", "of", " ", 
+        "manpower", " ", "requirements", " ", "on", " ", "Monday"}], " ", "-",
+        " ", "Sunday"}], "*)"}], "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{
        RowBox[{"8", "*", 
@@ -224,34 +264,29 @@ Cell[BoxData[
        RowBox[{"4", "*", 
         RowBox[{"(", 
          RowBox[{"x27", "+", "x26", "+", "x25", "+", "x24", "+", "x23"}], 
-         ")"}]}]}], " ", "\[GreaterEqual]", " ", "400"}], " ", "&&", 
-     "\[IndentingNewLine]", 
-     RowBox[{"(*", " ", 
-      RowBox[{
-       RowBox[{
-       "need", " ", "to", " ", "meet", " ", "the", " ", "labor", " ", 
-        "department", " ", "limits", " ", "on", " ", "part"}], "-", 
-       RowBox[{"time", " ", "employee", " ", "percentage"}]}], "*)"}], 
-     "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"0.25", "*", 
-       RowBox[{"(", 
-        RowBox[{
-        "x11", "+", "x12", "+", "x13", "+", "x14", "+", "x15", "+", "x16", 
-         "+", "x17", "+", "x21", "+", "x22", "+", "x23", "+", "x24", "+", 
-         "x25", "+", "x26", "+", "x27"}], ")"}]}], "\[GreaterEqual]", " ", 
-      RowBox[{"(", 
-       RowBox[{
-       "x21", "+", "x22", "+", "x23", "+", "x24", "+", "x25", "+", "x26", "+",
-         "x27"}], ")"}]}]}]}], ";"}], "\[IndentingNewLine]"}]], "Input",
- CellChangeTimes->CompressedData["
-1:eJxTTMoPSmViYGAQAWIQ/f15d/HhRS8di+vsq0B0z8QP9SB6lbv4RBBtcPH+
-FBA9LzxvOoi2K2JaBObLn98CovdvCOA+AqQrzHbxgejN+xYKg+h314SUQLRB
-j2wfiD63SWkpiDax6l4Jojni6/eD6DPMR88+BtJvGJkugOiGfyJXQHRinRWY
-bn7DbHG07bXjmRVW1iD6ivuOTSD6eUjAZhA9g2XfLhC9IXjHWRDdUL1k/zEg
-7ZSWdx5E/9344gaI5vOMvg+iBf/u+ACiWVwufATRJb0FkcdB6ifuTALRxuq3
-I13aXzuK7PUsBtFZv+/VgmiDjVr7QLQNk9wHMP+s9GcQDQDDZrTk
-  "]],
+         ")"}]}]}], " ", "\[GreaterEqual]", " ", "400"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.440778140372066*^9, 3.4407781939841857`*^9}, {
+   3.440778239517767*^9, 3.440778376727498*^9}, {3.4407784069942856`*^9, 
+   3.4407784274481955`*^9}, {3.4407785120764456`*^9, 
+   3.4407786624726095`*^9}, {3.4407793545215755`*^9, 3.440779381819149*^9}, {
+   3.4407794210545287`*^9, 3.4407795365887365`*^9}, {3.4407804009233627`*^9, 
+   3.4407805850843267`*^9}, {3.440780620350855*^9, 3.4407807959803505`*^9}, {
+   3.4408443981567135`*^9, 3.4408444160627346`*^9}, {3.440844448656067*^9, 
+   3.440844449827927*^9}, {3.694537152122621*^9, 3.694537177833105*^9}, {
+   3.694538133758768*^9, 3.694538138510364*^9}, {3.6945381979380608`*^9, 
+   3.6945383497602158`*^9}, {3.6945402851400757`*^9, 
+   3.6945404114499826`*^9}, {3.694540487271727*^9, 3.694540538852668*^9}, {
+   3.694540677780892*^9, 3.6945406865083027`*^9}, {3.694541515517267*^9, 
+   3.6945415897989817`*^9}, {3.694797518848535*^9, 3.694797722304331*^9}, {
+   3.69479780696819*^9, 3.6947983213341293`*^9}, {3.6947987209377728`*^9, 
+   3.6947987448687973`*^9}, {3.696531071120058*^9, 3.6965311230226173`*^9}, {
+   3.6965453162013617`*^9, 3.69654532110894*^9}, {3.696545481686469*^9, 
+   3.6965455269054203`*^9}, {3.696545573658189*^9, 3.696545578907667*^9}, 
+   3.6965456185205393`*^9, 3.696545653833378*^9, {3.696545700743514*^9, 
+   3.696545710989169*^9}, {3.696545778130178*^9, 3.696545779895567*^9}, {
+   3.696610108766193*^9, 3.696610152819695*^9}, {3.6966101901721773`*^9, 
+   3.696610201731819*^9}, {3.6967974392290583`*^9, 3.696797457412457*^9}}],
 
 Cell[BoxData[""], "Input",
  CellChangeTimes->{{3.694537173853479*^9, 3.6945371747206173`*^9}}]
@@ -293,37 +328,43 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"x11", "\[Rule]", "0"}], ",", 
      RowBox[{"x12", "\[Rule]", "1"}], ",", 
-     RowBox[{"x13", "\[Rule]", "22"}], ",", 
+     RowBox[{"x13", "\[Rule]", "21"}], ",", 
      RowBox[{"x14", "\[Rule]", "2"}], ",", 
      RowBox[{"x15", "\[Rule]", "17"}], ",", 
      RowBox[{"x16", "\[Rule]", "3"}], ",", 
-     RowBox[{"x17", "\[Rule]", "0"}], ",", 
+     RowBox[{"x17", "\[Rule]", "1"}], ",", 
      RowBox[{"x21", "\[Rule]", "0"}], ",", 
      RowBox[{"x22", "\[Rule]", "3"}], ",", 
-     RowBox[{"x23", "\[Rule]", "6"}], ",", 
-     RowBox[{"x24", "\[Rule]", "0"}], ",", 
-     RowBox[{"x25", "\[Rule]", "0"}], ",", 
-     RowBox[{"x26", "\[Rule]", "1"}], ",", 
-     RowBox[{"x27", "\[Rule]", "5"}]}], "}"}]}], "}"}]], "Output",
+     RowBox[{"x23", "\[Rule]", "7"}], ",", 
+     RowBox[{"x24", "\[Rule]", "2"}], ",", 
+     RowBox[{"x25", "\[Rule]", "2"}], ",", 
+     RowBox[{"x26", "\[Rule]", "0"}], ",", 
+     RowBox[{"x27", "\[Rule]", "1"}]}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->{{3.694540430361553*^9, 3.694540446275983*^9}, 
    3.694540549935848*^9, 3.694541603361986*^9, {3.694798328168899*^9, 
    3.694798331491295*^9}, 3.6947983854629717`*^9, 3.6947984501462507`*^9, 
-   3.694798663329475*^9, 3.694798783123611*^9}]
+   3.694798663329475*^9, 3.694798783123611*^9, 3.696545368148246*^9, 
+   3.696545549262637*^9, {3.6965455917515163`*^9, 3.696545598671151*^9}, 
+   3.696545636186798*^9, 3.696545732443676*^9, 3.696610137060128*^9, 
+   3.6966101778519983`*^9, 3.696610216891119*^9}]
 }, Open  ]],
 
 Cell["\<\
 Interpretation: In order to minimize cost and meet requirements, the super \
-markets should hire 0 workers that start on Monday, 1 full time and 3 part \
-time workers to start on Tuesday, 22 full time and 6 part time workers to \
-start on Wednesday, 2 full time and 0 part time workers to start on Thursday, \
-17 full time and 0 part time workers to start on Friday, 3 full time and 1 \
-part time to start on Saturday, and 0 full time and 5 part time workers to \
-start on Sunday.  The cost to the supermarket is $20,400.
+markets should hire 0 full time workers and 0 part time workers to start on \
+Monday, 1 full time and 3 part time workers to start on Tuesday, 21 full time \
+and 7 part time workers to start on Wednesday, 2 full time and 2 part time \
+workers to start on Thursday, 17 full time and 2 part time workers to start \
+on Friday, 3 full time and 0 part time to start on Saturday, and 1 full time \
+and 1 part time workers to start on Sunday.  The total cost of labor to the \
+supermarket is $20,400.
 \
 \>", "Text",
  CellChangeTimes->{{3.694539612031086*^9, 3.69453969489895*^9}, {
   3.694540623525984*^9, 3.694540669252345*^9}, {3.694541627864325*^9, 
-  3.694541661149891*^9}, {3.694798957207053*^9, 3.694799170018557*^9}}]
+  3.694541661149891*^9}, {3.694798957207053*^9, 3.694799170018557*^9}, {
+  3.69654537521458*^9, 3.6965454176867247`*^9}, {3.6965458047086363`*^9, 
+  3.6965458086774693`*^9}, {3.696545840371525*^9, 3.696545861520509*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -351,25 +392,25 @@ Notebook[{
 Cell[545, 20, 145, 2, 24, "Input"],
 Cell[CellGroupData[{
 Cell[715, 26, 553, 7, 53, "Title"],
-Cell[1271, 35, 620, 8, 37, "Subtitle"],
-Cell[1894, 45, 689, 13, 24, "Input"],
+Cell[1271, 35, 862, 14, 90, "Subtitle"],
+Cell[2136, 51, 787, 14, 24, "Input"],
 Cell[CellGroupData[{
-Cell[2608, 62, 418, 5, 37, "Subtitle"],
-Cell[3029, 69, 2088, 36, 24, "Input",
+Cell[2948, 69, 754, 12, 64, "Subtitle"],
+Cell[3705, 83, 2157, 37, 24, "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.}]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5154, 110, 153, 2, 37, "Subtitle"],
-Cell[5310, 114, 5585, 139, 571, "Input"],
-Cell[10898, 255, 94, 1, 24, "Input"]
+Cell[5899, 125, 153, 2, 37, "Subtitle"],
+Cell[6055, 129, 7069, 159, 634, "Input"],
+Cell[13127, 290, 94, 1, 24, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11029, 261, 95, 4, 37, "Subtitle"],
+Cell[13258, 296, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[11149, 269, 991, 17, 24, "Input"],
-Cell[12143, 288, 986, 22, 63, "Output"]
+Cell[13378, 304, 991, 17, 24, "Input"],
+Cell[14372, 323, 1202, 25, 46, "Output"]
 }, Open  ]],
-Cell[13144, 313, 755, 12, 119, "Text"]
+Cell[15589, 351, 953, 15, 119, "Text"]
 }, Open  ]]
 }, Open  ]]
 }

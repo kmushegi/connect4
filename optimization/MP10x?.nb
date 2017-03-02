@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[      9202,        228]
-NotebookOptionsPosition[      8169,        188]
-NotebookOutlinePosition[      8646,        208]
-CellTagsIndexPosition[      8603,        205]
+NotebookDataLength[      9760,        245]
+NotebookOptionsPosition[      8594,        202]
+NotebookOutlinePosition[      9071,        222]
+CellTagsIndexPosition[      9028,        219]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -65,9 +65,12 @@ Cell["Objective:  NPV of the college", "Subtitle",
 Cell[BoxData[
  RowBox[{
   RowBox[{"objective", "=", 
-   RowBox[{"400000", " ", "-", " ", 
-    RowBox[{"0.15", "x1"}], " ", "+", " ", 
-    RowBox[{"0.70", "x2"}]}]}], ";"}]], "Input",
+   RowBox[{"400000", "+", 
+    RowBox[{"0.70", "x2"}], " ", "-", " ", 
+    RowBox[{"0.15", "x1"}]}]}], ";", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"**", "**"}], "*", "*"}], "******)"}]}]], "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.},
  CellChangeTimes->{{3.4401702281900635`*^9, 3.440170229815323*^9}, {
    3.440236542810931*^9, 3.4402365504360776`*^9}, {3.440236701439211*^9, 
@@ -91,7 +94,14 @@ Cell[BoxData[
    3.694540247325161*^9, 3.694540280043755*^9}, {3.6945415036603327`*^9, 
    3.694541505681622*^9}, {3.6945420627637043`*^9, 3.6945421094027433`*^9}, {
    3.695138791868374*^9, 3.695138824671728*^9}, {3.695139171666548*^9, 
-   3.695139179074502*^9}}]
+   3.695139179074502*^9}, {3.696259472172801*^9, 3.6962594764668293`*^9}, {
+   3.696613286572771*^9, 3.696613387017271*^9}}],
+
+Cell[BoxData[
+ RowBox[{"400000", "-", 
+  RowBox[{"0.15`", " ", "x1"}], "+", 
+  RowBox[{"0.7`", " ", "x2"}]}]], "Output",
+ CellChangeTimes->{3.696613381961944*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -166,15 +176,19 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"2.828`*^7", ",", 
+  RowBox[{"560000.`", ",", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{"x1", "\[Rule]", "800000.`"}], ",", 
      RowBox[{"x2", "\[Rule]", "400000.`"}]}], "}"}]}], "}"}]], "Output",
- CellChangeTimes->{{3.694540430361553*^9, 3.694540446275983*^9}, 
-   3.694540549935848*^9, 3.694541603361986*^9, 3.694542283286653*^9, 
-   3.69513898791576*^9}]
+ CellChangeTimes->{{3.696613371564851*^9, 3.696613390486704*^9}}]
 }, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.696612293781063*^9, 3.696613396641692*^9}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.69661339334345*^9, 3.696613393354187*^9}}],
 
 Cell["\<\
 Interpretation: Invest the above amounts to get 146.763 million in NPV.
@@ -213,21 +227,24 @@ Cell[1149, 32, 644, 8, 37, "Subtitle"],
 Cell[1796, 42, 555, 10, 24, "Input"],
 Cell[CellGroupData[{
 Cell[2376, 56, 462, 6, 37, "Subtitle"],
-Cell[2841, 64, 1889, 29, 24, "Input",
- CellGroupingRules->{GroupTogetherGrouping, 10000.}]
+Cell[2841, 64, 2058, 33, 24, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}],
+Cell[4902, 99, 162, 4, 41, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4767, 98, 153, 2, 37, "Subtitle"],
-Cell[4923, 102, 1303, 29, 214, "Input"],
-Cell[6229, 133, 94, 1, 24, "Input"]
+Cell[5101, 108, 153, 2, 37, "Subtitle"],
+Cell[5257, 112, 1303, 29, 214, "Input"],
+Cell[6563, 143, 94, 1, 24, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6360, 139, 95, 4, 37, "Subtitle"],
+Cell[6694, 149, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[6480, 147, 965, 17, 24, "Input"],
-Cell[7448, 166, 371, 9, 31, "Output"]
+Cell[6814, 157, 965, 17, 24, "Input"],
+Cell[7782, 176, 275, 7, 41, "Output"]
 }, Open  ]],
-Cell[7834, 178, 307, 6, 58, "Text"]
+Cell[8072, 186, 90, 1, 24, InheritFromParent],
+Cell[8165, 189, 91, 1, 24, InheritFromParent],
+Cell[8259, 192, 307, 6, 58, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
