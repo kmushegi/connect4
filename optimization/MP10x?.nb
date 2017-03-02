@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[      9760,        245]
-NotebookOptionsPosition[      8594,        202]
-NotebookOutlinePosition[      9071,        222]
-CellTagsIndexPosition[      9028,        219]
+NotebookDataLength[      9865,        244]
+NotebookOptionsPosition[      8796,        203]
+NotebookOutlinePosition[      9271,        223]
+CellTagsIndexPosition[      9228,        220]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -30,7 +30,7 @@ Cell["Modelling Problem X", "Title",
    3.694541464372637*^9, 3.694541467938018*^9}, {3.695138546283834*^9, 
    3.695138553864896*^9}}],
 
-Cell["Variables:  xi = money of type i", "Subtitle",
+Cell["Variables:  xi = money of type i (borrowed, invested)", "Subtitle",
  CellChangeTimes->{{3.4407780390385303`*^9, 3.4407780929008856`*^9}, {
    3.4407788808375745`*^9, 3.440778884884553*^9}, {3.440779321505105*^9, 
    3.440779328614662*^9}, {3.4407803422031097`*^9, 3.44078039495446*^9}, {
@@ -38,7 +38,8 @@ Cell["Variables:  xi = money of type i", "Subtitle",
    3.694537988536539*^9}, {3.6945380390790377`*^9, 3.694538074757545*^9}, {
    3.6945402056984453`*^9, 3.694540224858715*^9}, {3.694541471570299*^9, 
    3.694541481393849*^9}, {3.694542021819515*^9, 3.69454203546704*^9}, 
-   3.6947962629773273`*^9, {3.6951387652530403`*^9, 3.695138769460414*^9}}],
+   3.6947962629773273`*^9, {3.6951387652530403`*^9, 3.695138769460414*^9}, {
+   3.697476050279663*^9, 3.6974760557506123`*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -67,10 +68,7 @@ Cell[BoxData[
   RowBox[{"objective", "=", 
    RowBox[{"400000", "+", 
     RowBox[{"0.70", "x2"}], " ", "-", " ", 
-    RowBox[{"0.15", "x1"}]}]}], ";", 
-  RowBox[{"(*", 
-   RowBox[{
-    RowBox[{"**", "**"}], "*", "*"}], "******)"}]}]], "Input",
+    RowBox[{"0.15", "x1"}]}]}], ";"}]], "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.},
  CellChangeTimes->{{3.4401702281900635`*^9, 3.440170229815323*^9}, {
    3.440236542810931*^9, 3.4402365504360776`*^9}, {3.440236701439211*^9, 
@@ -95,13 +93,7 @@ Cell[BoxData[
    3.694541505681622*^9}, {3.6945420627637043`*^9, 3.6945421094027433`*^9}, {
    3.695138791868374*^9, 3.695138824671728*^9}, {3.695139171666548*^9, 
    3.695139179074502*^9}, {3.696259472172801*^9, 3.6962594764668293`*^9}, {
-   3.696613286572771*^9, 3.696613387017271*^9}}],
-
-Cell[BoxData[
- RowBox[{"400000", "-", 
-  RowBox[{"0.15`", " ", "x1"}], "+", 
-  RowBox[{"0.7`", " ", "x2"}]}]], "Output",
- CellChangeTimes->{3.696613381961944*^9}]
+   3.696613286572771*^9, 3.696613387017271*^9}, 3.6974760112081213`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -124,25 +116,31 @@ Cell[BoxData[
      RowBox[{"x2", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
      "\[IndentingNewLine]", 
      RowBox[{"(*", " ", 
-      RowBox[{"investment", " ", "requirement"}], " ", "*)"}], 
-     "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+       "cannot", " ", "invest", " ", "more", " ", "than", " ", "total", " ", 
+        "$"}], ",", " ", 
+       RowBox[{
+       "cannot", " ", "borrow", " ", "more", " ", "than", " ", "50", "%", " ",
+         "of", " ", "investment"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+       "can", " ", "invest", " ", "at", " ", "most", " ", "1", " ", "million",
+         " ", "dollars"}]}], " ", "*)"}], "\[IndentingNewLine]", 
      RowBox[{"x1", " ", "\[LessEqual]", " ", 
       RowBox[{"400000", "+", "x2"}]}], " ", "&&", "\[IndentingNewLine]", 
      RowBox[{"x2", " ", "\[LessEqual]", " ", 
       RowBox[{"0.5", "x1"}]}], " ", "&&", "\[IndentingNewLine]", 
      RowBox[{"x1", " ", "\[LessEqual]", " ", "1000000"}]}]}], ";"}], 
-  "\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
+  "\[IndentingNewLine]"}]], "Input",
  CellChangeTimes->CompressedData["
-1:eJxTTMoPSmViYGAQBmIQ/f15d/HhRS8di+vsq0B0z8QP9SB6lbv4RBBtcPH+
+1:eJxTTMoPSmViYGAQAWIQ/f15d/HhRS8di+vsq0B0z8QP9SB6lbv4RBBtcPH+
 FBA9LzxvOoi2K2JaBObLn98CovdvCOA+AqQrzHbxgejN+xYKg+h314SUQLRB
 j2wfiD63SWkpiDax6l4Jojni6/eD6DPMR88+BtJvGJkugOiGfyJXQHRinRWY
 bn7DbHG07bXjmRVW1iD6ivuOTSD6eUjAZhA9g2XfLhC9IXjHWRDdUL1k/zEg
 7ZSWdx5E/9344gaI5vOMvg+iBf/u+ACiWVwufATRJb0FkcdB6ifuTALR6vv/
-LwXReyRubQPRUzbwsLxuf+3Yly0hBKIB7YOvsQ==
-  "]],
+LwXReyRubQPRUzbwsLxuf+3Yly0hBKKDVNNsEnpeO17fOMUBRAMAJfe3Vw==
 
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.694537173853479*^9, 3.6945371747206173`*^9}}]
+  "]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -181,7 +179,8 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"x1", "\[Rule]", "800000.`"}], ",", 
      RowBox[{"x2", "\[Rule]", "400000.`"}]}], "}"}]}], "}"}]], "Output",
- CellChangeTimes->{{3.696613371564851*^9, 3.696613390486704*^9}}]
+ CellChangeTimes->{{3.696613371564851*^9, 3.696613390486704*^9}, 
+   3.6974761043198013`*^9}]
 }, Open  ]],
 
 Cell[BoxData[""], "Input",
@@ -191,23 +190,25 @@ Cell[BoxData[""], "Input",
  CellChangeTimes->{{3.69661339334345*^9, 3.696613393354187*^9}}],
 
 Cell["\<\
-Interpretation: Invest the above amounts to get 146.763 million in NPV.
+Interpretation: Borrow $800,000 and invest $400,000 for a total NPV of \
+$560,000.
 \
 \>", "Text",
  CellChangeTimes->{{3.694539612031086*^9, 3.69453969489895*^9}, {
   3.694540623525984*^9, 3.694540669252345*^9}, {3.694541627864325*^9, 
-  3.694541661149891*^9}, {3.694542330294791*^9, 3.6945423503002443`*^9}}]
+  3.694541661149891*^9}, {3.694542330294791*^9, 3.6945423503002443`*^9}, {
+  3.69747610688479*^9, 3.697476125827302*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
 ScreenStyleEnvironment->"Condensed",
 WindowSize->{1144, 747},
-WindowMargins->{{Automatic, 37}, {Automatic, 0}},
+WindowMargins->{{16, Automatic}, {12, Automatic}},
 PrintingCopies->1,
 PrintingPageRange->{Automatic, Automatic},
 Magnification->1.5,
-FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September 9, \
-2014)",
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
+2016)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -223,28 +224,26 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[567, 22, 579, 8, 53, "Title"],
-Cell[1149, 32, 644, 8, 37, "Subtitle"],
-Cell[1796, 42, 555, 10, 24, "Input"],
+Cell[1149, 32, 717, 9, 37, "Subtitle"],
+Cell[1869, 43, 555, 10, 24, "Input"],
 Cell[CellGroupData[{
-Cell[2376, 56, 462, 6, 37, "Subtitle"],
-Cell[2841, 64, 2058, 33, 24, "Input",
- CellGroupingRules->{GroupTogetherGrouping, 10000.}],
-Cell[4902, 99, 162, 4, 41, "Output"]
+Cell[2449, 57, 462, 6, 37, "Subtitle"],
+Cell[2914, 65, 2001, 30, 24, "Input",
+ CellGroupingRules->{GroupTogetherGrouping, 10000.}]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5101, 108, 153, 2, 37, "Subtitle"],
-Cell[5257, 112, 1303, 29, 214, "Input"],
-Cell[6563, 143, 94, 1, 24, "Input"]
+Cell[4952, 100, 153, 2, 37, "Subtitle"],
+Cell[5108, 104, 1664, 38, 214, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6694, 149, 95, 4, 37, "Subtitle"],
+Cell[6809, 147, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[6814, 157, 965, 17, 24, "Input"],
-Cell[7782, 176, 275, 7, 41, "Output"]
+Cell[6929, 155, 965, 17, 24, "Input"],
+Cell[7897, 174, 303, 8, 24, "Output"]
 }, Open  ]],
-Cell[8072, 186, 90, 1, 24, InheritFromParent],
-Cell[8165, 189, 91, 1, 24, InheritFromParent],
-Cell[8259, 192, 307, 6, 58, "Text"]
+Cell[8215, 185, 90, 1, 24, "Input"],
+Cell[8308, 188, 91, 1, 24, "Input"],
+Cell[8402, 191, 366, 8, 58, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
