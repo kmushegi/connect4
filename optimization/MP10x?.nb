@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[      9865,        244]
-NotebookOptionsPosition[      8796,        203]
-NotebookOutlinePosition[      9271,        223]
-CellTagsIndexPosition[      9228,        220]
+NotebookDataLength[      9923,        245]
+NotebookOptionsPosition[      8854,        204]
+NotebookOutlinePosition[      9329,        224]
+CellTagsIndexPosition[      9286,        221]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -190,14 +190,15 @@ Cell[BoxData[""], "Input",
  CellChangeTimes->{{3.69661339334345*^9, 3.696613393354187*^9}}],
 
 Cell["\<\
-Interpretation: Borrow $800,000 and invest $400,000 for a total NPV of \
-$560,000.
+Interpretation: Borrow $800,000 and invest $400,000 for a total NPV increase \
+of $160,000.
 \
 \>", "Text",
  CellChangeTimes->{{3.694539612031086*^9, 3.69453969489895*^9}, {
   3.694540623525984*^9, 3.694540669252345*^9}, {3.694541627864325*^9, 
   3.694541661149891*^9}, {3.694542330294791*^9, 3.6945423503002443`*^9}, {
-  3.69747610688479*^9, 3.697476125827302*^9}}]
+  3.69747610688479*^9, 3.697476125827302*^9}, {3.699648877965075*^9, 
+  3.699648881152429*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -243,7 +244,7 @@ Cell[7897, 174, 303, 8, 24, "Output"]
 }, Open  ]],
 Cell[8215, 185, 90, 1, 24, "Input"],
 Cell[8308, 188, 91, 1, 24, "Input"],
-Cell[8402, 191, 366, 8, 58, "Text"]
+Cell[8402, 191, 424, 9, 58, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
