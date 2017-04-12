@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     11972,        294]
-NotebookOptionsPosition[     10861,        252]
-NotebookOutlinePosition[     11335,        272]
-CellTagsIndexPosition[     11292,        269]
+NotebookDataLength[     13020,        315]
+NotebookOptionsPosition[     11909,        273]
+NotebookOutlinePosition[     12382,        293]
+CellTagsIndexPosition[     12339,        290]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -30,10 +30,7 @@ Cell["Modelling Problem XII", "Title",
    3.694541464372637*^9, 3.694541467938018*^9}, {3.695138546283834*^9, 
    3.695138553864896*^9}, 3.69513965234009*^9, 3.695140318354313*^9}],
 
-Cell["\<\
-Variables:  xi = amount $ spent advertising product i, amount of oil i spent \
-on making product g and h\
-\>", "Subtitle",
+Cell["Variables:  xi = ", "Subtitle",
  CellChangeTimes->{{3.4407780390385303`*^9, 3.4407780929008856`*^9}, {
    3.4407788808375745`*^9, 3.440778884884553*^9}, {3.440779321505105*^9, 
    3.440779328614662*^9}, {3.4407803422031097`*^9, 3.44078039495446*^9}, {
@@ -45,14 +42,15 @@ on making product g and h\
    3.6951394206526947`*^9, 3.695139429322427*^9}, {3.695140321187893*^9, 
    3.695140329096833*^9}, {3.695140475397992*^9, 3.695140486546731*^9}, {
    3.695140520527066*^9, 3.695140526630698*^9}, {3.695140669037135*^9, 
-   3.6951406790660257`*^9}}],
+   3.6951406790660257`*^9}, 3.700991591106744*^9}],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"vars", "=", 
    RowBox[{"{", 
-    RowBox[{"x1", ",", "x2", ",", "og1", ",", "og2", ",", "oh1", ",", "oh2"}],
-     "}"}]}], ";"}]], "Input",
+    RowBox[{
+    "x1", ",", "x2", ",", "x3", ",", "x4", ",", "x5", ",", "x6", ",", "ron", 
+     ",", "mon", ",", "aki", ",", "rvp"}], "}"}]}], ";"}]], "Input",
  CellChangeTimes->{{3.4407780559614944`*^9, 3.4407780572584357`*^9}, 
    3.4407786736916466`*^9, {3.4407793393961883`*^9, 3.440779348880806*^9}, 
    3.44078033656234*^9, 3.694538078632133*^9, {3.694540227723385*^9, 
@@ -61,7 +59,8 @@ Cell[BoxData[
    3.695138761472299*^9}, {3.695138843543223*^9, 3.695138844879292*^9}, {
    3.695139773756778*^9, 3.695139776824552*^9}, 3.695140332291827*^9, {
    3.69514049296548*^9, 3.6951404954584723`*^9}, {3.695140655362939*^9, 
-   3.695140664082501*^9}}],
+   3.695140664082501*^9}, {3.70099161755203*^9, 3.7009916203561277`*^9}, {
+   3.700992868190632*^9, 3.700992871966716*^9}}],
 
 Cell[CellGroupData[{
 
@@ -78,14 +77,7 @@ Cell["Objective:  Profits over the company", "Subtitle",
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{
-   RowBox[{"objective", "=", " ", 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{"3", "*", "x1", "*", "35"}], ")"}], "+", 
-     RowBox[{"(", 
-      RowBox[{"7", "*", "x2", "*", "30"}], ")"}], "-", "x1", "-", "x2"}]}], 
-   ";"}], " ", 
+  RowBox[{"objective", "="}], " ", ";", " ", 
   RowBox[{"(*", " ", 
    RowBox[{
    "substract", " ", "how", " ", "much", " ", "pay", " ", "to", " ", 
@@ -116,7 +108,7 @@ Cell[BoxData[
    3.69513983640545*^9}, {3.695140346307744*^9, 3.695140374707308*^9}, {
    3.696259827956442*^9, 3.6962598308270493`*^9}, 3.69625986665479*^9, {
    3.696612398252552*^9, 3.696612448323123*^9}, {3.696613407881562*^9, 
-   3.696613412704648*^9}}]
+   3.696613412704648*^9}, {3.70099159627721*^9, 3.7009915983964987`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -137,34 +129,62 @@ Cell[BoxData[
     "\[IndentingNewLine]", 
     RowBox[{"x2", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{"og1", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
+    RowBox[{"x3", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{"og2", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
+    RowBox[{"x4", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{"oh1", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
+    RowBox[{"x5", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{"oh2", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
+    RowBox[{"x6", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"og1", "+", "oh1"}], " ", "\[LessEqual]", "6000"}], " ", "&&", 
+    RowBox[{"x1", " ", "\[LessEqual]", " ", "16113"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"og2", "+", "oh2"}], "\[LessEqual]", "11000"}], " ", "&&", 
+    RowBox[{"x2", " ", "\[LessEqual]", " ", "14505"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"og1", "+", "og2"}], " ", "\[GreaterEqual]", 
-     RowBox[{"3", "x1"}]}], " ", "&&", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"oh1", "+", "oh2"}], "\[GreaterEqual]", 
-     RowBox[{"7", "x2"}]}], " ", "&&", "\[IndentingNewLine]", 
-    RowBox[{
+    RowBox[{"x3", " ", "\[LessEqual]", " ", "7083"}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{"x4", " ", "\[LessEqual]", " ", "2430"}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{"x5", " ", "\[LessEqual]", " ", "576"}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{"x6", " ", "\[LessEqual]", " ", "68452"}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{"ron", " ", "\[Equal]", 
      RowBox[{
-      RowBox[{"10", "og1"}], "+", 
-      RowBox[{"6", "og2"}]}], "\[GreaterEqual]", 
-     RowBox[{"8", "*", 
       RowBox[{"(", 
-       RowBox[{"og1", "+", "og2"}], ")"}]}]}], " ", "&&", 
+       RowBox[{
+        RowBox[{"98.6", "x1"}], "+", 
+        RowBox[{"93.1", "x2"}], "+", 
+        RowBox[{"87.4", "x3"}], "+", 
+        RowBox[{"96.9", "x4"}], "+", 
+        RowBox[{"116.7", "x5"}], "+", 
+        RowBox[{"98.3", "x6"}]}], ")"}], "/", "6"}]}], " ", "&&", 
     "\[IndentingNewLine]", 
+    RowBox[{"mon", " ", "\[Equal]", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"91.9", "x1"}], "+", 
+        RowBox[{"88.2", "x2"}], "+", 
+        RowBox[{"80.7", "x3"}], "+", 
+        RowBox[{"91.3", "x4"}], "+", 
+        RowBox[{"107.4", "x5"}], "+", 
+        RowBox[{"92.4", "x6"}]}], ")"}], "/", "6"}]}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{"aki", " ", "\[Equal]", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"ron", "+", "mon"}], ")"}], "/", "2"}]}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{"rvp", " ", "\[Equal]", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"3.22", "x1"}], "+", 
+       RowBox[{"3.37", "x2"}], "+", 
+       RowBox[{"11.43", "x3"}], "+", 
+       RowBox[{"5.12", "x4"}], "+", 
+       RowBox[{"4.97", "x5"}], "+", 
+       RowBox[{"57.3", "x6"}]}], ")"}]}], " ", "&&", "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{
       RowBox[{"10", "oh1"}], "+", 
@@ -173,14 +193,15 @@ Cell[BoxData[
       RowBox[{"(", 
        RowBox[{"oh1", "+", "oh2"}], ")"}]}]}]}]}], ";"}]], "Input",
  CellChangeTimes->CompressedData["
-1:eJwdyk1EgwEAxvG3bbRqplbZDiVNdBmNkmxUS0xdWi2SDmmsS6zZohTbEku2
-xhh1iq3GilgrWTPbYR+JrW1MZsbUZKvNVixR+nifHR4/D/9u2eqMnEIQRAc5
-+Jk3qAO2F5FaM7IJjeY3LTwTs82Qn8ha4NGc4gAOqyi22u+KXUG/U9IUJN0Y
-9DDhpc/aCssPLC7kGztN8N7FtcMBgeEU0he1fhihhqI50lIdJQ51v21JuKQR
-1NwpUYdC+qIo4hAIYVLsdsH8rOQSHtJ8HuiUuqNQt3XiD5OOLSti8OeikILM
-iYUsbPlxv0HaePwdru0r52/Rm29ksNf/Z4deTvoaWpwMWnG3KDKtcFiQ/azR
-wcmEbg9mwo40nNafZ2A/W/gIGfLgE1QZm1/hVzBZgXfb7iqsBj6+YSUnIEqk
-3sIoBVJ7qPXweJ3eAD28VDtsVPayodR6x4OWqXIf/AeTZgPk
+1:eJwdylsogwEAxfHPtsIsuTYvMhIvKytCUxiypmQuJRFtNS802oQmM6lJm9Wy
+4km51Sg1I80ae9hFajOrpbXUQhq2XIqWyeU7ezj9OvUvFo91SSgEQbDIwXhE
+I3dsPvHkygYF1Orf5uAen6mHHH/YANd7pauwXkbZTP4i3xG0m4QZTtLpamsm
+PDzbyIUv1zklkKMt1MFLc8kOrOJqdmHa0Jwdeqgu7z1pLIVyBVW/eQEoUnKT
+LsSotS51lOcxcutggG8xw0iP8BCu0c6s0NRt8ULVzLbdTdo0LPXBn4PHIMwU
+9Idh9o/lDdJart7hxPJ43zl6/YkYltv/dqCtIHQMDSYGLboY5elGCnIg80Gp
+gm1+1RK8cRtDsFO9fwMrmXW3kCFx3kGZNusZJpyBV3gxb/mAH47Pb/h6zyVi
+pLbHRgqkllJT4dZUWjq0soP5kD5ezoTdGxdsaOh4qYCtinZ/3kqUN+AShiAr
+Rg/DU1FNHA6OlI3mkwYFzVJ4Z/qahIyEYBb+A3wDIug=
   "]],
 
 Cell[BoxData[""], "Input",
@@ -251,8 +272,8 @@ Interpretation:
 }, Open  ]]
 },
 ScreenStyleEnvironment->"Condensed",
-WindowSize->{826, 747},
-WindowMargins->{{Automatic, -27}, {Automatic, 0}},
+WindowSize->{948, 836},
+WindowMargins->{{Automatic, 73}, {Automatic, 0}},
 PrintingCopies->1,
 PrintingPageRange->{Automatic, Automatic},
 Magnification->1.5,
@@ -273,27 +294,27 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[567, 22, 624, 8, 53, "Title"],
-Cell[1194, 32, 974, 15, 64, "Subtitle"],
-Cell[2171, 49, 781, 14, 24, "Input"],
+Cell[1194, 32, 901, 12, 37, "Subtitle"],
+Cell[2098, 46, 928, 16, 24, "Input"],
 Cell[CellGroupData[{
-Cell[2977, 67, 663, 9, 37, "Subtitle"],
-Cell[3643, 78, 2342, 40, 46, "Input",
+Cell[3051, 66, 663, 9, 37, "Subtitle"],
+Cell[3717, 77, 2189, 33, 24, "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.}]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6022, 123, 153, 2, 37, "Subtitle"],
-Cell[6178, 127, 2274, 56, 298, "Input"],
-Cell[8455, 185, 143, 2, 24, "Input"]
+Cell[5943, 115, 153, 2, 37, "Subtitle"],
+Cell[6099, 119, 3401, 85, 403, "Input"],
+Cell[9503, 206, 143, 2, 24, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8635, 192, 95, 4, 37, "Subtitle"],
+Cell[9683, 213, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[8755, 200, 988, 17, 24, "Input"],
-Cell[9746, 219, 598, 13, 46, "Output"]
+Cell[9803, 221, 988, 17, 24, "Input"],
+Cell[10794, 240, 598, 13, 46, "Output"]
 }, Open  ]],
-Cell[10359, 235, 94, 1, 24, "Input"],
-Cell[10456, 238, 94, 1, 24, "Input"],
-Cell[10553, 241, 280, 7, 58, "Text"]
+Cell[11407, 256, 94, 1, 24, "Input"],
+Cell[11504, 259, 94, 1, 24, "Input"],
+Cell[11601, 262, 280, 7, 58, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
