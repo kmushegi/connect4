@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     20276,        468]
-NotebookOptionsPosition[     19069,        424]
-NotebookOutlinePosition[     19545,        444]
-CellTagsIndexPosition[     19502,        441]
+NotebookDataLength[     21613,        483]
+NotebookOptionsPosition[     20406,        439]
+NotebookOutlinePosition[     20882,        459]
+CellTagsIndexPosition[     20839,        456]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -81,10 +81,11 @@ Cell["Objective:  Profits over the company", "Subtitle",
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"objective", "=", " ", 
-   RowBox[{
-    RowBox[{"3.6", "sumreg"}], " ", "+", " ", 
-    RowBox[{"4", "sumpre"}]}]}], ";", " ", 
+  RowBox[{
+   RowBox[{"objective", "=", " ", 
+    RowBox[{
+     RowBox[{"3.6", "sumreg"}], " ", "+", " ", 
+     RowBox[{"4", "sumpre"}]}]}], ";"}], " ", 
   RowBox[{"(*", " ", 
    RowBox[{
    "substract", " ", "how", " ", "much", " ", "pay", " ", "to", " ", 
@@ -181,100 +182,95 @@ Cell[BoxData[
      RowBox[{
       RowBox[{"r6", "+", "p6"}], " ", "\[LessEqual]", " ", "68452"}], " ", "&&",
       "\[IndentingNewLine]", 
-     RowBox[{"ronreg", " ", "\[Equal]", 
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"98.6", "r1"}], "+", 
-         RowBox[{"93.1", "r2"}], "+", 
-         RowBox[{"87.4", "r3"}], "+", 
-         RowBox[{"96.9", "r4"}], "+", 
-         RowBox[{"116.7", "r5"}], "+", 
-         RowBox[{"98.3", "r6"}]}], ")"}], "/", "6"}]}], " ", "&&", 
-     "\[IndentingNewLine]", 
-     RowBox[{"monreg", " ", "\[Equal]", 
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"91.9", "r1"}], "+", 
-         RowBox[{"88.2", "r2"}], "+", 
-         RowBox[{"80.7", "r3"}], "+", 
-         RowBox[{"91.3", "r4"}], "+", 
-         RowBox[{"107.4", "r5"}], "+", 
-         RowBox[{"92.4", "r6"}]}], ")"}], "/", "6"}]}], " ", "&&", 
-     "\[IndentingNewLine]", 
-     RowBox[{"akireg", " ", "\[Equal]", 
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{"ronreg", "+", "monreg"}], ")"}], "/", "2"}]}], " ", "&&", 
-     "\[IndentingNewLine]", 
-     RowBox[{"rvpreg", "\[Equal]", 
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"3.22", "r1"}], "+", 
-         RowBox[{"3.37", "r2"}], "+", 
-         RowBox[{"11.43", "r3"}], "+", 
-         RowBox[{"5.12", "r4"}], "+", 
-         RowBox[{"4.97", "r5"}], "+", 
-         RowBox[{"57.3", "r6"}]}], ")"}], "/", "6"}]}], " ", "&&", 
-     "\[IndentingNewLine]", "\[IndentingNewLine]", 
-     RowBox[{"ronpre", "\[Equal]", 
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"98.6", "p1"}], "+", 
-         RowBox[{"93.1", "p2"}], "+", 
-         RowBox[{"87.4", "p3"}], "+", 
-         RowBox[{"96.9", "p4"}], "+", 
-         RowBox[{"116.7", "p5"}], "+", 
-         RowBox[{"98.3", "p6"}]}], ")"}], "/", "6"}]}], " ", "&&", 
-     "\[IndentingNewLine]", 
-     RowBox[{"monpre", " ", "\[Equal]", 
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"91.9", "p1"}], "+", 
-         RowBox[{"88.2", "p2"}], "+", 
-         RowBox[{"80.7", "p3"}], "+", 
-         RowBox[{"91.3", "p4"}], "+", 
-         RowBox[{"107.4", "p5"}], "+", 
-         RowBox[{"92.4", "p6"}]}], ")"}], "/", "6"}]}], " ", "&&", 
-     "\[IndentingNewLine]", 
-     RowBox[{"akipre", "\[Equal]", 
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{"ronpre", "+", "monpre"}], ")"}], "/", "2"}]}], " ", "&&", 
-     "\[IndentingNewLine]", 
-     RowBox[{"rvppre", "\[Equal]", 
-      RowBox[{
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"3.22", "p1"}], "+", 
-         RowBox[{"3.37", "p2"}], "+", 
-         RowBox[{"11.43", "p3"}], "+", 
-         RowBox[{"5.12", "p4"}], "+", 
-         RowBox[{"4.97", "p5"}], "+", 
-         RowBox[{"57.3", "p6"}]}], ")"}], "/", "6"}]}], " ", "&&", 
-     "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"0.1", 
-       RowBox[{"(", 
-        RowBox[{"r1", "+", "r2", "+", "r3", "+", "r4", "+", "r5", "+", "r6"}],
-         ")"}]}], " ", "\[LessEqual]", " ", "r2"}], " ", "&&", 
-     "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"0.1", 
-       RowBox[{"(", 
-        RowBox[{"p1", "+", "p2", "+", "p3", "+", "p4", "+", "p5", "+", "p6"}],
-         ")"}]}], " ", "\[LessEqual]", " ", "p2"}], " ", "&&", 
-     "\[IndentingNewLine]", 
      RowBox[{"sumreg", " ", "\[Equal]", " ", 
       RowBox[{"r1", "+", "r2", "+", "r3", "+", "r4", "+", "r5", "+", "r6"}]}],
       " ", "&&", "\[IndentingNewLine]", 
      RowBox[{"sumpre", " ", "\[Equal]", " ", 
       RowBox[{"p1", "+", "p2", "+", "p3", "+", "p4", "+", "p5", "+", "p6"}]}],
       "&&", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ronreg", "*", "sumreg"}], " ", "\[Equal]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"98.6", "r1"}], "+", 
+        RowBox[{"93.1", "r2"}], "+", 
+        RowBox[{"87.4", "r3"}], "+", 
+        RowBox[{"96.9", "r4"}], "+", 
+        RowBox[{"116.7", "r5"}], "+", 
+        RowBox[{"98.3", "r6"}]}], ")"}]}], " ", "&&", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"monreg", "*", "sumreg"}], " ", "\[Equal]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"91.9", "r1"}], "+", 
+        RowBox[{"88.2", "r2"}], "+", 
+        RowBox[{"80.7", "r3"}], "+", 
+        RowBox[{"91.3", "r4"}], "+", 
+        RowBox[{"107.4", "r5"}], "+", 
+        RowBox[{"92.4", "r6"}]}], ")"}]}], "&&", "\[IndentingNewLine]", 
+     RowBox[{"akireg", " ", "\[Equal]", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"ronreg", "+", "monreg"}], ")"}], "/", "2"}]}], " ", "&&", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"rvpreg", "*", "sumreg"}], "\[Equal]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"3.22", "r1"}], "+", 
+        RowBox[{"3.37", "r2"}], "+", 
+        RowBox[{"11.43", "r3"}], "+", 
+        RowBox[{"5.12", "r4"}], "+", 
+        RowBox[{"4.97", "r5"}], "+", 
+        RowBox[{"57.3", "r6"}]}], ")"}]}], " ", "&&", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ronpre", "*", "sumpre"}], "\[Equal]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"98.6", "p1"}], "+", 
+        RowBox[{"93.1", "p2"}], "+", 
+        RowBox[{"87.4", "p3"}], "+", 
+        RowBox[{"96.9", "p4"}], "+", 
+        RowBox[{"116.7", "p5"}], "+", 
+        RowBox[{"98.3", "p6"}]}], ")"}]}], " ", "&&", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"monpre", "*", "sumpre"}], "\[Equal]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"91.9", "p1"}], "+", 
+        RowBox[{"88.2", "p2"}], "+", 
+        RowBox[{"80.7", "p3"}], "+", 
+        RowBox[{"91.3", "p4"}], "+", 
+        RowBox[{"107.4", "p5"}], "+", 
+        RowBox[{"92.4", "p6"}]}], ")"}]}], " ", "&&", "\[IndentingNewLine]", 
+     RowBox[{"akipre", "\[Equal]", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"ronpre", "+", "monpre"}], ")"}], "/", "2"}]}], " ", "&&", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"rvppre", "*", "sumpre"}], "\[Equal]", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"3.22", "p1"}], "+", 
+        RowBox[{"3.37", "p2"}], "+", 
+        RowBox[{"11.43", "p3"}], "+", 
+        RowBox[{"5.12", "p4"}], "+", 
+        RowBox[{"4.97", "p5"}], "+", 
+        RowBox[{"57.3", "p6"}]}], ")"}]}], " ", "&&", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"0.1", 
+       RowBox[{"(", 
+        RowBox[{"r1", "+", "r2", "+", "r3", "+", "r4", "+", "r5", "+", "r6"}],
+         ")"}]}], " ", "\[GreaterEqual]", "  ", "r2"}], " ", "&&", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"0.1", 
+       RowBox[{"(", 
+        RowBox[{"p1", "+", "p2", "+", "p3", "+", "p4", "+", "p5", "+", "p6"}],
+         ")"}]}], " ", "\[GreaterEqual]", "  ", "p2"}], " ", "&&", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"sumreg", " ", "\[GreaterEqual]", " ", "7600"}], " ", "&&", " ", 
      RowBox[{"sumpre", " ", "\[GreaterEqual]", " ", "2100"}], " ", "&&", 
      "\[IndentingNewLine]", 
@@ -287,16 +283,17 @@ Cell[BoxData[
      RowBox[{"rvppre", " ", "\[LessEqual]", " ", "7.8"}]}]}], ";"}], 
   "\[IndentingNewLine]"}]], "Input",
  CellChangeTimes->CompressedData["
-1:eJwdymkogwEAxvHXtnItudZ8IHNkXxRFaApDNCVzRCKi8IE2V4jMpEhGLSuK
-lDNnjaHXHBMbKddqaY0alhxbrkjI8T778PTrqX9AqTirjEYQRDA1+HHbU7c7
-ds+vk8Q3Q5n8uQ3OprLlMFxvVsCRPNEAjKuljdm//8ky1CiFrlrKpii1G1Rt
-jXrBxzPPQBgu8+uDx0uBkzCS1zMDnYrbNPCQrjuyUNocaKdQ+uttgCUSnt0O
-Gz1G12nlH07zYqEhlVyCtzlCFRxkbKmhMps8gtKWCc0eZWK56AT+LN4ZoZug
-wAw9fshnyEg+fYH1vdX5++jla6WQq/mbhBs+plWoUDIZ1i4rv6/SxxOybyRS
-mKaXdsOLvWkTzOxcuIAR7NgryCzTXsNamfsD/NIanuBBO/kG33bfv+GThUfY
-KDfuEmiQHkx3hOONTs5QHWpkQZdqLhtmjx6EQkXGYxhMaU7Xe/db+YU6oQly
-bC5muFkS/QGLKkOqWJRGQZIIXis/GyDzS9AKY+aD5NCXPLd7SXCGofg1dwoO
-rX/OwdkVwzYMqYnWwR1OhQX+Az5sQwk=
+1:eJwdym0o4wEAx/H/bSvOLeGwvaCbkb1Rp043ppw/F+3qMg+RTkTtvHDNPHRE
+ZiK6jFpWrlxqDnm6msf+dmMX2+6Up9XSjNpYh7OF0yQuzv+3F78+/eobU1Gd
+J2UQBCGgB6+Pu+tWh/6QdYpXTVClvmiFE9kcNUy0OjVwsEjWD9NqGUP+/2xr
+Dhp1kicm2saX+mA4u6x9Cs92wvgwURXdCzdn+CMwSdQ9DgPLWo1wnWnecNN6
+HzG2ofI+3AbLFSK/7V5msrnTQ66PiVKhLZuagccFkln4mbWsh7p8agMqm4eN
+FtqM97IteDd9YofB4ndOGHpHXUDW6+2/sL5HXvwTvXqxAgqM/0eggetYgBod
+m+Xp8pC9VdwwyPmtUMI3VuUnuG8Zc8Dczm/78AUn9QCypaZDWKsKOYW3Jts5
+XGujfNC3evUPnrtFhJfWcJLOgMw4ZgD82hD4GOoT7BEwSC7gwHztWgLU5Jw9
+h1lNb63hfR6yxCxxQJ43yAmXyoXXsLQq/kMErV2cKYOHupuPkH0rboHJU7Fq
+GEXt+XURvC+w+rJwFA58v5mEE/O2HzC+RmiGK7xKNyyQHyVF0qa43ELI7djV
+R9H6tP0G6OKTK3B4oPEXfAAq1lvO
   "]],
 
 Cell[BoxData[""], "Input",
@@ -336,73 +333,91 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"NMaximize", "::", "nsol"}], "MessageName"], 
+   RowBox[{"NMaximize", "::", "incst"}], "MessageName"], 
   RowBox[{
-  ":", " "}], "\<\"There are no points that satisfy the constraints \
-\[NoBreak]\\!\\({\\(\\(r1 \[GreaterEqual] 0\\)\\), \\(\\(r2 \[GreaterEqual] 0\
-\\)\\), \\(\\(r3 \[GreaterEqual] 0\\)\\), \\(\\(r4 \[GreaterEqual] 0\\)\\), \
-\\(\\(r5 \[GreaterEqual] 0\\)\\), \\(\\(r6 \[GreaterEqual] 0\\)\\), \\(\\(p1 \
-\[GreaterEqual] 0\\)\\), \\(\\(p2 \[GreaterEqual] 0\\)\\), \\(\\(p3 \
-\[GreaterEqual] 0\\)\\), \\(\\(p4 \[GreaterEqual] 0\\)\\), \\(\\(\
-\[LeftSkeleton] 18 \[RightSkeleton]\\)\\), \\(\\(sumreg \[Equal] \\(\\(r1 + \
-r2 + r3 + r4 + r5 + r6\\)\\)\\)\\), \\(\\(sumpre \[Equal] \\(\\(p1 + p2 + p3 \
-+ p4 + p5 + p6\\)\\)\\)\\), \\(\\(sumreg \[GreaterEqual] 7600\\)\\), \
-\\(\\(sumpre \[GreaterEqual] 2100\\)\\), \\(\\(akireg \[GreaterEqual] \
-87\\)\\), \\(\\(akireg \[LessEqual] 90\\)\\), \\(\\(akipre \[GreaterEqual] 91\
-\\)\\), \\(\\(rvpreg \[LessEqual] 7.8`\\)\\), \\(\\(rvppre \[LessEqual] \
-7.8`\\)\\)}\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+  ":", " "}], "\<\"\[NoBreak]\\!\\(NMaximize\\)\[NoBreak] was unable to \
+generate any initial points satisfying the inequality constraints \
+\[NoBreak]\\!\\({\\(\\(\\(\\(\\(\\(-14505\\)\\) + p2 + r2\\)\\) \[LessEqual] \
+0\\)\\), \\(\\(\\(\\(\\(\\(-7083\\)\\) + p3 + r3\\)\\) \[LessEqual] 0\\)\\), \
+\\(\\(\\(\\(\\(\\(-2430\\)\\) + p4 + r4\\)\\) \[LessEqual] 0\\)\\), \\(\\(\
+\[LeftSkeleton] 8 \[RightSkeleton]\\)\\), \\(\\(\\(\\(\\(\\(-16113\\)\\) - \
+\\(\\(1.`\\\\ p2\\)\\) - \\(\\(1.`\\\\ p3\\)\\) - \\(\\(1.`\\\\ p4\\)\\) - \
+\\(\\(1.`\\\\ p5\\)\\) - \\(\\(1.`\\\\ p6\\)\\) - \\(\\(1.`\\\\ r2\\)\\) - \
+\\(\\(1.`\\\\ r3\\)\\) - \\(\\(1.`\\\\ r4\\)\\) - \\(\\(1.`\\\\ r5\\)\\) - \
+\\(\\(1.`\\\\ r6\\)\\) + \\(\\(1.`\\\\ sumpre\\)\\) + \\(\\(1.`\\\\ sumreg\\)\
+\\)\\)\\) \[LessEqual] 0\\)\\), \\(\\(\\(\\(r2 - \\(\\(0.1`\\\\ \
+\\(\\((\\(\\(0.` \[VeryThinSpace]\\)\\) + \\(\\(1.`\\\\ \
+sumreg\\)\\))\\)\\)\\)\\)\\)\\) \[LessEqual] 0\\)\\)}\\)\[NoBreak]. The \
+initial region specified may not contain any feasible points. Changing the \
+initial region or specifying explicit initial points may provide a better \
+solution. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
 ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/NMaximize/nsol\\\", ButtonNote -> \
-\\\"NMaximize::nsol\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.700993911219054*^9}],
+ButtonData:>\\\"paclet:ref/message/NMaximize/incst\\\", ButtonNote -> \
+\\\"NMaximize::incst\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{
+  3.700993911219054*^9, 3.70099454781312*^9, {3.70100784918334*^9, 
+   3.701007873054387*^9}, 3.7010079644077044`*^9}],
 
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Maximize", "::", "infeas"}], "MessageName"], 
+   RowBox[{"NMaximize", "::", "incst"}], "MessageName"], 
   RowBox[{
-  ":", " "}], "\<\"There are no values of \[NoBreak]\\!\\({r1, r2, r3, r4, \
-r5, r6, p1, p2, p3, p4, p5, p6, ronreg, monreg, akireg, rvpreg, ronpre, \
-monpre, akipre, rvppre, sumreg, sumpre}\\)\[NoBreak] for which the \
-constraints \[NoBreak]\\!\\(\[LeftSkeleton] 1 \[RightSkeleton]\\)\[NoBreak] \
-are satisfied and the objective function \[NoBreak]\\!\\(\\(\\(4\\\\ \
-sumpre\\)\\) + \\(\\(3.6`\\\\ sumreg\\)\\)\\)\[NoBreak] is real valued.  \
-\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
-ButtonFrame->None, ButtonData:>\\\"paclet:ref/Maximize\\\", ButtonNote -> \
-\\\"Maximize::infeas\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.700993911310012*^9}],
+  ":", " "}], "\<\"\[NoBreak]\\!\\(NMaximize\\)\[NoBreak] was unable to \
+generate any initial points satisfying the inequality constraints \
+\[NoBreak]\\!\\({\\(\\(\\(\\(\\(\\(-14505\\)\\) + p2 + r2\\)\\) \[LessEqual] \
+0\\)\\), \\(\\(\\(\\(\\(\\(-7083\\)\\) + p3 + r3\\)\\) \[LessEqual] 0\\)\\), \
+\\(\\(\\(\\(\\(\\(-2430\\)\\) + p4 + r4\\)\\) \[LessEqual] 0\\)\\), \\(\\(\
+\[LeftSkeleton] 8 \[RightSkeleton]\\)\\), \\(\\(\\(\\(\\(\\(-16113\\)\\) - \
+\\(\\(1.`\\\\ p2\\)\\) - \\(\\(1.`\\\\ p3\\)\\) - \\(\\(1.`\\\\ p4\\)\\) - \
+\\(\\(1.`\\\\ p5\\)\\) - \\(\\(1.`\\\\ p6\\)\\) - \\(\\(1.`\\\\ r2\\)\\) - \
+\\(\\(1.`\\\\ r3\\)\\) - \\(\\(1.`\\\\ r4\\)\\) - \\(\\(1.`\\\\ r5\\)\\) - \
+\\(\\(1.`\\\\ r6\\)\\) + \\(\\(1.`\\\\ sumpre\\)\\) + \\(\\(1.`\\\\ sumreg\\)\
+\\)\\)\\) \[LessEqual] 0\\)\\), \\(\\(\\(\\(r2 - \\(\\(0.1`\\\\ \
+\\(\\((\\(\\(0.` \[VeryThinSpace]\\)\\) + \\(\\(1.`\\\\ \
+sumreg\\)\\))\\)\\)\\)\\)\\)\\) \[LessEqual] 0\\)\\)}\\)\[NoBreak]. The \
+initial region specified may not contain any feasible points. Changing the \
+initial region or specifying explicit initial points may provide a better \
+solution. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/NMaximize/incst\\\", ButtonNote -> \
+\\\"NMaximize::incst\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{
+  3.700993911219054*^9, 3.70099454781312*^9, {3.70100784918334*^9, 
+   3.701007873054387*^9}, 3.701008001698532*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{
-   RowBox[{"-", "\[Infinity]"}], ",", 
+  RowBox[{"119682.26449317469`", ",", 
    RowBox[{"{", 
     RowBox[{
-     RowBox[{"r1", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"r2", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"r3", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"r4", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"r5", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"r6", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"p1", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"p2", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"p3", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"p4", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"p5", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"p6", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"ronreg", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"monreg", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"akireg", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"rvpreg", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"ronpre", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"monpre", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"akipre", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"rvppre", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"sumreg", "\[Rule]", "Indeterminate"}], ",", 
-     RowBox[{"sumpre", "\[Rule]", "Indeterminate"}]}], "}"}]}], 
+     RowBox[{"r1", "\[Rule]", "2077.393665851224`"}], ",", 
+     RowBox[{"r2", "\[Rule]", "760.0000000000057`"}], ",", 
+     RowBox[{"r3", "\[Rule]", "3842.385139971099`"}], ",", 
+     RowBox[{"r4", "\[Rule]", "774.6586430346745`"}], ",", 
+     RowBox[{"r5", "\[Rule]", "118.39969781500602`"}], ",", 
+     RowBox[{"r6", "\[Rule]", "27.162853328349883`"}], ",", 
+     RowBox[{"p1", "\[Rule]", "14035.606334148752`"}], ",", 
+     RowBox[{"p2", "\[Rule]", "2308.056612329307`"}], ",", 
+     RowBox[{"p3", "\[Rule]", "3240.6148600288666`"}], ",", 
+     RowBox[{"p4", "\[Rule]", "1655.3413569652953`"}], ",", 
+     RowBox[{"p5", "\[Rule]", "457.60030218496377`"}], ",", 
+     RowBox[{"p6", "\[Rule]", "1383.346657636167`"}], ",", 
+     RowBox[{"ronreg", "\[Rule]", "92.49516479075177`"}], ",", 
+     RowBox[{"monreg", "\[Rule]", "86.04964052447068`"}], ",", 
+     RowBox[{"akireg", "\[Rule]", "89.27240265761122`"}], ",", 
+     RowBox[{"rvpreg", "\[Rule]", "7.799999999999414`"}], ",", 
+     RowBox[{"ronpre", "\[Rule]", "96.69641945519149`"}], ",", 
+     RowBox[{"monpre", "\[Rule]", "90.2517118905825`"}], ",", 
+     RowBox[{"akipre", "\[Rule]", "93.474065672887`"}], ",", 
+     RowBox[{"rvppre", "\[Rule]", "7.799999999999414`"}], ",", 
+     RowBox[{"sumreg", "\[Rule]", "7600.000000000359`"}], ",", 
+     RowBox[{"sumpre", "\[Rule]", "23080.56612329335`"}]}], "}"}]}], 
   "}"}]], "Output",
  CellChangeTimes->{3.696259877543624*^9, 3.696612439675728*^9, 
-  3.696613421333334*^9, 3.700856507698103*^9, 3.7009939113151217`*^9}]
+  3.696613421333334*^9, 3.700856507698103*^9, 3.7009939113151217`*^9, 
+  3.7009946007376757`*^9, 3.701007849247531*^9, 3.701007947213505*^9, 
+  3.7010080145832*^9}]
 }, Open  ]],
 
 Cell[BoxData[""], "Input",
@@ -449,25 +464,25 @@ Cell[1194, 32, 901, 12, 37, "Subtitle"],
 Cell[2098, 46, 1244, 20, 46, "Input"],
 Cell[CellGroupData[{
 Cell[3367, 70, 663, 9, 37, "Subtitle"],
-Cell[4033, 81, 2382, 38, 46, "Input",
+Cell[4033, 81, 2399, 39, 46, "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.}]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6452, 124, 153, 2, 37, "Subtitle"],
-Cell[6608, 128, 7020, 171, 823, "Input"],
-Cell[13631, 301, 143, 2, 24, "Input"]
+Cell[6469, 125, 153, 2, 37, "Subtitle"],
+Cell[6625, 129, 7050, 167, 844, "Input"],
+Cell[13678, 298, 143, 2, 24, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13811, 308, 95, 4, 37, "Subtitle"],
+Cell[13858, 305, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[13931, 316, 1009, 17, 24, "Input"],
-Cell[14943, 335, 1288, 21, 67, "Message"],
-Cell[16234, 358, 796, 14, 66, "Message"],
-Cell[17033, 374, 1519, 30, 185, "Output"]
+Cell[13978, 313, 1009, 17, 24, "Input"],
+Cell[14990, 332, 1590, 26, 86, "Message"],
+Cell[16583, 360, 1588, 26, 86, "Message"],
+Cell[18174, 388, 1715, 31, 88, "Output"]
 }, Open  ]],
-Cell[18567, 407, 94, 1, 24, "Input"],
-Cell[18664, 410, 94, 1, 24, "Input"],
-Cell[18761, 413, 280, 7, 58, "Text"]
+Cell[19904, 422, 94, 1, 24, "Input"],
+Cell[20001, 425, 94, 1, 24, "Input"],
+Cell[20098, 428, 280, 7, 58, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
