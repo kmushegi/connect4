@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     10650,        254]
-NotebookOptionsPosition[      9611,        214]
-NotebookOutlinePosition[     10088,        234]
-CellTagsIndexPosition[     10045,        231]
+NotebookDataLength[     10955,        258]
+NotebookOptionsPosition[      9919,        218]
+NotebookOutlinePosition[     10393,        238]
+CellTagsIndexPosition[     10350,        235]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -135,21 +135,24 @@ Cell[BoxData[
     RowBox[{"x1", "\[GreaterEqual]", "x2"}], " ", "&&", "\[IndentingNewLine]", 
     RowBox[{"x2", " ", "\[GreaterEqual]", 
      RowBox[{"2", "x3"}]}], " ", "&&", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{"meet", " ", "labor", " ", "hour", " ", "requirements"}], " ", 
+     "*)"}], "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{
       RowBox[{"0.5", "x1"}], "+", 
       RowBox[{"1.5", "x2"}], "+", 
       RowBox[{"2", "x3"}]}], " ", "\[LessEqual]", "300"}]}]}], ";"}]], "Input",
  CellChangeTimes->CompressedData["
-1:eJwdyl8oAwEAx/Hb3ZVhaf61vSBarbSyIukUJrV4MX9K8iCKF4VQRM1JkTar
-1YonNaxQakw6a+0e9kdqs6mFtBKS2WaoSdFwPw+/Pv3qWz441jlEEgRRKgx+
-PhkmPZvPmkl94yw0mt/m4Z5WZobqi1sL3OgZXYMNE+Tm/y8LHUHersv1Cs7U
-OvOgw20thKnLggqoNpaY4PlhhQ3WMIZdKO6f52GA8gUfBJMiMgzZn6IIHNAz
-/y4mqTrfUkIT2GHqYUTLHcKnbp0DrtNuJ7R3cUHIzm3zfsHm4dEQzBzErmFe
-a98tzM9wb5BuCb/DqdXx3lP05pNBqOR/bdAlvzmGFruETiwnNKYReQGUPepZ
-2HbBrsCof+cGdiztR2G1rP4OSoa893DCKI3DL2/kFZ4tcGmY9nx8w9cHhkgK
-umJNJKQUVBbcmhZnQ6fquhjmjCtlsMt6poKW9lQVNO5XZuCVw/QDAwo3/SIY
-XxBJ4R9hFBcI
+1:eJwdyltEQwEAxvG1je5Tq6yXTGtEolGSE60lpr10WSQ9pLFeomZFKbaTKNka
+0yg9RDcqxtqS08z20Cpj68LUzJiatDqrLUqUrc63h8/Px79aNdGnZrNYLCEz
++P1smDzbfpFN6qSz0GhO6eGhXGCGktuoBW4OjK/BNi17O/uF18fQY+sp9DLO
+NDt50OHeKoPvd3wRlBirTPDKLtqDTYThAOYN6z3QzzkPxBgTOewbSGbKg3BE
+R2RdSHBazhdpmX+faIVBOWWHz/09DrjOdTuhTUkFIDm367lg7Bgdv4bpo3gI
+8rqGorA0TaUgt/PmA06taAYv0ZtPVbDW87cHXZXhE2ixFXHpJVpmGqvkQ8GT
+joSKW3IZRi72w7B30RqBjYLWB1ik9j5CrbHkFf54g0nom6c+4efZ1y9MxghW
+gtEVb2dDjpiTC3em8/Khsz5UAQs0tQKo3PLVQ0v3ewM0WuvS8N5hykC/2M19
+Y3ydzynJOloc31ilZTUK6Qv8Bx0fH5U=
   "]],
 
 Cell[BoxData[""], "Input",
@@ -202,13 +205,14 @@ Cell[BoxData[
 }, Open  ]],
 
 Cell["\<\
-Interpretation: 
+Interpretation: Spent 150 hours producing corn syrup, 150 hours producing fig \
+paste for the maximized revenue of $180.
 \
 \>", "Text",
  CellChangeTimes->{{3.694539612031086*^9, 3.69453969489895*^9}, {
    3.694540623525984*^9, 3.694540669252345*^9}, {3.694541627864325*^9, 
    3.694541661149891*^9}, {3.694542330294791*^9, 3.6945423503002443`*^9}, 
-   3.695140962203108*^9}]
+   3.695140962203108*^9, {3.701266262955658*^9, 3.701266327566951*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -218,8 +222,8 @@ WindowMargins->{{Automatic, 37}, {Automatic, 0}},
 PrintingCopies->1,
 PrintingPageRange->{Automatic, Automatic},
 Magnification->1.5,
-FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September 9, \
-2014)",
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
+2016)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -244,16 +248,16 @@ Cell[3587, 74, 2218, 37, 24, "Input",
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[5842, 116, 153, 2, 37, "Subtitle"],
-Cell[5998, 120, 1412, 32, 172, "Input"],
-Cell[7413, 154, 143, 2, 24, "Input"]
+Cell[5998, 120, 1570, 35, 193, "Input"],
+Cell[7571, 157, 143, 2, 24, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7593, 161, 95, 4, 37, "Subtitle"],
+Cell[7751, 164, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[7713, 169, 1029, 17, 24, "Input"],
-Cell[8745, 188, 543, 12, 24, "Output"]
+Cell[7871, 172, 1029, 17, 24, "Input"],
+Cell[8903, 191, 543, 12, 24, "Output"]
 }, Open  ]],
-Cell[9303, 203, 280, 7, 58, "Text"]
+Cell[9461, 206, 430, 8, 58, "Text"]
 }, Open  ]]
 }, Open  ]]
 }

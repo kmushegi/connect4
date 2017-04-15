@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     13685,        315]
-NotebookOptionsPosition[     12640,        275]
-NotebookOutlinePosition[     13117,        295]
-CellTagsIndexPosition[     13074,        292]
+NotebookDataLength[     14736,        336]
+NotebookOptionsPosition[     13692,        296]
+NotebookOutlinePosition[     14166,        316]
+CellTagsIndexPosition[     14123,        313]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -31,7 +31,10 @@ Cell["Modelling Problem XV", "Title",
    3.695138553864896*^9}, 3.69513965234009*^9, 3.695140318354313*^9, {
    3.695143225067215*^9, 3.695143237395019*^9}}],
 
-Cell["Variables:  xi = violins produced in quarter i", "Subtitle",
+Cell["\<\
+Variables:  xi = violins produced in quarter i, overtime workers, storate \
+violins in quarter i\
+\>", "Subtitle",
  CellChangeTimes->{{3.4407780390385303`*^9, 3.4407780929008856`*^9}, {
    3.4407788808375745`*^9, 3.440778884884553*^9}, {3.440779321505105*^9, 
    3.440779328614662*^9}, {3.4407803422031097`*^9, 3.44078039495446*^9}, {
@@ -45,7 +48,7 @@ Cell["Variables:  xi = violins produced in quarter i", "Subtitle",
    3.695140520527066*^9, 3.695140526630698*^9}, {3.695140669037135*^9, 
    3.6951406790660257`*^9}, {3.6951426471616364`*^9, 3.695142652173709*^9}, {
    3.69514281954204*^9, 3.69514282413412*^9}, {3.695143256152587*^9, 
-   3.695143263312415*^9}}],
+   3.695143263312415*^9}, {3.7012663722323093`*^9, 3.701266396692151*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -160,7 +163,14 @@ Cell[BoxData[
     "\[IndentingNewLine]", 
     RowBox[{"s4", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
     "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "have", " ", "6", " ", "violins", " ", "in", " ", "first", " ", 
+      "quarter"}], "*)"}], "\[IndentingNewLine]", 
     RowBox[{"s1", "\[Equal]", "6"}], " ", "&&", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{"update", " ", "storage", " ", "numbers"}], " ", "*)"}], 
+    "\[IndentingNewLine]", 
     RowBox[{"s2", "\[Equal]", 
      RowBox[{"s1", "+", "o1", "+", "x1", "-", "5"}]}], " ", "&&", 
     "\[IndentingNewLine]", 
@@ -170,12 +180,19 @@ Cell[BoxData[
     RowBox[{"s4", "\[Equal]", 
      RowBox[{"s3", "+", "o3", "+", "x3", "-", "3"}]}], " ", "&&", 
     "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{"can", " ", "only", " ", "make", " ", 
+      RowBox[{"2", " ", "@", " ", "200"}]}], " ", "*)"}], 
+    "\[IndentingNewLine]", 
     RowBox[{"x1", "\[LessEqual]", " ", "2"}], "&&", "\[IndentingNewLine]", 
     RowBox[{"x2", " ", "\[LessEqual]", "2"}], " ", "&&", 
     "\[IndentingNewLine]", 
     RowBox[{"x3", " ", "\[LessEqual]", " ", "2"}], " ", "&&", 
     "\[IndentingNewLine]", 
     RowBox[{"x4", " ", "\[LessEqual]", " ", "2"}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{"meet", " ", "the", " ", "demand"}], " ", "*)"}], 
     "\[IndentingNewLine]", 
     RowBox[{
      RowBox[{"s1", "+", "o1", "+", "x1"}], " ", "\[GreaterEqual]", "5"}], "&&",
@@ -190,16 +207,17 @@ Cell[BoxData[
      RowBox[{"s4", "+", "o4", "+", "x4"}], "\[GreaterEqual]", " ", "3"}]}]}], 
   ";"}]], "Input",
  CellChangeTimes->CompressedData["
-1:eJwdymkogwEAxvHZVuZIDM0HEg2lFUVickzKVcxRkg+iSOScctW8Q47Malrh
-A+UeUrNJr8WmNlfNlYWWEkuOzVWkaHiffXj69dQ/pKKhoJJOo9HCqMGv+yGR
-YfpRIBKndECp/K0LLmVw5DD69FoBJ4vrR2FyM33a+YOP16BeJfQwUrbFab2g
-RjflC1/O2aEwWhokg0fq0DkYyx9ahKyyLj00MXYOrZR2F/oJJH79zLBczHfa
-Y2fE7/TZBCYlPxGaM0g1vC8SauAYU6eFqkLyEBKds/pdyrSq+mPoWH24hF5Z
-pdfQx0G+QWb6yTtsGW4s2UMv36iAEfq/ObgZYFmHCpUn09ZvE8hqA9iQcycm
-YPYpMQivdpUWmN+3cgVjOIk30LPSeAubpd5P8NtofoUHEvIDfhg+f+CrlU+z
-U24+pNIhg8twhTOtLDeo5V36Q/fGCA4snDrgQUXeSxSUrkQ64IVG9gtNXB3z
-mfJJ4uINeXeCTEh+tQjh98RZCazO4dbBrcD9JpgaldQOCcNyN/RzDe+FasXW
-AJzf7h+EI2zLOOQuLcxAJSthHdbkipz+A5+6Vv8=
+1:eJwdzFtIkwEAxfHdaKtEbBnzoYhkZMRAsYiaVC4Cu0CtDEJ6CIVFGJltgl1g
+zgqXuAarQTcK1MxlDNYUWUO3YNMSZjoaJUOQEtPc0gXKwpr1/fdw+HHgcLbV
+XDltkIhEoh1CMD3bZgp1/NCZzAdvoM2RasKeCpUDS6JTTnx+tu4hHjBKOrJ9
+61gfBj369WHBa3v8udgbaN+IC5+VhVhi22LHj97CLtytbXuFivNNQYxIh0an
+BZNiyThaVvNjWG3WZr2dlO4daknoIi5tGcYqfF6cPaPvxUeygB89lb5RtNx8
+ERwWPHShbgwzb+YmMPfouSnckPGlUHZ4/Bc23Kuves/e8bYGi4L/unCgIN6P
+Tk+OLGFN6OyXCpSomjFb8FjU0oqTw644nmpxT+IuVdlXzDGEv6HRljePK+HY
+Io40+5ZwKbT8BxentaKk4MBcuQSlaqkcOxsVa9GvmdiE6+qLVFjZPqJB58mF
+YrS5d2bwS699FSPqgOyn4HyzOA81M7oj6Es36HHl2acqvHhcfRkHN3+4iuXF
++6+jJfT6FubLt99Br3PwLr58Z23F+8r4Y1T3dHeiS7GvH2tPmLJ215YuP3kg
+/H8vTaPd6v6Lqd+N4qfZHl2DxmqDHP8Dq+ZyEw==
   "]],
 
 Cell[BoxData[""], "Input",
@@ -263,13 +281,16 @@ Cell[BoxData[
 }, Open  ]],
 
 Cell["\<\
-Interpretation: 
+Interpretation: Produce 2 violins at 200 each quarter, use no overtime \
+workers in quarters 1,2,3, use an overtime worker in quarter 4 for the \
+minimized cost of $2000 while meeting demands. Quarter 1 have 6 in storage, \
+quarter 2 3 in storage, quarter 3 1 in storage, quarter 4 0 in storage.
 \
 \>", "Text",
  CellChangeTimes->{{3.694539612031086*^9, 3.69453969489895*^9}, {
    3.694540623525984*^9, 3.694540669252345*^9}, {3.694541627864325*^9, 
    3.694541661149891*^9}, {3.694542330294791*^9, 3.6945423503002443`*^9}, 
-   3.695140962203108*^9}]
+   3.695140962203108*^9, {3.701266496154047*^9, 3.70126655226018*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -279,8 +300,8 @@ WindowMargins->{{Automatic, 37}, {Automatic, 0}},
 PrintingCopies->1,
 PrintingPageRange->{Automatic, Automatic},
 Magnification->1.5,
-FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September 9, \
-2014)",
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
+2016)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -296,25 +317,25 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[567, 22, 673, 9, 53, "Title"],
-Cell[1243, 33, 1054, 14, 37, "Subtitle"],
-Cell[2300, 49, 1055, 18, 24, "Input"],
+Cell[1243, 33, 1160, 17, 37, "Subtitle"],
+Cell[2406, 52, 1055, 18, 24, "Input"],
 Cell[CellGroupData[{
-Cell[3380, 71, 573, 7, 37, "Subtitle"],
-Cell[3956, 80, 2498, 41, 24, "Input",
+Cell[3486, 74, 573, 7, 37, "Subtitle"],
+Cell[4062, 83, 2498, 41, 24, "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.}]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6491, 126, 153, 2, 37, "Subtitle"],
-Cell[6647, 130, 3265, 72, 550, "Input"],
-Cell[9915, 204, 143, 2, 24, "Input"]
+Cell[6597, 129, 153, 2, 37, "Subtitle"],
+Cell[6753, 133, 3887, 87, 634, "Input"],
+Cell[10643, 222, 143, 2, 24, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10095, 211, 95, 4, 37, "Subtitle"],
+Cell[10823, 229, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[10215, 219, 1081, 18, 24, "Input"],
-Cell[11299, 239, 1018, 22, 41, "Output"]
+Cell[10943, 237, 1081, 18, 24, "Input"],
+Cell[12027, 257, 1018, 22, 24, "Output"]
 }, Open  ]],
-Cell[12332, 264, 280, 7, 58, "Text"]
+Cell[13060, 282, 604, 10, 99, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
