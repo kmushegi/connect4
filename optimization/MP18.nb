@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     16070,        374]
-NotebookOptionsPosition[     15026,        334]
-NotebookOutlinePosition[     15500,        354]
-CellTagsIndexPosition[     15457,        351]
+NotebookDataLength[     15165,        340]
+NotebookOptionsPosition[     14121,        300]
+NotebookOutlinePosition[     14595,        320]
+CellTagsIndexPosition[     14552,        317]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -31,9 +31,7 @@ Cell["Modelling Problem XV", "Title",
    3.695138553864896*^9}, 3.69513965234009*^9, 3.695140318354313*^9, {
    3.695143225067215*^9, 3.695143237395019*^9}}],
 
-Cell["\<\
-Variables:  xi = bond bought/sold - bb/bs, cash after year 1,2,3\
-\>", "Subtitle",
+Cell["Variables:  xi = violins produced in quarter i", "Subtitle",
  CellChangeTimes->{{3.4407780390385303`*^9, 3.4407780929008856`*^9}, {
    3.4407788808375745`*^9, 3.440778884884553*^9}, {3.440779321505105*^9, 
    3.440779328614662*^9}, {3.4407803422031097`*^9, 3.44078039495446*^9}, {
@@ -47,15 +45,13 @@ Variables:  xi = bond bought/sold - bb/bs, cash after year 1,2,3\
    3.695140520527066*^9, 3.695140526630698*^9}, {3.695140669037135*^9, 
    3.6951406790660257`*^9}, {3.6951426471616364`*^9, 3.695142652173709*^9}, {
    3.69514281954204*^9, 3.69514282413412*^9}, {3.695143256152587*^9, 
-   3.695143263312415*^9}, {3.70126546480977*^9, 3.7012654878462343`*^9}}],
+   3.695143263312415*^9}}],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"vars", "=", 
    RowBox[{"{", 
-    RowBox[{
-    "ab", ",", "as", ",", "hb", ",", "hs", ",", "pb", ",", "ps", ",", "cash1",
-      ",", "cash2", ",", "cash3"}], "}"}]}], ";"}]], "Input",
+    RowBox[{"p1", ",", "p2", ",", "p3", ",", "p4"}], "}"}]}], ";"}]], "Input",
  CellChangeTimes->{{3.4407780559614944`*^9, 3.4407780572584357`*^9}, 
    3.4407786736916466`*^9, {3.4407793393961883`*^9, 3.440779348880806*^9}, 
    3.44078033656234*^9, 3.694538078632133*^9, {3.694540227723385*^9, 
@@ -68,34 +64,28 @@ Cell[BoxData[
    3.695143265609427*^9, 3.6951432663534613`*^9}, {3.695143330274547*^9, 
    3.6951433501682262`*^9}, {3.695143616021598*^9, 3.695143624916905*^9}, {
    3.701264462893915*^9, 3.701264473777705*^9}, {3.701264929559719*^9, 
-   3.701264932812745*^9}}],
+   3.701264932812745*^9}, {3.7012655897820807`*^9, 3.701265603282248*^9}, {
+   3.701265870192438*^9, 3.7012658773250313`*^9}}],
 
 Cell[CellGroupData[{
 
-Cell["Objective:  how much cash we have after selling & buying", "Subtitle",
+Cell["Objective:  production and inventory costs", "Subtitle",
  CellChangeTimes->{{3.4407780390385303`*^9, 3.4407781242306147`*^9}, {
   3.440778442183137*^9, 3.44077849735713*^9}, {3.4407795518078756`*^9, 
   3.4407796502322702`*^9}, {3.440780811152614*^9, 3.440780818215295*^9}, {
   3.694538084725185*^9, 3.6945381010286083`*^9}, {3.694540236922372*^9, 
   3.694540245041855*^9}, {3.694541490330662*^9, 3.694541499617043*^9}, {
   3.695138772612439*^9, 3.695138785994534*^9}, {3.695140338579692*^9, 
-  3.6951403431443853`*^9}, {3.695143273840239*^9, 3.6951433007644997`*^9}, {
-  3.701265501136579*^9, 3.701265506965114*^9}}],
+  3.6951403431443853`*^9}, {3.695143273840239*^9, 3.6951433007644997`*^9}}],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"objective", "=", " ", 
    RowBox[{
-    RowBox[{"(", 
-     RowBox[{
-      RowBox[{"98", "as"}], "+", 
-      RowBox[{"97", "hs"}], "+", 
-      RowBox[{"93", "ps"}]}], ")"}], "-", 
-    RowBox[{"(", 
-     RowBox[{
-      RowBox[{"99", "ab"}], "+", 
-      RowBox[{"98", "hb"}], "+", 
-      RowBox[{"95", "pb"}]}], ")"}]}]}], ";"}]], "Input",
+    RowBox[{"160000", "p1"}], "+", 
+    RowBox[{"220000", "p2"}], "+", 
+    RowBox[{"310000", "p3"}], "+", 
+    RowBox[{"558000", "p4"}]}]}], ";"}]], "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.},
  CellChangeTimes->{{3.4401702281900635`*^9, 3.440170229815323*^9}, {
    3.440236542810931*^9, 3.4402365504360776`*^9}, {3.440236701439211*^9, 
@@ -125,7 +115,8 @@ Cell[BoxData[
    3.6951432691396837`*^9, {3.695143357115509*^9, 3.695143481322485*^9}, {
    3.695143652380728*^9, 3.695143653773162*^9}, {3.695143805496344*^9, 
    3.6951438169232388`*^9}, {3.7012646191914997`*^9, 3.701264670419383*^9}, {
-   3.701264825890594*^9, 3.7012648360576553`*^9}}]
+   3.701264825890594*^9, 3.7012648360576553`*^9}, {3.7012656234859343`*^9, 
+   3.701265643046236*^9}, {3.701265880687895*^9, 3.70126590847293*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -134,135 +125,88 @@ Cell["Constraints:", "Subtitle",
  CellChangeTimes->{{3.4407780390385303`*^9, 3.4407781242306147`*^9}, {
   3.440778891134713*^9, 3.4407788990411654`*^9}}],
 
-Cell[BoxData[
+Cell[BoxData[{
  RowBox[{
-  RowBox[{"constraints", "=", "\[IndentingNewLine]", 
+  RowBox[{"constraintsPartA", "=", "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
-    "ensure", " ", "integers", " ", "following", " ", "Blackboard", " ", 
-     "advice"}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"non", "-", 
+      RowBox[{"negative", " ", "numbers"}]}], ",", " ", 
+     RowBox[{"1", " ", "or", " ", "0"}]}], " ", "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"ab", " ", "\[Element]", "Integers"}], " ", "&&", 
+    RowBox[{"p1", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{"as", " ", "\[Element]", "Integers"}], " ", "&&", 
+    RowBox[{"p1", " ", "\[LessEqual]", " ", "1"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{"hb", " ", "\[Element]", "Integers"}], " ", "&&", 
+    RowBox[{"p2", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{"hs", " ", "\[Element]", "Integers"}], " ", "&&", 
+    RowBox[{"p2", " ", "\[LessEqual]", " ", "1"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{"pb", " ", "\[Element]", "Integers"}], " ", "&&", 
+    RowBox[{"p3", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{"ps", " ", "\[Element]", "Integers"}], " ", "&&", 
+    RowBox[{"p3", " ", "\[LessEqual]", " ", "1"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"non", "-", 
-      RowBox[{"negative", " ", "numbers"}]}], " ", "*)"}], 
+    RowBox[{"p4", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{"ab", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
-    "\[IndentingNewLine]", 
-    RowBox[{"hb", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
-    "\[IndentingNewLine]", 
-    RowBox[{"pb", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
+    RowBox[{"p4", " ", "\[LessEqual]", " ", "1"}], " ", "&&", 
     "\[IndentingNewLine]", 
     RowBox[{"(*", " ", 
-     RowBox[{"limited", " ", "buying", " ", "supply"}], " ", "*)"}], 
-    "\[IndentingNewLine]", 
-    RowBox[{"ab", " ", "\[LessEqual]", " ", "500"}], " ", "&&", 
-    "\[IndentingNewLine]", 
-    RowBox[{"hb", " ", "\[LessEqual]", " ", "1000"}], " ", "&&", 
-    "\[IndentingNewLine]", 
-    RowBox[{"pb", " ", "\[LessEqual]", " ", "1200"}], " ", "&&", 
-    "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"non", "-", 
-      RowBox[{"negative", " ", "numbers"}]}], " ", "*)"}], 
-    "\[IndentingNewLine]", 
-    RowBox[{"as", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
-    "\[IndentingNewLine]", 
-    RowBox[{"hs", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
-    "\[IndentingNewLine]", 
-    RowBox[{"ps", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
-    "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"limited", " ", "buying", " ", "supply"}], " ", "*)"}], 
-    "\[IndentingNewLine]", 
-    RowBox[{"as", " ", "\[LessEqual]", " ", "2000"}], " ", "&&", 
-    "\[IndentingNewLine]", 
-    RowBox[{"hs", " ", "\[LessEqual]", " ", "2000"}], " ", "&&", 
-    "\[IndentingNewLine]", 
-    RowBox[{"ps", " ", "\[LessEqual]", " ", "2000"}], " ", "&&", 
-    "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"cash", " ", "after", " ", "year", " ", "1"}], " ", "*)"}], 
-    "\[IndentingNewLine]", 
-    RowBox[{"cash1", " ", "\[Equal]", " ", 
+     RowBox[{"cannot", " ", "exceeed", " ", "investment", " ", "budget"}], 
+     " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
      RowBox[{
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"10.1", "ab"}], "+", 
-        RowBox[{"8.4", "hb"}], "+", 
-        RowBox[{"7.9", "pb"}]}], ")"}], "-", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"10.1", "as"}], "+", 
-        RowBox[{"8.4", "hs"}], "+", 
-        RowBox[{"7.9", "ps"}]}], ")"}]}]}], " ", "&&", "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"cash", " ", "after", " ", "year", " ", "2"}], " ", "*)"}], 
+      RowBox[{"165000", "p1"}], "+", 
+      RowBox[{"229000", "p2"}], "+", 
+      RowBox[{"315000", "p3"}], "+", 
+      RowBox[{"570000", "p3"}]}], " ", "\[LessEqual]", " ", "1000000"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"constraintsPartB", "=", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"non", "-", 
+     RowBox[{"negative", " ", "numbers"}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"p1", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
     "\[IndentingNewLine]", 
-    RowBox[{"cash2", " ", "\[Equal]", " ", 
+    RowBox[{"p1", " ", "\[LessEqual]", " ", "1"}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{"p2", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{"p2", " ", "\[LessEqual]", " ", "1"}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{"p3", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{"p3", " ", "\[LessEqual]", " ", "1"}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{"p3", " ", "\[Equal]", " ", "p2"}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{"p4", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{"p4", " ", "\[LessEqual]", " ", "1"}], " ", "&&", 
+    "\[IndentingNewLine]", 
+    RowBox[{
      RowBox[{
-      RowBox[{"cash1", "/", "0.94"}], "+", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"11.2", "ab"}], "+", 
-        RowBox[{"9.5", "hb"}], "+", 
-        RowBox[{"8.3", "pb"}]}], ")"}], "-", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"11.2", "as"}], "+", 
-        RowBox[{"9.5", "hs"}], "+", 
-        RowBox[{"8.3", "ps"}]}], ")"}]}]}], " ", "&&", "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"cash", " ", "after", " ", "year", " ", "3"}], " ", "*)"}], 
-    "\[IndentingNewLine]", 
-    RowBox[{"cash3", " ", "\[Equal]", " ", 
-     RowBox[{
-      RowBox[{"cash2", "/", "0.94"}], "+", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"111", "ab"}], "+", 
-        RowBox[{"113", "hb"}], "+", 
-        RowBox[{"107", "pb"}]}], ")"}], "-", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"111", "as"}], "+", 
-        RowBox[{"113", "hs"}], "+", 
-        RowBox[{"107", "ps"}]}], ")"}]}]}], " ", "&&", "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{"maintain", " ", "cash", " ", "positivity"}], " ", "*)"}], 
-    "\[IndentingNewLine]", 
-    RowBox[{"cash1", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", " ", 
-    RowBox[{"cash2", " ", "\[GreaterEqual]", " ", "0"}], " ", "&&", " ", 
-    RowBox[{"cash3", " ", "\[GreaterEqual]", " ", "0"}]}]}], ";"}]], "Input",
+      RowBox[{"165000", "p1"}], "+", 
+      RowBox[{"229000", "p2"}], "+", 
+      RowBox[{"315000", "p3"}], "+", 
+      RowBox[{"570000", "p3"}]}], " ", "\[LessEqual]", " ", "1000000"}]}]}], 
+  ";"}]}], "Input",
  CellChangeTimes->CompressedData["
-1:eJwdyn9IEwEAxfG5O9jKsfRaTUZSylKQbQpF1KTaorAUc2kREhJJxjAyc4PM
-Yp4VmjgHq2ElJLhlLkNYm8i1dAu2WcJMpVE2hGFimps/Akswpt3bH48PD74Z
-lTdLq7gcDkfBDq7Pt+l81l9qneF4AzSaVxthX4HYDPMmIxbYdbHmKTxWx7Um
-/t7xAeh1aJL9rPWH3ELo8nTvhMtfqUyYZ0w3wc/OzB54UNn2GvIvN3phkAiM
-zbLGkrgTkN4UheAVgzLhgxhxONAcVQftynwYKmCccP68xgWfkR43dJQxY5C+
-+9I7wnriWs04jL9dmILCM5ciMDXOrELy5MRvqG+vLf+I3vyuEmZ7t3rgUFp4
-EFocAjLaElWbrqdRUDxnoGHhJN0Kp0fsYXiuuX8aHhDnz0BBlf8HrDOmLMIN
-f2gFjjYxa3DN9+cfXJlVcmKsQwsqLiSkBA/abvO3QbdsahfcXpsthmXdozJo
-KVnOhcb+nDj85jJtwqDUQy6xLjYlpUDZnPo0ZNb1Grjx4ks51BZJb8DhPZ9u
-QVXu0TuQ9r25D0W8rIfQaRl+BF99aGmFj6nwcyjt67VBO//IIKw+q0tIFdp2
-dD6Jqv+aBLvhhY7vErglotKhxLO0H6o6k7OgsPi9HBpTtQpoDeScglcbOorg
-AM9cAg32fRVQdm9GC3/Ki6shUVGqh10ReT0kMxTtUKeXWOB/P4Cc1A==
-  "]],
-
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.694537173853479*^9, 3.6945371747206173`*^9}, {
-  3.695140865096818*^9, 3.695140867799646*^9}}]
+1:eJwdzmtMEgAABGAENigdKVE4lz0c6eYgXbVKXAWthmkmSa255ioXjWyZCU2y
+hlgNcxIbxazccilRhHMjcUam0AZobPhgsTKyzJxp4otNc7PAOH7cvt12P25b
+ydVCMZFAIOyMBC5P1ksdLb/5UsXBKqjWLlRDk4CphZneUR1sOl32CB6oILZE
++5bBDmg3C2OdEeV7umjQYmteD+c+0VNgpjpZAwfaUwxwN7f+FaSerbZDD8nV
+Px5xJoY4BJVhhg+eV3Cj3pkh7XOpAnyPkZsNfQJrO5w8KbTAx2RbFzSLrP1Q
+efO5vTfioYtlgzD0emoY0o6eGYUJIesCJB8eCkLZ/fKiPuy1b0tgmn3VALsT
+/Z1QZ44jB2oDfM3lRDpkTiiUMNerrIMjvUY/PKFqG4G7mNljME7s/Akr1PHT
+cMXpm4fuGusiXHQs/YXz41zCTMTuKR4RklgkCtRXUtfALvbwBri2PI0JRc1u
+NtQVzGVAdVt6CH62aMLQw7KRZyNO18TEQ/YEPwdal2VCuPL0YxGU5LGuwJ5N
+H65BXsb+G1DpaL0NGZTUu7Bd13MPvnhfWwcf0P1PIMv0Ug+N1KxOWHpcGpWe
+q1/X+DDA/6OJ2whPNXxJgqsMejJMss1uh7zG2FRIy3/HgeoEyQ7Y4ko/Ai9U
+NeTBDoq2ACqMW4sh+9aYBP7i5JdCUnGhDDaNcuRQed39DL758d0A94pUJvgv
+K9ga/XHpmB1WLp3rg0FBzgC0h41eKN9c+RW6xcXf4H83e8YI
+  "]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -275,12 +219,17 @@ Cell[TextData[{
 
 Cell[CellGroupData[{
 
-Cell[BoxData[
+Cell[BoxData[{
  RowBox[{"Maximize", "[", 
   RowBox[{
    RowBox[{"{", 
-    RowBox[{"objective", ",", "constraints"}], "}"}], ",", "vars"}], 
-  "]"}]], "Input",
+    RowBox[{"objective", ",", "constraintsPartA"}], "}"}], ",", "vars", ",", 
+   "Integers"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Maximize", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"objective", ",", "constraintsPartB"}], "}"}], ",", "vars", ",", 
+   "Integers"}], "]"}]}], "Input",
  CellChangeTimes->{{3.440169944660331*^9, 3.440169947926478*^9}, {
    3.440238159406389*^9, 3.44023815970327*^9}, {3.440245743083243*^9, 
    3.440245749802122*^9}, {3.440246826275915*^9, 3.440246845620036*^9}, {
@@ -294,23 +243,20 @@ Cell[BoxData[
    3.694540416546652*^9, 3.694540418440621*^9}, {3.69454226964081*^9, 
    3.694542273886908*^9}, {3.695143008213944*^9, 3.695143010285283*^9}, {
    3.695143884209547*^9, 3.6951438913915997`*^9}, {3.701264704289487*^9, 
-   3.7012647059688177`*^9}, {3.7012653617619534`*^9, 3.7012653619114847`*^9}}],
+   3.7012647059688177`*^9}, {3.7012653617619534`*^9, 
+   3.7012653619114847`*^9}, {3.701265726374218*^9, 3.7012657273719482`*^9}, {
+   3.701265963289109*^9, 3.701265992542449*^9}, {3.701266065968932*^9, 
+   3.701266073493431*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"1410.`", ",", 
+  RowBox[{"938000", ",", 
    RowBox[{"{", 
     RowBox[{
-     RowBox[{"ab", "\[Rule]", "498"}], ",", 
-     RowBox[{"as", "\[Rule]", "0"}], ",", 
-     RowBox[{"hb", "\[Rule]", "999"}], ",", 
-     RowBox[{"hs", "\[Rule]", "0"}], ",", 
-     RowBox[{"pb", "\[Rule]", "0"}], ",", 
-     RowBox[{"ps", "\[Rule]", "1598"}], ",", 
-     RowBox[{"cash1", "\[Rule]", "797.2000000000007`"}], ",", 
-     RowBox[{"cash2", "\[Rule]", "2652.7851063829767`"}], ",", 
-     RowBox[{"cash3", "\[Rule]", "1.1118153010388596`"}]}], "}"}]}], 
-  "}"}]], "Output",
+     RowBox[{"p1", "\[Rule]", "1"}], ",", 
+     RowBox[{"p2", "\[Rule]", "1"}], ",", 
+     RowBox[{"p3", "\[Rule]", "0"}], ",", 
+     RowBox[{"p4", "\[Rule]", "1"}]}], "}"}]}], "}"}]], "Output",
  CellChangeTimes->{{3.694540430361553*^9, 3.694540446275983*^9}, 
    3.694540549935848*^9, 3.694541603361986*^9, 3.694542283286653*^9, 
    3.69513898791576*^9, 3.695140908510768*^9, 3.695140990076542*^9, 
@@ -318,7 +264,27 @@ Cell[BoxData[
    3.6951430484409437`*^9, 3.695143980052915*^9, 3.695144021267871*^9, 
    3.6951442368423443`*^9, 3.69514437585614*^9, {3.701264695551117*^9, 
    3.701264713026813*^9}, 3.701264763576929*^9, 3.701265136331702*^9, 
-   3.701265371921589*^9}]
+   3.701265371921589*^9, {3.70126572302246*^9, 3.70126573363129*^9}, {
+   3.7012659704661503`*^9, 3.7012659991907883`*^9}, 3.701266080388279*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"718000", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"p1", "\[Rule]", "1"}], ",", 
+     RowBox[{"p2", "\[Rule]", "0"}], ",", 
+     RowBox[{"p3", "\[Rule]", "0"}], ",", 
+     RowBox[{"p4", "\[Rule]", "1"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.694540430361553*^9, 3.694540446275983*^9}, 
+   3.694540549935848*^9, 3.694541603361986*^9, 3.694542283286653*^9, 
+   3.69513898791576*^9, 3.695140908510768*^9, 3.695140990076542*^9, 
+   3.69514105664802*^9, 3.6951412264481497`*^9, 3.695141256903681*^9, 
+   3.6951430484409437`*^9, 3.695143980052915*^9, 3.695144021267871*^9, 
+   3.6951442368423443`*^9, 3.69514437585614*^9, {3.701264695551117*^9, 
+   3.701264713026813*^9}, 3.701264763576929*^9, 3.701265136331702*^9, 
+   3.701265371921589*^9, {3.70126572302246*^9, 3.70126573363129*^9}, {
+   3.7012659704661503`*^9, 3.7012659991907883`*^9}, 3.701266080398323*^9}]
 }, Open  ]],
 
 Cell["\<\
@@ -355,25 +321,25 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[567, 22, 673, 9, 53, "Title"],
-Cell[1243, 33, 1127, 16, 37, "Subtitle"],
-Cell[2373, 51, 1123, 19, 24, "Input"],
+Cell[1243, 33, 1054, 14, 37, "Subtitle"],
+Cell[2300, 49, 1148, 18, 24, "Input"],
 Cell[CellGroupData[{
-Cell[3521, 74, 636, 8, 37, "Subtitle"],
-Cell[4160, 84, 2549, 43, 24, "Input",
+Cell[3473, 71, 573, 7, 37, "Subtitle"],
+Cell[4049, 80, 2504, 38, 24, "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.}]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6746, 132, 153, 2, 37, "Subtitle"],
-Cell[6902, 136, 5247, 124, 676, "Input"],
-Cell[12152, 262, 143, 2, 24, "Input"]
+Cell[6590, 123, 153, 2, 37, "Subtitle"],
+Cell[6746, 127, 3534, 81, 508, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12332, 269, 95, 4, 37, "Subtitle"],
+Cell[10317, 213, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[12452, 277, 1165, 19, 24, "Input"],
-Cell[13620, 298, 1083, 22, 46, "Output"]
+Cell[10437, 221, 1523, 27, 46, "Input"],
+Cell[11963, 250, 916, 17, 41, "Output"],
+Cell[12882, 269, 916, 17, 41, "Output"]
 }, Open  ]],
-Cell[14718, 323, 280, 7, 58, "Text"]
+Cell[13813, 289, 280, 7, 58, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
