@@ -1,19 +1,12 @@
-(* Content-type: application/mathematica *)
-
-(*** Wolfram Notebook File ***)
-(* http://www.wolfram.com/nb *)
-
-(* CreatedBy='Mathematica 6.0' *)
-
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
-NotebookDataPosition[       145,          7]
-NotebookDataLength[     13411,        303]
-NotebookOptionsPosition[     12369,        263]
-NotebookOutlinePosition[     12843,        283]
-CellTagsIndexPosition[     12800,        280]
+NotebookDataPosition[         0,          0]
+NotebookDataLength[     13818,        309]
+NotebookOptionsPosition[     12630,        262]
+NotebookOutlinePosition[     13104,        282]
+CellTagsIndexPosition[     13061,        279]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -31,7 +24,7 @@ Cell["Modelling Problem XV", "Title",
    3.695138553864896*^9}, 3.69513965234009*^9, 3.695140318354313*^9, {
    3.695143225067215*^9, 3.695143237395019*^9}}],
 
-Cell["Variables:  xi = amount invested in each type of add", "Subtitle",
+Cell["Variables:  xi = minutes of each type of ad bought", "Subtitle",
  CellChangeTimes->{{3.4407780390385303`*^9, 3.4407780929008856`*^9}, {
    3.4407788808375745`*^9, 3.440778884884553*^9}, {3.440779321505105*^9, 
    3.440779328614662*^9}, {3.4407803422031097`*^9, 3.44078039495446*^9}, {
@@ -45,7 +38,8 @@ Cell["Variables:  xi = amount invested in each type of add", "Subtitle",
    3.695140520527066*^9, 3.695140526630698*^9}, {3.695140669037135*^9, 
    3.6951406790660257`*^9}, {3.6951426471616364`*^9, 3.695142652173709*^9}, {
    3.69514281954204*^9, 3.69514282413412*^9}, {3.695143256152587*^9, 
-   3.695143263312415*^9}, {3.701266095791093*^9, 3.701266099867337*^9}}],
+   3.695143263312415*^9}, {3.701266095791093*^9, 3.701266099867337*^9}, {
+   3.7012666956828423`*^9, 3.701266704872691*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -252,12 +246,17 @@ Cell[BoxData[
 
 Cell["\<\
 Interpretation: 
+Part A: Buy 175/44 minutes of drama, 35/22 minutes of sports and 0 minutes of \
+news advertising for the minimized cost of $9712500/11.
+Part B: Buy 4 minutes of drama,2 minutes of sports and 0 minutes of news \
+advertising for the minimized cost of $960000.
 \
 \>", "Text",
  CellChangeTimes->{{3.694539612031086*^9, 3.69453969489895*^9}, {
    3.694540623525984*^9, 3.694540669252345*^9}, {3.694541627864325*^9, 
    3.694541661149891*^9}, {3.694542330294791*^9, 3.6945423503002443`*^9}, 
-   3.695140962203108*^9}]
+   3.695140962203108*^9, {3.7012666545344048`*^9, 3.701266666413664*^9}, {
+   3.701266729586071*^9, 3.701266773196739*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -283,26 +282,26 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[567, 22, 673, 9, 53, "Title"],
-Cell[1243, 33, 1106, 14, 37, "Subtitle"],
-Cell[2352, 49, 1142, 18, 24, "Input"],
+Cell[422, 15, 673, 9, 53, "Title"],
+Cell[1098, 26, 1156, 15, 37, "Subtitle"],
+Cell[2257, 43, 1142, 18, 24, "Input"],
 Cell[CellGroupData[{
-Cell[3519, 71, 611, 8, 37, "Subtitle"],
-Cell[4133, 81, 2432, 37, 24, "Input",
+Cell[3424, 65, 611, 8, 37, "Subtitle"],
+Cell[4038, 75, 2432, 37, 24, "Input",
  CellGroupingRules->{GroupTogetherGrouping, 10000.}]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6602, 123, 153, 2, 37, "Subtitle"],
-Cell[6758, 127, 1885, 44, 172, "Input"]
+Cell[6507, 117, 153, 2, 37, "Subtitle"],
+Cell[6663, 121, 1885, 44, 172, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8680, 176, 95, 4, 37, "Subtitle"],
+Cell[8585, 170, 95, 4, 37, "Subtitle"],
 Cell[CellGroupData[{
-Cell[8800, 184, 1447, 26, 46, "Input"],
-Cell[10250, 212, 935, 19, 44, "Output"],
-Cell[11188, 233, 858, 16, 24, "Output"]
+Cell[8705, 178, 1447, 26, 46, "Input"],
+Cell[10155, 206, 935, 19, 44, "Output"],
+Cell[11093, 227, 858, 16, 24, "Output"]
 }, Open  ]],
-Cell[12061, 252, 280, 7, 58, "Text"]
+Cell[11966, 246, 636, 12, 99, "Text"]
 }, Open  ]]
 }, Open  ]]
 }
